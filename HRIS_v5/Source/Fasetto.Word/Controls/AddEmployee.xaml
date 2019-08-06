@@ -47,6 +47,12 @@
                             <TextBox x:Name="tbEmail" HorizontalAlignment="Left" Width="200" Margin="0 5 40 5" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
                             <TextBox x:Name="tbContactNumber" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Contact Number" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
                         </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox x:Name="tbEmployeeId" HorizontalAlignment="Left" Width="200" Margin="0 5 10 5" materialDesign:HintAssist.Hint="Employee ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                            <Button Style="{DynamicResource MaterialDesignFloatingActionButton}">
+                                <materialDesign:PackIcon Kind="Magic" Height="25" Width="25"/>
+                            </Button>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
             </Border>

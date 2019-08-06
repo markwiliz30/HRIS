@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Fasetto.Word"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="1024">
     <Border Background="LightGray">
         <Grid>
             <Grid.RowDefinitions>
@@ -27,8 +27,27 @@
                 </StackPanel>
             </Border>
             <Border Grid.Row="2" Padding="10">
-                <DataGrid>
-                    
+                <DataGrid Name="employeeTable">
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="#159588" />
+                            <Setter Property="Padding" Value="15" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="FontSize" Value="14" />
+                            <Setter Property="BorderThickness" Value="0 0 1 2" />
+                            <Setter Property="BorderBrush" Value="DarkGray" />
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Employee ID" Binding="{Binding _employeeId}" Width="120"/>
+                        <DataGridTextColumn Header="First Name" Binding="{Binding _firstName}" Width="120"/>
+                        <DataGridTextColumn Header="Middle Name" Binding="{Binding _middleName}" Width="120"/>
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding _lastName}" Width="120"/>
+                        <DataGridTextColumn Header="Nationality" Binding="{Binding _nationality}" Width="120"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding _eMail}" Width="120"/>
+                        <DataGridTextColumn Header="Contact No." Binding="{Binding _contactNum}" Width="120"/>
+                        <DataGridTextColumn Header="Religion" Binding="{Binding _religion}" Width="120"/>
+                    </DataGrid.Columns>
                 </DataGrid>
             </Border>
         </Grid>
