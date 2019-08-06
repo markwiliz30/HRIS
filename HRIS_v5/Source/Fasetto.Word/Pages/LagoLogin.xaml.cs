@@ -20,7 +20,7 @@ namespace Fasetto.Word
             if (tbUserName.Text != "")
             {
                 parentWindow.Hide();
-                MainWindow mw = new MainWindow();
+                HRISMainWindow mw = new HRISMainWindow();
                 mw.ShowDialog();
                 parentWindow.Show();
             }

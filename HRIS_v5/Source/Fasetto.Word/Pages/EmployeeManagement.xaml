@@ -10,7 +10,7 @@
       Title="EmployeeManagement">
 
     <Grid>
-        <!--<materialDesign:Transitioner SelectedIndex="0" AutoApplyTransitionOrigins="True">
+        <materialDesign:Transitioner SelectedIndex="0" AutoApplyTransitionOrigins="True">
             <Grid>
                 <local:EmployeeTable/>
             </Grid>
@@ -21,9 +21,8 @@
                 <materialDesign:TransitionerSlide.ForwardWipe>
                     <materialDesign:SlideWipe Direction="Right"/>
                 </materialDesign:TransitionerSlide.ForwardWipe>
-                <local:EmployeeTable/>
+                <local:AddEmployee/>
             </materialDesign:TransitionerSlide>
-        </materialDesign:Transitioner>-->
-        <local:EmployeeTable/>
+        </materialDesign:Transitioner>
     </Grid>
 </local:BasePage>

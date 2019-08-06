@@ -20,9 +20,9 @@
             </Border>
             <Border Grid.Row="1" Padding="10">
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="ButtonDeleteEmployee" Content="Delete" Margin="0 0 50 0"></Button>
-                    <Button x:Name="ButtonNewEmployee" Content="New" Margin="5 0"></Button>
-                    <Button x:Name="ButtonEditEmployee" Content="Edit" Margin="5 0"></Button>
+                    <Button x:Name="ButtonDeleteEmployee" Content="Delete" Margin="0 0 50 0" />
+                    <Button x:Name="ButtonNewEmployee" Content="New" Margin="5 0" Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" />
+                    <Button x:Name="ButtonEditEmployee" Content="Edit" Margin="5 0" />
                     <Button x:Name="ButtonViewEmployee" Content="View"/>
                 </StackPanel>
             </Border>
