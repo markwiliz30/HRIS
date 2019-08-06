@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Fasetto.Word"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
     <Grid>
         <Frame x:Name="OldPage" local:NoFrameHistory.Value="True" />
         <Frame x:Name="NewPage" local:NoFrameHistory.Value="True" />

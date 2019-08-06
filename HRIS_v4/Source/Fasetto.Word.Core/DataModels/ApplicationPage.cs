@@ -21,5 +21,7 @@
         Register = 2,
 
         LagoLogin = 3,
+
+        EmpoyeeManagement = 4,
     }
 }

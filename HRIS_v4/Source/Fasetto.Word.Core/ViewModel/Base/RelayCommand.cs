@@ -36,6 +36,10 @@ namespace Fasetto.Word.Core
             mAction = action;
         }
 
+        public RelayCommand()
+        {
+        }
+
         #endregion
 
         #region Command Methods

@@ -1,5 +1,4 @@
-﻿using Fasetto.Word.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +16,13 @@ using System.Windows.Shapes;
 namespace Fasetto.Word
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddEmployee.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddEmployee : UserControl
     {
-        public MainWindow()
+        public AddEmployee()
         {
             InitializeComponent();
-
-            DataContext = new WindowViewModel(this);
         }
     }
 }

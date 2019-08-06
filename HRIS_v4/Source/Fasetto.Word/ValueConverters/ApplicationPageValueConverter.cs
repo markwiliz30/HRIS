@@ -27,6 +27,9 @@ namespace Fasetto.Word
                 case ApplicationPage.LagoLogin:
                     return new LagoLogin();
 
+                case ApplicationPage.EmpoyeeManagement:
+                    return new EmployeeManagement();
+
                 default:
                     Debugger.Break();
                     return null;

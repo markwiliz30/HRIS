@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Fasetto.Word
 {
     /// <summary>
-    /// Interaction logic for HRISMainWindow.xaml
+    /// Interaction logic for EmployeeTable.xaml
     /// </summary>
-    public partial class HRISMainWindow : Window
+    public partial class EmployeeTable : UserControl
     {
-        public HRISMainWindow()
+        public EmployeeTable()
         {
             InitializeComponent();
         }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fasetto.Word"
         xmlns:core="clr-namespace:Fasetto.Word.Core;assembly=Fasetto.Word.Core"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -125,7 +126,7 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            
+
             <!-- Blue background image -->
             <Grid.Background>
                 <ImageBrush TileMode="Tile" ViewportUnits="Absolute" Viewport="0 0 500 500" ImageSource="/Images/Backgrounds/emoji-background.png" />
@@ -137,7 +138,7 @@
                                      Source={x:Static local:ViewModelLocator.Instance},  
                                      Converter={local:ApplicationPageValueConverter}}"
                    CurrentPage="{Binding}" />
-            
+
             <!-- Side Menu -->
             <local:SideMenuControl 
                 Width="300" 
@@ -148,7 +149,9 @@
 
             </local:SideMenuControl>
 
+            <!--<Button VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" WindowChrome.IsHitTestVisibleInChrome="True">
+                <materialDesign:PackIcon Kind="Bell" Foreground="#05133C"/>
+            </Button>-->
         </Grid>
     </Border>
-
 </Window>

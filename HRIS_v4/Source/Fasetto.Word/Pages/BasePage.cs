@@ -17,12 +17,12 @@ namespace Fasetto.Word
         /// <summary>
         /// The animation the play when the page is first loaded
         /// </summary>
-        public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideAndFadeInFromRight;
+        public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideAndFadeInFromLeft;
 
         /// <summary>
         /// The animation the play when the page is unloaded
         /// </summary>
-        public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.SlideAndFadeOutToLeft;
+        public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.SlideAndFadeOutToRight;
 
         /// <summary>
         /// The time any slide animation takes to complete
@@ -85,10 +85,10 @@ namespace Fasetto.Word
 
             switch (PageLoadAnimation)
             {
-                case PageAnimation.SlideAndFadeInFromRight:
+                case PageAnimation.SlideAndFadeInFromLeft:
 
                     // Start the animation
-                    await this.SlideAndFadeInFromRightAsync(SlideSeconds);
+                    await this.SlideAndFadeInFromLeftAsync(SlideSeconds);
 
                     break;
             }
@@ -106,10 +106,10 @@ namespace Fasetto.Word
 
             switch (PageUnloadAnimation)
             {
-                case PageAnimation.SlideAndFadeOutToLeft:
+                case PageAnimation.SlideAndFadeOutToRight:
 
                     // Start the animation
-                    await this.SlideAndFadeOutToLeftAsync(SlideSeconds);
+                    await this.SlideAndFadeOutToRightAsync(SlideSeconds);
 
                     break;
             }
