@@ -27,7 +27,7 @@ namespace Fasetto.Word
             IoC.Setup();
 
             // Show the main window
-            Current.MainWindow = new HRISMainWindow();
+            Current.MainWindow = new LoginContainer();
             Current.MainWindow.Show();
         }
     }
