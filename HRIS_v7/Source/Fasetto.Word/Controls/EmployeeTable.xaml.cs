@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 using Fasetto.Word.Core;
 
 namespace Fasetto.Word
@@ -43,6 +44,9 @@ namespace Fasetto.Word
             //employeeTable.Items.Add(mark2);
 
             GetAllEmployees();
+
+            Storyboard sb = this.FindResource("ButtonPopup") as Storyboard;
+            sb.Begin();
         }
 
         private void ButtonViewEmployee_Click(object sender, System.Windows.RoutedEventArgs e)
