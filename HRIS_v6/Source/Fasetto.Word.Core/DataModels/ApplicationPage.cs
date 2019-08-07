@@ -23,5 +23,8 @@
         LagoLogin = 3,
 
         EmpoyeeManagement = 4,
+
+        Attendance = 5,
+        Home = 6,
     }
 }

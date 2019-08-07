@@ -48,7 +48,13 @@ namespace Fasetto.Word
         {
            _= RegisterAsync();
         }
+        public async Task HomeAsync()
+        {
+            // Go to register page?
+            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Home);
 
+            await Task.Delay(1);
+        }
         public async Task RegisterAsync()
         {
             // Go to register page?
@@ -65,6 +71,13 @@ namespace Fasetto.Word
             await Task.Delay(1);
         }
 
+        public async Task AttendanceAsync()
+        {
+            // Go to register page?
+            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Attendance);
+
+            await Task.Delay(1);
+        }
         public async Task ChatAsync()
         {
             // Go to register page?
@@ -81,9 +94,10 @@ namespace Fasetto.Word
             await Task.Delay(1);
         }
 
+
         private void MenuHome_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            _ = RegisterAsync();
+            _ = HomeAsync();
         }
 
         private void MenuEmployee_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -93,7 +107,7 @@ namespace Fasetto.Word
 
         private void MenuAttendance_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            _ = ChatAsync();
+            _ = AttendanceAsync();
         }
 
         private void MenuPayroll_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)

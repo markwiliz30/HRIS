@@ -30,6 +30,12 @@ namespace Fasetto.Word
                 case ApplicationPage.EmpoyeeManagement:
                     return new EmployeeManagement();
 
+                case ApplicationPage.Attendance:
+                    return new Attendance();
+
+                case ApplicationPage.Home:
+                    return new Home();
+
                 default:
                     Debugger.Break();
                     return null;
