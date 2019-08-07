@@ -124,6 +124,21 @@ namespace Fasetto.Word
             }
         }
 
+        private void ButtonMenu_Click(object sender, RoutedEventArgs e)
+        {
+            menuStateClosed = !menuStateClosed;
+            if (menuStateClosed)
+            {
+                Storyboard sb = this.FindResource("CloseMenu") as Storyboard;
+                sb.Begin();
+            }
+            else
+            {
+                Storyboard sb = this.FindResource("OpenMenu") as Storyboard;
+                sb.Begin();
+            }
+        }
+
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

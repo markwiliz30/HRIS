@@ -11,6 +11,8 @@ namespace Fasetto.Word
     /// </summary>
     public partial class EmployeeTable : UserControl
     {
+        EmployeeManager myManager = new EmployeeManager();
+        EmployeeCollection myCollection = new EmployeeCollection();
         string selectedEmployeeId;
         ObservableCollection<EmployeeItem> observableEmpCollection = new ObservableCollection<EmployeeItem>();
         public EmployeeTable()
@@ -53,7 +55,6 @@ namespace Fasetto.Word
             //employeeTable.Items.Clear();
 
             //observableEmpCollection = EmployeeCollection.RetreiveAllEmployee();
-            EmployeeCollection myCollection = new EmployeeCollection();
             myCollection.RetreiveAllEmployee();
 
             employeeTable.ItemsSource = StaticEmpoyeeCollection.staticEmployeeList;
@@ -71,7 +72,29 @@ namespace Fasetto.Word
 
         private void ButtonDeleteEmployee_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            AddToObservable();
+            DeleteEmployee();
+        }
+
+        private void DeleteEmployee()
+        {
+            string sMessageBoxText = "Do you want to delete this employee?";
+            string sCaption = "Are you Sure?";
+
+            MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
+            MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
+
+            MessageBoxResult rsltMessageBox = System.Windows.MessageBox.Show(sMessageBoxText, sCaption, btnMessageBox, icnMessageBox);
+
+            switch (rsltMessageBox)
+            {
+                case MessageBoxResult.Yes:
+                    myManager.DeleteData(selectedEmployeeId);
+                    myCollection.RetreiveAllEmployee();
+                    break;
+
+                case MessageBoxResult.No:
+                    break;
+            }
         }
 
         private void AddToObservable()
@@ -95,7 +118,6 @@ namespace Fasetto.Word
         {
             object item = employeeTable.SelectedItem;
             selectedEmployeeId = (employeeTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
-            MessageBox.Show(selectedEmployeeId);
         }
     }
 }

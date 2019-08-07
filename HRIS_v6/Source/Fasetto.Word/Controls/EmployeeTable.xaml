@@ -27,33 +27,35 @@
                 </StackPanel>
             </Border>
             <Border Grid.Row="2" Padding="10">
-                <DataGrid Name="employeeTable" IsReadOnly="True" IsManipulationEnabled="True" ItemsSource="{Binding observableEmpCollection}" AutoGenerateColumns="False">
-                    <DataGrid.Resources>
-                        <Style TargetType="{x:Type DataGridColumnHeader}">
-                            <Setter Property="Background" Value="#159588" />
-                            <Setter Property="Padding" Value="15" />
-                            <Setter Property="FontWeight" Value="Bold" />
-                            <Setter Property="FontSize" Value="14" />
-                            <Setter Property="BorderThickness" Value="0 0 1 2" />
-                            <Setter Property="BorderBrush" Value="DarkGray" />
-                        </Style>
-                    </DataGrid.Resources>
-                    <DataGrid.ItemContainerStyle>
-                        <Style TargetType="DataGridRow">
-                            <EventSetter Event="MouseLeftButtonUp" Handler="Row_Click"/>
-                        </Style>
-                    </DataGrid.ItemContainerStyle>
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Employee ID" Binding="{Binding _employeeId}" Width="120"/>
-                        <DataGridTextColumn Header="First Name" Binding="{Binding _firstName}" Width="120"/>
-                        <DataGridTextColumn Header="Middle Name" Binding="{Binding _middleName}" Width="120"/>
-                        <DataGridTextColumn Header="Last Name" Binding="{Binding _lastName}" Width="120"/>
-                        <DataGridTextColumn Header="Nationality" Binding="{Binding _nationality}" Width="120"/>
-                        <DataGridTextColumn Header="Email" Binding="{Binding _eMail}" Width="120"/>
-                        <DataGridTextColumn Header="Contact No." Binding="{Binding _contactNum}" Width="120"/>
-                        <DataGridTextColumn Header="Religion" Binding="{Binding _religion}" Width="120"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <DataGrid Name="employeeTable" IsReadOnly="True" IsManipulationEnabled="True" ItemsSource="{Binding observableEmpCollection}" AutoGenerateColumns="False">
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="#159588" />
+                                <Setter Property="Padding" Value="15" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="BorderThickness" Value="0 0 1 2" />
+                                <Setter Property="BorderBrush" Value="DarkGray" />
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.ItemContainerStyle>
+                            <Style TargetType="DataGridRow">
+                                <EventSetter Event="MouseLeftButtonUp" Handler="Row_Click"/>
+                            </Style>
+                        </DataGrid.ItemContainerStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Employee ID" Binding="{Binding _employeeId}" Width="120"/>
+                            <DataGridTextColumn Header="First Name" Binding="{Binding _firstName}" Width="120"/>
+                            <DataGridTextColumn Header="Middle Name" Binding="{Binding _middleName}" Width="120"/>
+                            <DataGridTextColumn Header="Last Name" Binding="{Binding _lastName}" Width="120"/>
+                            <DataGridTextColumn Header="Nationality" Binding="{Binding _nationality}" Width="120"/>
+                            <DataGridTextColumn Header="Email" Binding="{Binding _eMail}" Width="120"/>
+                            <DataGridTextColumn Header="Contact No." Binding="{Binding _contactNum}" Width="120"/>
+                            <DataGridTextColumn Header="Religion" Binding="{Binding _religion}" Width="120"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </ScrollViewer>
             </Border>
         </Grid>
     </Border>

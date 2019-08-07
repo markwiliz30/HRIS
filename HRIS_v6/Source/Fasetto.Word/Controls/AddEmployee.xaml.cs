@@ -70,19 +70,7 @@ namespace Fasetto.Word
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            EmployeeItem mark2 = new EmployeeItem();
-            mark2._employeeId = "34fgd0";
-            mark2._firstName = "Mark20";
-            mark2._middleName = "Sese20";
-            mark2._lastName = "Del Moro20";
-            mark2._nationality = "Filipino20";
-            mark2._eMail = "mark@gmail.com20";
-            mark2._contactNum = "099999920";
-            mark2._religion = "INC20";
-            mark2._presentAddress = "mt.veiw0";
-            mark2._permanentAddress = "Gatiawin0";
 
-            StaticEmpoyeeCollection.staticEmployeeList.Add(mark2);
         }
     }
 }
