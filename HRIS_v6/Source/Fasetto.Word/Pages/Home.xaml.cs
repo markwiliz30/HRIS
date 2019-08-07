@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Fasetto.Word.Pages
+namespace Fasetto.Word
 {
     /// <summary>
-    /// Interaction logic for Page2.xaml
+    /// Interaction logic for Home.xaml
     /// </summary>
-    public partial class Attendance : BasePage
+    public partial class Home : BasePage
     {
-        public Attendance()
+        public Home()
         {
             InitializeComponent();
         }
