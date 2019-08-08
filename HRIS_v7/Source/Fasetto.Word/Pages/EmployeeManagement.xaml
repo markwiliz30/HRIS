@@ -9,11 +9,10 @@
       d:DesignHeight="600" d:DesignWidth="1024"
       Title="EmployeeManagement">
 
-    <Grid>
-        <materialDesign:Transitioner SelectedIndex="0" AutoApplyTransitionOrigins="True">
-            <Grid>
-                <local:EmployeeTable/>
-            </Grid>
+    <Grid ClipToBounds="True">
+        <materialDesign:Transitioner x:Name="empTransitioner" SelectedIndex="0" AutoApplyTransitionOrigins="True">
+            <local:EmployeeTable/>
+
             <materialDesign:TransitionerSlide>
                 <materialDesign:TransitionerSlide.BackwardWipe>
                     <materialDesign:CircleWipe/>
@@ -23,6 +22,17 @@
                 </materialDesign:TransitionerSlide.ForwardWipe>
                 <local:AddEmployee/>
             </materialDesign:TransitionerSlide>
+
+            <materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide.BackwardWipe>
+                    <materialDesign:CircleWipe/>
+                </materialDesign:TransitionerSlide.BackwardWipe>
+                <materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:SlideWipe Direction="Right"/>
+                </materialDesign:TransitionerSlide.ForwardWipe>
+                <local:EditEmployeeDetails/>
+            </materialDesign:TransitionerSlide>
+            
         </materialDesign:Transitioner>
     </Grid>
 </local:BasePage>

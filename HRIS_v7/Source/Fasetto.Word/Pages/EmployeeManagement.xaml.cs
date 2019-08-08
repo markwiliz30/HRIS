@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using MaterialDesignThemes.Wpf.Transitions;
 
 namespace Fasetto.Word
 {
@@ -7,9 +8,12 @@ namespace Fasetto.Word
     /// </summary>
     public partial class EmployeeManagement : BasePage
     {
+        public static Transitioner mEmpTransitioner = new Transitioner();
         public EmployeeManagement()
         {
             InitializeComponent();
+
+            mEmpTransitioner = empTransitioner;
         }
     }
 }

@@ -129,7 +129,7 @@
         </EventTrigger>
     </UserControl.Triggers>
     <Border Background="LightGray">
-        <Grid>
+        <Grid ClipToBounds="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80" />
                 <RowDefinition Height="Auto" />
@@ -141,7 +141,7 @@
             </Border>
             <Border Grid.Row="1" Padding="10">
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="ButtonNewEmployee" Content="New" Margin="0 0 50 0" Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" Click="ButtonNewEmployee_Click" RenderTransformOrigin="0.5,0.5" Width="200">
+                    <Button x:Name="ButtonNewEmployee" Content="New" Margin="0 0 50 0" Click="ButtonNewEmployee_Click" RenderTransformOrigin="0.5,0.5" Width="200">
                         <Button.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -161,7 +161,7 @@
                             </TransformGroup>
                         </Button.RenderTransform>
                     </Button>
-                    <Button x:Name="ButtonEditEmployee" Content="Edit" Margin="5 0" RenderTransformOrigin="0.5,0.5" Width="200" >
+                    <Button x:Name="ButtonEditEmployee" Content="Edit" Margin="5 0" RenderTransformOrigin="0.5,0.5" Width="200" Click="ButtonEditEmployee_Click" VerticalAlignment="Bottom">
                         <Button.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -185,7 +185,7 @@
             </Border>
             <Border Grid.Row="2" Padding="10">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <DataGrid Name="employeeTable" IsReadOnly="True" IsManipulationEnabled="True" ItemsSource="{Binding observableEmpCollection}" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5">
+                    <DataGrid Name="employeeTable" SelectionMode="Single" IsReadOnly="True" IsManipulationEnabled="True" ItemsSource="{Binding observableEmpCollection}" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5">
                         <DataGrid.Resources>
                             <Style TargetType="{x:Type DataGridColumnHeader}">
                                 <Setter Property="Background" Value="#26A69A" />
