@@ -88,23 +88,133 @@
         <Storyboard x:Key="Hover">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="packIcon">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.112"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.107"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.975"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="packIcon">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.112"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.107"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.975"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="packIcon">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.183"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.683"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="packIcon">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-10.639"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-10.139"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="2.364"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="flip_incative">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="packIcon1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.121"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.989"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="packIcon1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.121"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.989"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="packIcon1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="packIcon1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.5"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Leave">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="packIcon2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.005"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.105"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1.011"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="packIcon2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1.005"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.105"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1.011"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="packIcon2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="packIcon2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="3.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="3"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="overtime">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="packIcon3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.116"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1.011"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="packIcon3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.116"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1.011"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="packIcon3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="packIcon3">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Replacement">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="packIcon4">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.989"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="packIcon4">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0.989"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="packIcon4">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="packIcon4">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="-0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Permission">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="packIcon5">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.105"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1.01"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="packIcon5">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1.105"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="1.01"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="packIcon5">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="packIcon5">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </local:BasePage.Resources>
@@ -114,9 +224,29 @@
             <BeginStoryboard Storyboard="{StaticResource upward}"/>
             <BeginStoryboard Storyboard="{StaticResource base_upward}"/>
             <BeginStoryboard x:Name="Hover_BeginStoryboard" Storyboard="{StaticResource Hover}"/>
+            <BeginStoryboard x:Name="flip_incative_BeginStoryboard" Storyboard="{StaticResource flip_incative}"/>
+            <BeginStoryboard x:Name="Leave_BeginStoryboard" Storyboard="{StaticResource Leave}"/>
+            <BeginStoryboard x:Name="overtime_BeginStoryboard" Storyboard="{StaticResource overtime}"/>
+            <BeginStoryboard x:Name="Replacement_BeginStoryboard" Storyboard="{StaticResource Replacement}"/>
+            <BeginStoryboard x:Name="Permission_BeginStoryboard" Storyboard="{StaticResource Permission}"/>
         </EventTrigger>
         <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="button">
             <BeginStoryboard x:Name="Hover_BeginStoryboard1" Storyboard="{StaticResource Hover}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="button1">
+            <BeginStoryboard x:Name="flip_incative_BeginStoryboard1" Storyboard="{StaticResource flip_incative}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="button2">
+            <BeginStoryboard x:Name="Leave_BeginStoryboard1" Storyboard="{StaticResource Leave}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="button3">
+            <BeginStoryboard x:Name="overtime_BeginStoryboard1" Storyboard="{StaticResource overtime}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="button4">
+            <BeginStoryboard x:Name="Replacement_BeginStoryboard1" Storyboard="{StaticResource Replacement}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.MouseEnter" SourceName="button5">
+            <BeginStoryboard x:Name="Permission_BeginStoryboard1" Storyboard="{StaticResource Permission}"/>
         </EventTrigger>
     </local:BasePage.Triggers>
 
@@ -162,6 +292,7 @@
                     <Button x:Name="button" Height="auto" Background="#E0F7FA">
                         <Grid Width="190" Height="269">
                             <StackPanel>
+                                
                                 <TextBlock Text="Active Employee" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="25" FontWeight="SemiBold"/>
                                 <materialDesign:PackIcon x:Name="packIcon" Kind="AccountGroup" Height="auto" Width="auto" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
                                     <materialDesign:PackIcon.RenderTransform>
@@ -193,11 +324,20 @@
                     <Border.Effect>
                         <DropShadowEffect Opacity=".3" />
                     </Border.Effect>
-                    <Button Height="auto" Background="#E0F7FA">
+                    <Button x:Name="button3" Height="auto" Background="#E0F7FA">
                         <Grid Width="190" Height="269">
                             <StackPanel>
                                 <TextBlock Text="Overtime Approval" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="20" FontWeight="SemiBold"/>
-                                <materialDesign:PackIcon Kind="Timelapse" Height="auto" Width="auto" Foreground="#00838F"/>
+                                <materialDesign:PackIcon x:Name="packIcon3" Kind="Timelapse" Height="auto" Width="auto" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
+                                    <materialDesign:PackIcon.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </materialDesign:PackIcon.RenderTransform>
+                                </materialDesign:PackIcon>
 
                             </StackPanel>
                         </Grid>
@@ -217,11 +357,20 @@
                     <Border.Effect>
                         <DropShadowEffect Opacity=".3" />
                     </Border.Effect>
-                    <Button Height="auto" Background="#E0F7FA">
+                    <Button x:Name="button1" Height="auto" Background="#E0F7FA">
                         <Grid Width="190" Height="269">
                             <StackPanel>
                                 <TextBlock Text="Inactive Employee" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="20" FontWeight="SemiBold"/>
-                                <materialDesign:PackIcon Kind="Alert" Height="auto" Width="auto" Foreground="#00838F"/>
+                                <materialDesign:PackIcon x:Name="packIcon1" Kind="Alert" Height="auto" Width="auto" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
+                                    <materialDesign:PackIcon.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </materialDesign:PackIcon.RenderTransform>
+                                </materialDesign:PackIcon>
 
                             </StackPanel>
                         </Grid>
@@ -241,12 +390,21 @@
                     <Border.Effect>
                         <DropShadowEffect Opacity=".3" />
                     </Border.Effect>
-                    <Button Height="auto" Background="#E0F7FA">
+                    <Button x:Name="button4" Height="auto" Background="#E0F7FA">
                         <Grid Width="190" Height="269">
                             <StackPanel>
                                 <TextBlock Text="Replacement Approval" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="19" FontWeight="SemiBold"/>
 
-                                <materialDesign:PackIcon Kind="SwapHorizontalBold" Height="auto" Width="auto" Foreground="#00838F"/>
+                                <materialDesign:PackIcon x:Name="packIcon4" Kind="SwapHorizontalBold" Height="auto" Width="auto" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
+                                    <materialDesign:PackIcon.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </materialDesign:PackIcon.RenderTransform>
+                                </materialDesign:PackIcon>
 
                             </StackPanel>
                         </Grid>
@@ -266,12 +424,21 @@
                     <Border.Effect>
                         <DropShadowEffect Opacity=".3" />
                     </Border.Effect>
-                    <Button Height="auto" Background="#E0F7FA">
+                    <Button x:Name="button2" Height="auto" Background="#E0F7FA">
                         <Grid Width="190" Height="269">
                             <StackPanel>
                                 <TextBlock Text="Leave Approval" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="20" FontWeight="SemiBold"/>
 
-                                <materialDesign:PackIcon Kind="FlagVariant" Height="auto" Width="auto" Foreground="#00838F"/>
+                                <materialDesign:PackIcon x:Name="packIcon2" Kind="FlagVariant" Height="auto" Width="auto" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
+                                    <materialDesign:PackIcon.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </materialDesign:PackIcon.RenderTransform>
+                                </materialDesign:PackIcon>
 
                             </StackPanel>
                         </Grid>
@@ -291,12 +458,21 @@
                     <Border.Effect>
                         <DropShadowEffect Opacity=".3" />
                     </Border.Effect>
-                    <Button Height="auto" Background="#E0F7FA">
+                    <Button x:Name="button5" Height="auto" Background="#E0F7FA">
                         <Grid Width="190" Height="269">
                             <StackPanel>
                                 <TextBlock Text="Permission Approval" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="20" FontWeight="SemiBold"/>
 
-                                <materialDesign:PackIcon Kind="AccountAdd" Height="auto" Width="auto" Foreground="#00838F"/>
+                                <materialDesign:PackIcon x:Name="packIcon5" Kind="AccountAdd" Height="auto" Width="auto" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
+                                    <materialDesign:PackIcon.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </materialDesign:PackIcon.RenderTransform>
+                                </materialDesign:PackIcon>
 
                             </StackPanel>
                         </Grid>
