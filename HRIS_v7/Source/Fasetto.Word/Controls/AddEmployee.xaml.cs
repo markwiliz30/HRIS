@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using Fasetto.Word.Core;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System;
 
 namespace Fasetto.Word
 {
@@ -14,6 +15,8 @@ namespace Fasetto.Word
         public AddEmployee()
         {
             InitializeComponent();
+            
+            registerDatePicker.SelectedDate = DateTime.Today;
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)

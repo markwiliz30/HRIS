@@ -140,8 +140,12 @@
                 <TextBlock Text="List of Employees" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="Calibri" FontSize="30" FontWeight="SemiBold" />
             </Border>
             <Border Grid.Row="1" Padding="10">
-                <StackPanel Orientation="Horizontal">
-                    <Button x:Name="ButtonNewEmployee" Content="New" Margin="0 0 50 0" Click="ButtonNewEmployee_Click" RenderTransformOrigin="0.5,0.5" Width="200">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="ButtonNewEmployee" Style="{DynamicResource MaterialDesignFloatingActionButton}" Margin="0 0 50 0" Click="ButtonNewEmployee_Click" RenderTransformOrigin="0.5,0.5">
                         <Button.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -150,77 +154,81 @@
                                 <TranslateTransform/>
                             </TransformGroup>
                         </Button.RenderTransform>
+                        <materialDesign:PackIcon Kind="Register" Height="25" Width="25"/>
                     </Button>
-                    <Button x:Name="ButtonDeleteEmployee" Content="Delete" Margin="5 0" Click="ButtonDeleteEmployee_Click" RenderTransformOrigin="0.5,0.5" Width="200">
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                    </Button>
-                    <Button x:Name="ButtonEditEmployee" Content="Edit" Margin="5 0" RenderTransformOrigin="0.5,0.5" Width="200" Click="ButtonEditEmployee_Click" VerticalAlignment="Bottom">
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                    </Button>
-                    <Button x:Name="ButtonViewEmployee" Content="View" Click="ButtonViewEmployee_Click" RenderTransformOrigin="0.5,0.5" Width="200">
-                        <Button.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Button.RenderTransform>
-                    </Button>
-                </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" HorizontalAlignment="Right">
+                        <Button x:Name="ButtonViewEmployee" Style="{DynamicResource MaterialDesignFloatingActionButton}" Click="ButtonViewEmployee_Click" RenderTransformOrigin="0.5,0.5">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                            <materialDesign:PackIcon Kind="Eye" Height="25" Width="25"/>
+                        </Button>
+                        <Button x:Name="ButtonEditEmployee" Style="{DynamicResource MaterialDesignFloatingActionButton}" RenderTransformOrigin="0.5,0.5" Margin="10 0" Click="ButtonEditEmployee_Click" VerticalAlignment="Bottom">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                            <materialDesign:PackIcon Kind="Edit" Height="25" Width="25"/>
+                        </Button>
+                        <Button x:Name="ButtonDeleteEmployee" Style="{DynamicResource MaterialDesignFloatingActionButton}" Click="ButtonDeleteEmployee_Click" RenderTransformOrigin="0.5,0.5" >
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                            <materialDesign:PackIcon Kind="TrashCan" Height="25" Width="25"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
             </Border>
             <Border Grid.Row="2" Padding="10">
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <DataGrid Name="employeeTable" SelectionMode="Single" IsReadOnly="True" IsManipulationEnabled="True" ItemsSource="{Binding observableEmpCollection}" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5">
-                        <DataGrid.Resources>
-                            <Style TargetType="{x:Type DataGridColumnHeader}">
-                                <Setter Property="Background" Value="#26A69A" />
-                                <Setter Property="Padding" Value="15" />
-                                <Setter Property="FontWeight" Value="Bold" />
-                                <Setter Property="FontSize" Value="14" />
-                                <Setter Property="BorderThickness" Value="0 0 1 2" />
-                                <Setter Property="BorderBrush" Value="DarkGray" />
-                            </Style>
-                        </DataGrid.Resources>
-                        <DataGrid.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </DataGrid.RenderTransform>
-                        <DataGrid.ItemContainerStyle>
-                            <Style TargetType="DataGridRow">
-                                <EventSetter Event="MouseLeftButtonUp" Handler="Row_Click"/>
-                            </Style>
-                        </DataGrid.ItemContainerStyle>
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Employee ID" Binding="{Binding _employeeId}" Width="120"/>
-                            <DataGridTextColumn Header="First Name" Binding="{Binding _firstName}" Width="120"/>
-                            <DataGridTextColumn Header="Middle Name" Binding="{Binding _middleName}" Width="120"/>
-                            <DataGridTextColumn Header="Last Name" Binding="{Binding _lastName}" Width="120"/>
-                            <DataGridTextColumn Header="Nationality" Binding="{Binding _nationality}" Width="120"/>
-                            <DataGridTextColumn Header="Email" Binding="{Binding _eMail}" Width="120"/>
-                            <DataGridTextColumn Header="Contact No." Binding="{Binding _contactNum}" Width="120"/>
-                            <DataGridTextColumn Header="Religion" Binding="{Binding _religion}" Width="120"/>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </ScrollViewer>
+                <DataGrid Name="employeeTable" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" SelectionMode="Single" IsReadOnly="True" IsManipulationEnabled="True" ItemsSource="{Binding observableEmpCollection}" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5">
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="#26A69A" />
+                            <Setter Property="Padding" Value="15" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="FontSize" Value="14" />
+                            <Setter Property="BorderThickness" Value="0 0 1 2" />
+                            <Setter Property="BorderBrush" Value="DarkGray" />
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </DataGrid.RenderTransform>
+                    <DataGrid.ItemContainerStyle>
+                        <Style TargetType="DataGridRow">
+                            <EventSetter Event="MouseLeftButtonUp" Handler="Row_Click"/>
+                        </Style>
+                    </DataGrid.ItemContainerStyle>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Employee ID" Binding="{Binding _employeeId}" Width="120"/>
+                        <DataGridTextColumn Header="First Name" Binding="{Binding _firstName}" Width="120"/>
+                        <DataGridTextColumn Header="Middle Name" Binding="{Binding _middleName}" Width="120"/>
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding _lastName}" Width="120"/>
+                        <DataGridTextColumn Header="Nationality" Binding="{Binding _nationality}" Width="120"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding _eMail}" Width="120"/>
+                        <DataGridTextColumn Header="Contact No." Binding="{Binding _contactNum}" Width="120"/>
+                        <DataGridTextColumn Header="Religion" Binding="{Binding _religion}" Width="120"/>
+                    </DataGrid.Columns>
+                </DataGrid>
             </Border>
         </Grid>
     </Border>

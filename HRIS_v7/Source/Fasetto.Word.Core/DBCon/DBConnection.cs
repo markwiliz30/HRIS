@@ -14,6 +14,8 @@ namespace Fasetto.Word.Core
             var builder = new SqlConnectionStringBuilder()
             {
                 DataSource = ".",
+                UserID = "sa",
+                Password="password",
                 InitialCatalog = "HRIS",
                 IntegratedSecurity = true
             };

@@ -54,6 +54,21 @@
                                     <materialDesign:PackIcon Kind="Magic" Height="25" Width="25"/>
                                 </Button>
                             </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Gender" FontSize="20" Margin="0 10 0 0" />
+                                <Viewbox Height="25" HorizontalAlignment="Left" Margin="0 5">
+                                    <StackPanel Orientation="Horizontal">
+                                        <RadioButton Content="Male" Margin="0 0 20 0"/>
+                                        <RadioButton Content="Female"/>
+                                    </StackPanel>
+                                </Viewbox>
+                            </StackPanel>
+                            <ComboBox HorizontalAlignment="Left" FontSize="18">
+                                <ComboBoxItem>Janitor</ComboBoxItem>
+                                <ComboBoxItem IsSelected="True">Production</ComboBoxItem>
+                                <ComboBoxItem>Manager</ComboBoxItem>
+                            </ComboBox>
+                            <DatePicker x:Name="registerDatePicker" Focusable="False" IsTodayHighlighted="True" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" />
                         </StackPanel>
                     </Grid>
                 </ScrollViewer>

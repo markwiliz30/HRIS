@@ -11,7 +11,7 @@ namespace Fasetto.Word
     public partial class EditEmployeeDetails : UserControl
     {
 
-        int canDisplay = 0;
+        static bool canDisplay = true;
         static string selectedEmpId;
         private EmployeeCollection mEmployeeCollection = new EmployeeCollection();
         private EmployeeManager mEmployeeManager = new EmployeeManager();
@@ -25,33 +25,34 @@ namespace Fasetto.Word
         {
             UpdateEmployee();
             EmployeeManagement.mEmpTransitioner.SelectedIndex = 0;
-            canDisplay = 2;
+            mEmployeeCollection.RetreiveAllEmployee();
         }
 
         private void ButtonCancel_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             EmployeeManagement.mEmpTransitioner.SelectedIndex = 0;
-            canDisplay = 2;
         }
 
         public static void SetValues(string item)
         {
             selectedEmpId = item;
+            canDisplay = true;
         }
 
         private void Grid_LayoutUpdated(object sender, EventArgs e)
         {
-            //DisplayValues();
+            DisplayValues();
         }
 
         private void DisplayValues()
         {
-            
+            if (canDisplay)
+            {
                 try
                 {
                     if (selectedEmpId != "" && selectedEmpId != null)
                     {
-                        canDisplay = 1;
+                        canDisplay = false;
                         mEmployeeItem = new EmployeeItem();
                         mEmployeeItem = mEmployeeCollection.RetreiveSpecificEmployee(selectedEmpId);
 
@@ -72,12 +73,8 @@ namespace Fasetto.Word
 
                     System.Windows.MessageBox.Show("Error");
                 }
-            
-
-            //if (canDisplay == 2)
-            //{
-            //    canDisplay = 0;
-            //}
+            }
+                
         }
 
         private void UpdateEmployee()
