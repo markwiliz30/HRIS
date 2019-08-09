@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SqlClient;
+using Fasetto.Word.Core;
 
 namespace Fasetto.Word
 {
@@ -20,9 +22,17 @@ namespace Fasetto.Word
     /// </summary>
     public partial class Attendance : BasePage
     {
+        AttendanceCollection attendanceList = new AttendanceCollection();
+
         public Attendance()
         {
             InitializeComponent();
+
+            attendance.ItemsSource = attendanceList.GetAttendance();
+
+
         }
+
+        
     }
 }

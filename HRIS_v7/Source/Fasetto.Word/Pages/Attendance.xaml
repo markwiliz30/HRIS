@@ -64,7 +64,7 @@
 
         <Grid Grid.Row="2" Margin="10">
             <Border CornerRadius="30"  Padding="10">
-                <DataGrid Name="attendance" RenderTransformOrigin="0.5,0.5">
+                <DataGrid x:Name="attendance" RenderTransformOrigin="0.5,0.5">
                     <DataGrid.Resources>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="#26C6DA" />

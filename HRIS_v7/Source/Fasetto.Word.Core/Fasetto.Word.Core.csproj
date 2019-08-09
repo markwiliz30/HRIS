@@ -52,6 +52,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attendance\AttendanceCollection.cs" />
+    <Compile Include="Attendance\AttendanceItem.cs" />
     <Compile Include="DataModels\ApplicationPage.cs" />
     <Compile Include="DBCon\DBConnection.cs" />
     <Compile Include="Employee\EmployeeCollection.cs" />
