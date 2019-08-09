@@ -269,13 +269,14 @@
 
             <Grid Grid.ColumnSpan="3"
           Grid.Column="0"
-          Margin="10" >
-                <Border  Background="#E0F7FA" Grid.Row="0" CornerRadius="12">
+           >
+                <Border  Background="#E0F7FA" Grid.Row="0" >
                     <TextBlock Text="Home" VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="#00838F" FontFamily="Calibri" FontSize="30" FontWeight="SemiBold" />
                 </Border>
             </Grid>
+           
+                <Grid Grid.Row="1" Grid.Column="0" Margin="10" >
 
-            <Grid Grid.Row="1" Grid.Column="0" Margin="10" >
                 <Border x:Name="border" BorderBrush="Black" RenderTransformOrigin="0.5,0.5" >
 
                     <Border.RenderTransform>
@@ -289,23 +290,32 @@
                     <Border.Effect>
                         <DropShadowEffect Opacity=".3" />
                     </Border.Effect>
-                    <Button x:Name="button" Height="auto" Background="#E0F7FA">
-                        <Grid Width="190" Height="269">
-                            <StackPanel>
-                                
-                                <TextBlock Text="Active Employee" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="25" FontWeight="SemiBold"/>
-                                <materialDesign:PackIcon x:Name="packIcon" Kind="AccountGroup" Height="auto" Width="auto" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
-                                    <materialDesign:PackIcon.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform/>
-                                            <SkewTransform/>
-                                            <RotateTransform/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </materialDesign:PackIcon.RenderTransform>
-                                </materialDesign:PackIcon>
 
-                            </StackPanel>
+                    <Button x:Name="button" Height="auto" Background="#E0F7FA">
+
+                        <Grid Width="200" Height="269">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="200" />
+
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0" Margin="0 10" HorizontalAlignment="Center">
+                                <TextBlock Text="Active Employee" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="25" FontWeight="SemiBold"/>
+                            </Grid>
+                            <Grid Grid.Row="1" HorizontalAlignment="Center">
+                                <materialDesign:Badged Badge="3"  BadgeColorZoneMode="Dark" >
+                                    <materialDesign:PackIcon  x:Name="packIcon" Kind="AccountGroup" Height="150" Width="150" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+                                </materialDesign:Badged>
+                            </Grid>
                         </Grid>
                     </Button>
                 </Border>
@@ -325,21 +335,37 @@
                         <DropShadowEffect Opacity=".3" />
                     </Border.Effect>
                     <Button x:Name="button3" Height="auto" Background="#E0F7FA">
-                        <Grid Width="190" Height="269">
-                            <StackPanel>
-                                <TextBlock Text="Overtime Approval" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="20" FontWeight="SemiBold"/>
-                                <materialDesign:PackIcon x:Name="packIcon3" Kind="Timelapse" Height="auto" Width="auto" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
-                                    <materialDesign:PackIcon.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform/>
-                                            <SkewTransform/>
-                                            <RotateTransform/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </materialDesign:PackIcon.RenderTransform>
-                                </materialDesign:PackIcon>
+                        <Grid Width="200" Height="269">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="200" />
 
-                            </StackPanel>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" Margin="0 10" HorizontalAlignment="Center">
+
+
+                                <TextBlock Text="Overtime Approval" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="25" FontWeight="SemiBold"/>
+
+                            </Grid>
+                            <Grid Grid.Row="1" HorizontalAlignment="Center">
+
+                                <materialDesign:Badged Badge="3"  BadgeColorZoneMode="Dark" >
+
+
+                                    <materialDesign:PackIcon x:Name="packIcon3" Kind="Timelapse" Height="150" Width="150" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+
+                                </materialDesign:Badged>
+                            </Grid>
                         </Grid>
                     </Button>
                 </Border>
@@ -358,21 +384,33 @@
                         <DropShadowEffect Opacity=".3" />
                     </Border.Effect>
                     <Button x:Name="button1" Height="auto" Background="#E0F7FA">
-                        <Grid Width="190" Height="269">
-                            <StackPanel>
-                                <TextBlock Text="Inactive Employee" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="20" FontWeight="SemiBold"/>
-                                <materialDesign:PackIcon x:Name="packIcon1" Kind="Alert" Height="auto" Width="auto" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
-                                    <materialDesign:PackIcon.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform/>
-                                            <SkewTransform/>
-                                            <RotateTransform/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </materialDesign:PackIcon.RenderTransform>
-                                </materialDesign:PackIcon>
+                        <Grid Width="200" Height="269">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="200" />
 
-                            </StackPanel>
+                            </Grid.RowDefinitions>
+
+                            <Grid Grid.Row="0" Margin="0 10" HorizontalAlignment="Center">
+
+
+                                <TextBlock Text="Inactive Employee" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="25" FontWeight="SemiBold"/>
+
+                            </Grid>
+                            <Grid Grid.Row="1" HorizontalAlignment="Center">
+                                <materialDesign:Badged Badge="3"  BadgeColorZoneMode="Dark" >
+                                    <materialDesign:PackIcon x:Name="packIcon1" Kind="Alert" Height="150" Width="150" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+                                </materialDesign:Badged>
+                            </Grid>
                         </Grid>
                     </Button>
                 </Border>
@@ -391,22 +429,35 @@
                         <DropShadowEffect Opacity=".3" />
                     </Border.Effect>
                     <Button x:Name="button4" Height="auto" Background="#E0F7FA">
-                        <Grid Width="190" Height="269">
-                            <StackPanel>
-                                <TextBlock Text="Replacement Approval" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="19" FontWeight="SemiBold"/>
+                        <Grid Width="200" Height="269">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="200" />
 
-                                <materialDesign:PackIcon x:Name="packIcon4" Kind="SwapHorizontalBold" Height="auto" Width="auto" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
-                                    <materialDesign:PackIcon.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform/>
-                                            <SkewTransform/>
-                                            <RotateTransform/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </materialDesign:PackIcon.RenderTransform>
-                                </materialDesign:PackIcon>
+                            </Grid.RowDefinitions>
 
-                            </StackPanel>
+                            <Grid Grid.Row="0" Margin="0 10" HorizontalAlignment="Center">
+
+
+                                <TextBlock Text="Replacement" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="25" FontWeight="SemiBold"/>
+
+                            </Grid>
+                            <Grid Grid.Row="1" HorizontalAlignment="Center">
+
+                                <materialDesign:Badged Badge="3"  BadgeColorZoneMode="Dark" >
+                                    <materialDesign:PackIcon x:Name="packIcon4" Kind="SwapHorizontalBold" Height="150" Width="150" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+                                </materialDesign:Badged>
+                            </Grid>
+
                         </Grid>
                     </Button>
                 </Border>
@@ -425,22 +476,35 @@
                         <DropShadowEffect Opacity=".3" />
                     </Border.Effect>
                     <Button x:Name="button2" Height="auto" Background="#E0F7FA">
-                        <Grid Width="190" Height="269">
-                            <StackPanel>
-                                <TextBlock Text="Leave Approval" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="20" FontWeight="SemiBold"/>
+                        <Grid Width="200" Height="269">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="200" />
 
-                                <materialDesign:PackIcon x:Name="packIcon2" Kind="FlagVariant" Height="auto" Width="auto" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
-                                    <materialDesign:PackIcon.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform/>
-                                            <SkewTransform/>
-                                            <RotateTransform/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </materialDesign:PackIcon.RenderTransform>
-                                </materialDesign:PackIcon>
+                            </Grid.RowDefinitions>
 
-                            </StackPanel>
+                            <Grid Grid.Row="0" Margin="0 10" HorizontalAlignment="Center">
+
+
+                                <TextBlock Text="Replacement" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="25" FontWeight="SemiBold"/>
+
+                            </Grid>
+                            <Grid Grid.Row="1" HorizontalAlignment="Center">
+
+                                <materialDesign:Badged Badge="3"  BadgeColorZoneMode="Dark" >
+                                    <materialDesign:PackIcon x:Name="packIcon2" Kind="FlagVariant" Height="150" Width="150" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+                                </materialDesign:Badged>
+                            </Grid>
+
                         </Grid>
                     </Button>
                 </Border>
@@ -459,22 +523,35 @@
                         <DropShadowEffect Opacity=".3" />
                     </Border.Effect>
                     <Button x:Name="button5" Height="auto" Background="#E0F7FA">
-                        <Grid Width="190" Height="269">
-                            <StackPanel>
-                                <TextBlock Text="Permission Approval" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="20" FontWeight="SemiBold"/>
+                        <Grid Width="200" Height="269">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="200" />
 
-                                <materialDesign:PackIcon x:Name="packIcon5" Kind="AccountAdd" Height="auto" Width="auto" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
-                                    <materialDesign:PackIcon.RenderTransform>
-                                        <TransformGroup>
-                                            <ScaleTransform/>
-                                            <SkewTransform/>
-                                            <RotateTransform/>
-                                            <TranslateTransform/>
-                                        </TransformGroup>
-                                    </materialDesign:PackIcon.RenderTransform>
-                                </materialDesign:PackIcon>
+                            </Grid.RowDefinitions>
 
-                            </StackPanel>
+                            <Grid Grid.Row="0" Margin="0 10" HorizontalAlignment="Center">
+
+
+                                <TextBlock Text="Replacement" Height="auto" Width="auto" TextAlignment="Center"   Foreground="#00838F" FontFamily="Calibri" FontSize="25" FontWeight="SemiBold"/>
+
+                            </Grid>
+                            <Grid Grid.Row="1" HorizontalAlignment="Center">
+
+                                <materialDesign:Badged Badge="3"  BadgeColorZoneMode="Dark" >
+                                    <materialDesign:PackIcon x:Name="packIcon5" Kind="AccountAdd" Height="150" Width="150" Foreground="#00838F" RenderTransformOrigin="0.5,0.5">
+                                        <materialDesign:PackIcon.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </materialDesign:PackIcon.RenderTransform>
+                                    </materialDesign:PackIcon>
+
+                                </materialDesign:Badged>
+                            </Grid>
                         </Grid>
                     </Button>
                 </Border>
