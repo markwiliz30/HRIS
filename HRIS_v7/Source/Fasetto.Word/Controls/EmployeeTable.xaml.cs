@@ -2,15 +2,18 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 using Fasetto.Word.Core;
 
 namespace Fasetto.Word
 {
+
     /// <summary>
     /// Interaction logic for EmployeeTable.xaml
     /// </summary>
     public partial class EmployeeTable : UserControl
     {
+
         EmployeeManager myManager = new EmployeeManager();
         EmployeeCollection myCollection = new EmployeeCollection();
         string selectedEmployeeId;
@@ -43,11 +46,14 @@ namespace Fasetto.Word
             //employeeTable.Items.Add(mark2);
 
             GetAllEmployees();
+
+            Storyboard sb = this.FindResource("ButtonPopup") as Storyboard;
+            sb.Begin();
         }
 
         private void ButtonViewEmployee_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            GetAllEmployees();
+            
         }
 
         private void GetAllEmployees()
@@ -67,7 +73,7 @@ namespace Fasetto.Word
 
         private void ButtonNewEmployee_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-
+            EmployeeManagement.mEmpTransitioner.SelectedIndex = 1;
         }
 
         private void ButtonDeleteEmployee_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -118,6 +124,13 @@ namespace Fasetto.Word
         {
             object item = employeeTable.SelectedItem;
             selectedEmployeeId = (employeeTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
+        }
+
+        private void ButtonEditEmployee_Click(object sender, RoutedEventArgs e)
+        {
+            EditEmployeeDetails.SetValues(selectedEmployeeId);
+            EmployeeManagement.mEmpTransitioner.SelectedIndex = 2;
+            
         }
     }
 }

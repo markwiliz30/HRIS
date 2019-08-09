@@ -44,6 +44,8 @@ namespace Fasetto.Word
             EmployeeCollection myEmpList = new EmployeeCollection();
             myEmpList.RetreiveAllEmployee();
 
+            EmployeeManagement.mEmpTransitioner.SelectedIndex = 0;
+
             ClearInputFields();
 
         }
@@ -70,7 +72,7 @@ namespace Fasetto.Word
 
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-
+            EmployeeManagement.mEmpTransitioner.SelectedIndex = 0;
         }
     }
 }
