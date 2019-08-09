@@ -1,0 +1,16 @@
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\Controls\AddEmployee.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\Controls\Chat\ChatListControl.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\Controls\Chat\ChatListItemControl.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\Controls\EmployeeTable.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\Controls\PageHost.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\Controls\SideMenuControl.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\HRISMainWindow.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\LoginContainer.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\Pages\EmployeeManagement.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\Pages\LagoLogin.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\Pages\Attendance.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\MainWindow.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\App.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\Fasetto.Word_MarkupCompile.cache
+C:\Users\Jeremiah Zyrel\Desktop\HRIS\HRIS\HRIS_v5\Source\Fasetto.Word\obj\Debug\Fasetto.Word_MarkupCompile.lref

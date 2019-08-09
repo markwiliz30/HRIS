@@ -4,38 +4,105 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Fasetto.Word"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Attendance">
+    <local:BasePage.Resources>
+        <Storyboard x:Key="upward">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.3"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="attendance">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.3"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="border">
+                <EasingDoubleKeyFrame KeyTime="0" Value="301.104"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-1.394"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="attendance">
+                <EasingDoubleKeyFrame KeyTime="0" Value="301.104"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="-1.394"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </local:BasePage.Resources>
+    <local:BasePage.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource upward}"/>
+        </EventTrigger>
+    </local:BasePage.Triggers>
 
     <Grid Background="#ECEFF1">
         <Grid.RowDefinitions>
             <RowDefinition Height="80" />
-            <RowDefinition Height="auto" />
+            <RowDefinition Height="120" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Border Grid.Row="0" Margin="5" CornerRadius="20" Background="#0097A7">
-            <TextBlock Text="Attendance" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="Calibri" FontSize="30" FontWeight="SemiBold" />
-        </Border>
-        <Border CornerRadius="30" Grid.Row="2" Padding="10">
-            <DataGrid Name="attendance">
-                <DataGrid.Resources>
-                    <Style TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="Background" Value="#26C6DA" />
-                        <Setter Property="Padding" Value="15" />
-                        <Setter Property="FontWeight" Value="Bold" />
-                        <Setter Property="FontSize" Value="16" />
-                        <Setter Property="BorderThickness" Value="0 0 1 2" />
-                        <Setter Property="BorderBrush" Value="#9E9e9e" />
-                    </Style>
-                </DataGrid.Resources>
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Name" Binding="{Binding name}" Width="400"/>
-                    <DataGridTextColumn Header="Time-In" Binding="{Binding time_in}" Width="190"/>
-                    <DataGridTextColumn Header="Time-Out" Binding="{Binding time_out}" Width="190"/>
-                    <DataGridTextColumn Header="Date" Binding="{Binding date}" Width="190"/>
-                </DataGrid.Columns>
-            </DataGrid>
-        </Border>
+        <Grid Grid.ColumnSpan="3"
+          Grid.Column="0"
+          Margin="10" >
+            <Border  Background="#0097A7" Grid.Row="0" CornerRadius="12">
+                <TextBlock Text="Attendance" VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="White" FontFamily="Calibri" FontSize="30" FontWeight="SemiBold" />
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Border x:Name="border"  Margin="10" CornerRadius="12" Background="#ffffff" RenderTransformOrigin="0.5,0.5">
+                <Border.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Border.RenderTransform>
+
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="2" Margin="10">
+            <Border CornerRadius="30"  Padding="10">
+                <DataGrid Name="attendance" RenderTransformOrigin="0.5,0.5">
+                    <DataGrid.Resources>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Background" Value="#26C6DA" />
+                            <Setter Property="Padding" Value="15" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="FontSize" Value="16" />
+                            <Setter Property="BorderThickness" Value="0 0 1 2" />
+                            <Setter Property="BorderBrush" Value="#9E9e9e" />
+                        </Style>
+                    </DataGrid.Resources>
+                    <DataGrid.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </DataGrid.RenderTransform>
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Name"
+                                Binding="{Binding name}"
+                                Width="420" />
+                        <DataGridTextColumn Header="Time in"
+                                Binding="{Binding time_in}"
+                                Width="*"
+                                FontFamily="Times New Roman" />
+                        <DataGridTextColumn Header="Time out"
+                                Binding="{Binding time_out}"
+                                Width="*"
+                                FontFamily="Times New Roman" />
+                        <DataGridTextColumn Header="Date"
+                                Binding="{Binding date}"
+                                Width="*"
+                                FontFamily="Times New Roman" />
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </Border>
+        </Grid>
     </Grid>
 </local:BasePage>
