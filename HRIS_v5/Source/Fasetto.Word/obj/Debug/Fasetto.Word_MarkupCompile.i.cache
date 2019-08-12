@@ -1,0 +1,20 @@
+﻿Fasetto.Word
+
+
+winexe
+C#
+.cs
+D:\C# proj\LagoHRIS\HRIS\HRIS_v4\Source\Fasetto.Word\obj\Debug\
+Fasetto.Word
+none
+false
+DEBUG;TRACE
+D:\C# proj\LagoHRIS\HRIS\HRIS_v4\Source\Fasetto.Word\App.xaml
+181522205630
+
+411343933180
+19-314262121
+Controls\AddEmployee.xaml;Controls\Chat\ChatListControl.xaml;Controls\Chat\ChatListItemControl.xaml;Controls\EmployeeTable.xaml;Controls\PageHost.xaml;Controls\SideMenuControl.xaml;HRISMainWindow.xaml;LoginContainer.xaml;Pages\ChatPage.xaml;Pages\EmployeeManagement.xaml;Pages\LagoLogin.xaml;Pages\RegisterPage.xaml;Pages\LoginPage.xaml;MainWindow.xaml;Styles\Texts.xaml;Styles\Buttons.xaml;Styles\Colors.xaml;Styles\Fonts.xaml;
+
+True
+
