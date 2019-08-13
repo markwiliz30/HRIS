@@ -37,7 +37,7 @@
 
         </Grid>
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
-            <TextBox Text="hello" FontSize="20" TextWrapping="WrapWithOverflow" VerticalContentAlignment="Top" Height="230" Width="auto"  Margin="20" Background="#ECEFF1"></TextBox>
+            <TextBox Padding="10 5 10 0" FontSize="20" TextWrapping="Wrap" VerticalContentAlignment="Top" Height="230" Width="auto"  Margin="20" Background="#ECEFF1"></TextBox>
             
         </Grid>
         <Grid Grid.Row="3" >

@@ -46,5 +46,15 @@ namespace Fasetto.Word
             le.ShowDialog();
             leave.Close();
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var overtime = Window.GetWindow(this);
+
+            overtime.Hide();
+            Overtime over = new Overtime();
+            over.ShowDialog();
+            overtime.Close();
+        }
     }
 }

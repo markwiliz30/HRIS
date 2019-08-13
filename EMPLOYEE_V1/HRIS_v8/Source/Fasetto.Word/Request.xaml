@@ -19,7 +19,7 @@
             
         </Grid>
         <Grid Grid.Row="1">
-            <Button Content="Overtime" FontSize="30" Foreground="#ECEFF1" Background="#009688" Height="auto" Margin="20"></Button>
+            <Button Content="Overtime" FontSize="30" Foreground="#ECEFF1" Background="#009688" Height="auto" Margin="20" Click="Button_Click_2"></Button>
 
         </Grid>
         <Grid Grid.Row="2">
