@@ -14,14 +14,14 @@ namespace Fasetto.Word.Core
                 var sql = "dbo.spInsertEmployee";
                 var cmd = new SqlCommand(sql, db);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@Empolyee_ID", myItem._employeeId));
+                cmd.Parameters.Add(new SqlParameter("@Empolyee_No", myItem._employeeId));
                 cmd.Parameters.Add(new SqlParameter("@First_Name", myItem._firstName));
                 cmd.Parameters.Add(new SqlParameter("@Middle_Name", myItem._middleName));
                 cmd.Parameters.Add(new SqlParameter("@Last_Name", myItem._lastName));
                 cmd.Parameters.Add(new SqlParameter("@Nationality", myItem._nationality));
                 cmd.Parameters.Add(new SqlParameter("@Religion", myItem._religion));
-                cmd.Parameters.Add(new SqlParameter("@Email", myItem._eMail));
-                cmd.Parameters.Add(new SqlParameter("@Contact_Number", myItem._contactNum));
+                cmd.Parameters.Add(new SqlParameter("@Email_Address", myItem._eMail));
+                cmd.Parameters.Add(new SqlParameter("@Contact", myItem._contactNum));
                 cmd.Parameters.Add(new SqlParameter("@Present_Address", myItem._presentAddress));
                 cmd.Parameters.Add(new SqlParameter("@Permanent_Address", myItem._permanentAddress));
                 cmd.ExecuteNonQuery();
