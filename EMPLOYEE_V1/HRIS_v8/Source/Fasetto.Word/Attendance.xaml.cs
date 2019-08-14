@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Fasetto.Word
 {
     /// <summary>
-    /// Interaction logic for Daily.xaml
+    /// Interaction logic for Attendance.xaml
     /// </summary>
-    public partial class Daily : Window
+    public partial class Attendance : Window
     {
-        public Daily()
+        public Attendance()
         {
             InitializeComponent();
         }
@@ -28,11 +28,6 @@ namespace Fasetto.Word
             this.WindowState = WindowState.Minimized;
         }
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

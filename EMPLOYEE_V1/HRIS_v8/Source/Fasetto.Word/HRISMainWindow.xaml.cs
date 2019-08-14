@@ -204,6 +204,16 @@ namespace Fasetto.Word
             this.Top = desktopWorkingArea.Bottom - this.Height;
         }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            var atten = Window.GetWindow(this);
+
+            atten.Hide();
+            Attendance att = new Attendance();
+            att.ShowDialog();
+            atten.Close();
+        }
+
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

@@ -56,5 +56,15 @@ namespace Fasetto.Word
             over.ShowDialog();
             overtime.Close();
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            var daily = Window.GetWindow(this);
+
+            daily.Hide();
+            Daily dailyrep = new Daily();
+            dailyrep.ShowDialog();
+            daily.Close();
+        }
     }
 }

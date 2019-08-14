@@ -23,7 +23,7 @@
 
         </Grid>
         <Grid Grid.Row="2">
-            <Button Content="Daily Report" FontSize="30" Foreground="#ECEFF1" Background="#009688" Height="auto" Margin="20"></Button>
+            <Button Content="Daily Report" FontSize="30" Foreground="#ECEFF1" Background="#009688" Height="auto" Margin="20" Click="Button_Click_3"></Button>
 
         </Grid>
         <Grid Grid.Row="3">

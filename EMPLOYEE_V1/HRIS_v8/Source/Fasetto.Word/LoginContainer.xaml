@@ -43,6 +43,6 @@
         <Image Width="100" Height="100" VerticalAlignment="Top" Margin="30"/>
 
         <Frame x:Name="LoginMainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" Background="Transparent" />
-        <Label Content="10:15" FontSize="30" Margin="15" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Label>
+        <Label x:Name="TimeShow" FontSize="30" Margin="15" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Label>
     </Grid>
 </Window>

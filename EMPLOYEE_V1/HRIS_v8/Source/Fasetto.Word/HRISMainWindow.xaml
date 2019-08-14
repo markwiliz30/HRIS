@@ -47,7 +47,7 @@
             </Button>
         </Grid>
         <Grid Grid.Row="1" Margin="10">
-            <Button Background="#607D8B" Height="auto">
+            <Button Background="#607D8B" Height="auto" Click="Button_Click_1">
                 <Button.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
                 </Button.BitmapEffect>
@@ -60,7 +60,7 @@
                 <Button.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
                 </Button.BitmapEffect>
-                <materialDesign:PackIcon x:Name="packIcon4" Kind="Steam" Height="auto" Width="auto" Foreground="#ECEFF1" RenderTransformOrigin="0.5,0.5">
+                <materialDesign:PackIcon x:Name="packIcon4" Kind="CalendarAlert" Height="auto" Width="auto" Foreground="#ECEFF1" RenderTransformOrigin="0.5,0.5">
                 </materialDesign:PackIcon>
             </Button>
         </Grid>
