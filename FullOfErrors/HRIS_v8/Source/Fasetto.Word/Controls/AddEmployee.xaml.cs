@@ -28,6 +28,8 @@ namespace Fasetto.Word
             dpTrainingFinished.SelectedDate = DateTime.Today;
             dpWorkEnd.SelectedDate = DateTime.Today;
             dpWorkStart.SelectedDate = DateTime.Today;
+
+            cbPosition.ItemsSource = StaticPositionCollection.staticPositionList;
         }
 
         private string genderSelectResult()
@@ -206,6 +208,12 @@ namespace Fasetto.Word
         {
             EmployeeManagement.mEmpTransitioner.SelectedIndex = 0;
             EmployeeManagement.mEmpTransitioner.Items.RemoveAt(1);
+        }
+
+        private void CbPosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var item = cbPosition.SelectedItem as DesignationItem;
+            MessageBox.Show(item._POS_ID.ToString());
         }
     }
 }

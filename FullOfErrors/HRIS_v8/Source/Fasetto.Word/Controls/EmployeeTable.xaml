@@ -75,25 +75,25 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="-0.61"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ButtonEditEmployee">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ButtonManageJobPosition">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ButtonEditEmployee">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ButtonManageJobPosition">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1.281"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ButtonEditEmployee">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ButtonManageJobPosition">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1.281"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ButtonEditEmployee">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ButtonManageJobPosition">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-0.167"/>
@@ -162,7 +162,7 @@
                     <controls:PersistentSearch Grid.Column="1" x:Name="searchBox" VerticalAlignment="Top" Margin="8" Width="400" KeyUp="PersistentSearch_KeyUp" />
 
                     <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <Button x:Name="ButtonAddPosition" ToolTip="Add Position" Style="{DynamicResource MaterialDesignFloatingActionButton}" RenderTransformOrigin="0.5,0.5" Margin="0 0 150 0" Click="ButtonAddPosition_Click" VerticalAlignment="Bottom">
+                        <Button x:Name="ButtonManageJobPosition" ToolTip="Manage Job   Positions" Style="{DynamicResource MaterialDesignFloatingActionButton}" RenderTransformOrigin="0.5,0.5" Margin="0 0 150 0" Click="ButtonAddPosition_Click" VerticalAlignment="Bottom">
                             <Button.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -171,7 +171,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Button.RenderTransform>
-                            <materialDesign:PackIcon Kind="AddToPhotos" Height="25" Width="25"/>
+                            <materialDesign:PackIcon Kind="AccountBadgeHorizontal" Height="25" Width="25"/>
                         </Button>
 
                         <Button x:Name="ButtonViewEmployee" ToolTip="Add Employee Details" Margin="10 0" Style="{DynamicResource MaterialDesignFloatingActionButton}" Click="ButtonViewEmployee_Click" RenderTransformOrigin="0.5,0.5">

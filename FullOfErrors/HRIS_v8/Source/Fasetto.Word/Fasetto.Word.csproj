@@ -113,6 +113,9 @@
     <Compile Include="Controls\PersistentSearch.xaml.cs">
       <DependentUpon>PersistentSearch.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PositionManagerUI.xaml.cs">
+      <DependentUpon>PositionManagerUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SideMenuControl.xaml.cs">
       <DependentUpon>SideMenuControl.xaml</DependentUpon>
     </Compile>
@@ -192,6 +195,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\PersistentSearch.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\PositionManagerUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

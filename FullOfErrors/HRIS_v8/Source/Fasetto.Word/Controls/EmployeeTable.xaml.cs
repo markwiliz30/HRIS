@@ -142,7 +142,9 @@ namespace Fasetto.Word
 
         private void ButtonAddPosition_Click(object sender, RoutedEventArgs e)
         {
-
+            PositionManagerUI posManagetUI = new PositionManagerUI();
+            EmployeeManagement.mEmpTransitioner.Items.Add(posManagetUI);
+            EmployeeManagement.mEmpTransitioner.SelectedIndex = 1;
         }
     }
 }

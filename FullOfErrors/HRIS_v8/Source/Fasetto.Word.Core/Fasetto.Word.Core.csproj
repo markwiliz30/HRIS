@@ -56,6 +56,8 @@
     <Compile Include="DBCon\DBConnection.cs" />
     <Compile Include="Designation\DesignationItem.cs" />
     <Compile Include="Designation\PositionCollection.cs" />
+    <Compile Include="Designation\PositionManager.cs" />
+    <Compile Include="Designation\StaticPositionCollection.cs" />
     <Compile Include="Employee\EmployeeCollection.cs" />
     <Compile Include="Employee\EmployeeItem.cs" />
     <Compile Include="Employee\EmployeeManager.cs" />

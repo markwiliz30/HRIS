@@ -23,12 +23,14 @@ namespace Fasetto.Word
     {
         bool menuStateClosed = true, windowMaximized = false;
         EmployeeCollection myEmpCollection = new EmployeeCollection();
+        PositionCollection myPosCollection = new PositionCollection();
         public HRISMainWindow()
         {
             InitializeComponent();
 
             DataContext = new HRISWindowViewModel(this);
             getAllEmployees();
+            getAllJobPositions();
         }
 
         private void BtnMenu_Click(object sender, RoutedEventArgs e)
@@ -49,6 +51,11 @@ namespace Fasetto.Word
         private void getAllEmployees()
         {
             myEmpCollection.RetreiveAllEmployee();
+        }
+
+        private void getAllJobPositions()
+        {
+            myPosCollection.RetreiveAllPositions();
         }
 
         private void Button1_Click(object sender, RoutedEventArgs e)
