@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Controls;
+using Fasetto.Word.Core;
 
 namespace Fasetto.Word
 {
@@ -8,6 +10,8 @@ namespace Fasetto.Word
     /// </summary>
     public partial class LagoLogin : LoginBasePage
     {
+        Userlogin myLogin = new Userlogin();
+
         public LagoLogin()
         {
             InitializeComponent();
@@ -18,19 +22,35 @@ namespace Fasetto.Word
             var parentWindow = Window.GetWindow(this);
 
 
-            if (tbUserName.Text != "")
+            //if (tbUserName.Text != "")
+            //{
+
+            //    parentWindow.Hide();
+            //    //parentWindow.Visibility = Visibility.Hidden;
+            //    Time mw = new Time();
+            //    mw.ShowDialog();
+            //    parentWindow.Close();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Please input User and Password");
+            //}
+            var user = myLogin.RetrieveUser(tbUserName.Text , pbPassword.Password);
+
+            if(user != null)
             {
-               
+                MessageBox.Show(user._FNAME.ToString());
                 parentWindow.Hide();
-                //parentWindow.Visibility = Visibility.Hidden;
-                Time mw = new Time();
-                mw.ShowDialog();
+               parentWindow.Visibility = Visibility.Hidden;
+                  Time mw = new Time(user);
+                 mw.ShowDialog();
                 parentWindow.Close();
             }
             else
             {
-                MessageBox.Show("Please input User and Password");
+                MessageBox.Show("User not found");
             }
+
         }
     }
 }

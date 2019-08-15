@@ -26,16 +26,16 @@
         <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal">
                 <Label Content="Project:" Margin="50 0 0 0" Foreground="#ECEFF1" FontSize="20"></Label>
-                <TextBox Width="250" Padding="2 0 0 0" FontSize="18" Background="#ECEFF1" Height="30"></TextBox>
+                <TextBox x:Name="project" Width="250" Padding="2 0 0 0" FontSize="18" Background="#ECEFF1" Height="30"></TextBox>
             </StackPanel>
 
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <StackPanel Orientation="Horizontal">
                 <Label Content="From:" Margin="50 0 0 0" Foreground="#ECEFF1" FontSize="20"></Label>
-                <TextBox Width="70" Background="#ECEFF1" Height="30"  FontSize="18" Padding="2 0 0 0"></TextBox>
+                <TextBox x:Name="fromTime" Width="70" Background="#ECEFF1" Height="30"  FontSize="18" Padding="2 0 0 0"></TextBox>
                 <Label Content="To:" Margin="50 0 0 0" Foreground="#ECEFF1" FontSize="20"></Label>
-                <TextBox Width="70" Background="#ECEFF1" Height="30"  FontSize="18"  Padding="2 0 0 0"></TextBox>
+                <TextBox x:Name="toTime" Width="70" Background="#ECEFF1" Height="30"  FontSize="18"  Padding="2 0 0 0"></TextBox>
             </StackPanel>
 
         </Grid>
@@ -44,14 +44,14 @@
                 <ColumnDefinition Width="33*"/>
                 <ColumnDefinition Width="67*"/>
             </Grid.ColumnDefinitions>
-            <TextBox Padding="10 5 10 0" FontSize="20" TextWrapping="Wrap" VerticalContentAlignment="Top" Height="230" Width="auto"  Margin="20" Background="#ECEFF1" Grid.ColumnSpan="2"></TextBox>
+            <TextBox x:Name="Reasonbox" Padding="10 5 10 0" FontSize="20" TextWrapping="Wrap" VerticalContentAlignment="Top" Height="230" Width="auto"  Margin="20" Background="#ECEFF1" Grid.ColumnSpan="2"></TextBox>
 
         </Grid>
         <Grid Grid.Row="3" >
             <Button Content="Cancel" FontSize="23" Background="#F44336" Height="auto" Width="auto" Margin="20" Click="Button_Click"></Button>
         </Grid>
         <Grid Grid.Row="3" Grid.Column="1" >
-            <Button Content="Send" FontSize="23" Background="#009688"  Height="auto" Width="auto" Margin="20"></Button>
+            <Button Content="Send" FontSize="23" Background="#009688"  Height="auto" Width="auto" Margin="20" Click="Button_Click_1"></Button>
         </Grid>
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10 3">
             <Button x:Name="ButtonMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" WindowChrome.IsHitTestVisibleInChrome="True" Click="ButtonMinimize_Click">
