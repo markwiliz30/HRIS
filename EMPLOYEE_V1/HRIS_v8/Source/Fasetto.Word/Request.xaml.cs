@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fasetto.Word.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,11 @@ namespace Fasetto.Word
     /// </summary>
     public partial class Request : Window
     {
-        public Request()
+        UserItem mitem = new UserItem();
+        public Request(UserItem item)
         {
             InitializeComponent();
+            mitem = item;
         }
 
 
@@ -42,7 +45,7 @@ namespace Fasetto.Word
             var leave = Window.GetWindow(this);
 
             leave.Hide();
-            Leave le = new Leave();
+            Leave le = new Leave(mitem);
             le.ShowDialog();
             leave.Close();
         }
@@ -52,7 +55,7 @@ namespace Fasetto.Word
             var overtime = Window.GetWindow(this);
 
             overtime.Hide();
-            Overtime over = new Overtime();
+            Overtime over = new Overtime(mitem);
             over.ShowDialog();
             overtime.Close();
         }

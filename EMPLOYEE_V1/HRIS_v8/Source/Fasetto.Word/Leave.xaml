@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Fasetto.Word"
         mc:Ignorable="d"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Leave" Height="450" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="Leave" Height="480" Width="830" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="#263238">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -15,6 +15,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
             <RowDefinition Height="270" />
             <RowDefinition Height="80" />
             
@@ -25,26 +26,34 @@
         <Grid Grid.Row="1">
             <StackPanel Orientation="Horizontal">
                 <Label Content="From:" Margin="50 0 0 0" Foreground="#ECEFF1" FontSize="25"></Label>
-                <DatePicker Margin="20 0 0 0" Background="#ECEFF1"  Width="200"></DatePicker>
+                <DatePicker x:Name="fromDate" Margin="20 0 0 0" Background="#ECEFF1"  Width="200"></DatePicker>
             </StackPanel>
             
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <StackPanel Orientation="Horizontal">
                 <Label Content="To:" Margin="50 0 0 0" Foreground="#ECEFF1" FontSize="25"></Label>
-                <DatePicker Margin="20 0 0 0" Background="#ECEFF1"  Width="200"></DatePicker>
+                <DatePicker x:Name="toDate" Margin="20 0 0 0" Background="#ECEFF1"  Width="200"></DatePicker>
             </StackPanel>
 
         </Grid>
-        <Grid Grid.Row="2" Grid.ColumnSpan="2">
-            <TextBox Padding="10 5 10 0" FontSize="20" TextWrapping="Wrap" VerticalContentAlignment="Top" Height="230" Width="auto"  Margin="20" Background="#ECEFF1"></TextBox>
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
+            <TextBox x:Name="Reason" Padding="10 5 10 0" FontSize="20" TextWrapping="Wrap" VerticalContentAlignment="Top" Height="230" Width="auto"  Margin="20" Background="#ECEFF1"></TextBox>
             
         </Grid>
-        <Grid Grid.Row="3" >
+        <Grid Grid.Row="4" >
             <Button Content="Cancel" FontSize="23" Background="#F44336" Height="auto" Width="auto" Margin="20" Click="Button_Click"></Button>
         </Grid>
-        <Grid Grid.Row="3" Grid.Column="1" >
-            <Button Content="Send" FontSize="23" Background="#009688"  Height="auto" Width="auto" Margin="20"></Button>
+        <Grid Grid.Row="4" Grid.Column="1" >
+            <Button Content="Send" FontSize="23" Background="#009688"  Height="auto" Width="auto" Margin="20" Click="Button_Click_1"></Button>
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox x:Name="type1" Foreground="#ffffff" FontSize="15" Content="Vacation Leave" Checked="Type1_Checked"></CheckBox>
+                <CheckBox x:Name="type2" Foreground="#ffffff" FontSize="15" Margin="50 0 50 0" Content="Sick Leave" Checked="Type2_Checked"></CheckBox>
+                <CheckBox x:Name="type3" Foreground="#ffffff" FontSize="15" Content="Paternity/Maternity" Checked="Type3_Checked"></CheckBox>
+            </StackPanel>
         </Grid>
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10 3">
             <Button x:Name="ButtonMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" WindowChrome.IsHitTestVisibleInChrome="True" Click="ButtonMinimize_Click">

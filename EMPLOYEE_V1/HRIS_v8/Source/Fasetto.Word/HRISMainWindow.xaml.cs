@@ -21,129 +21,12 @@ namespace Fasetto.Word
     /// </summary>
     public partial class HRISMainWindow : Window
     {
-        bool menuStateClosed = true, windowMaximized = false;
-    
-        public HRISMainWindow()
+
+        UserItem mitem = new UserItem();
+        public HRISMainWindow(UserItem item)
         {
             InitializeComponent();
-
-            DataContext = new HRISWindowViewModel(this);
-            getAllEmployees();
-        }
-
-        private void BtnMenu_Click(object sender, RoutedEventArgs e)
-        {
-            menuStateClosed = !menuStateClosed;
-            if (menuStateClosed)
-            {
-                Storyboard sb = this.FindResource("CloseMenu") as Storyboard;
-                sb.Begin();
-            }
-            else
-            {
-                Storyboard sb = this.FindResource("OpenMenu") as Storyboard;
-                sb.Begin();
-            }
-        }
-
-        private void getAllEmployees()
-        {
-   
-        }
-
-        private void Button1_Click(object sender, RoutedEventArgs e)
-        {
-            //_= RegisterAsync();
-            _ = PersistentSearchAsync();
-        }
-
-        public async Task PersistentSearchAsync()
-        {
-            // Go to register page?
-            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.PersistentSearch);
-
-            await Task.Delay(1);
-        }
-
-        public async Task HomeAsync()
-        {
-            // Go to register page?
-            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Home);
-
-            await Task.Delay(1);
-        }
-        public async Task RegisterAsync()
-        {
-            // Go to register page?
-            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Register);
-
-            await Task.Delay(1);
-        }
-
-        public async Task LoginAsync()
-        {
-            // Go to register page?
-            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Login);
-
-            await Task.Delay(1);
-        }
-
-        public async Task AttendanceAsync()
-        {
-            // Go to register page?
-            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Attendance);
-
-            await Task.Delay(1);
-        }
-        public async Task ChatAsync()
-        {
-            // Go to register page?
-            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Chat);
-
-            await Task.Delay(1);
-        }
-
-        public async Task EmployeeAsync()
-        {
-            // Go to register page?
-            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.EmpoyeeManagement);
-
-            await Task.Delay(1);
-        }
-
-        public async Task DashboardPageAsync()
-        {
-            // Go to register page?
-            IoC.Get<ApplicationViewModel>().GoToPage(ApplicationPage.DashboardPage);
-
-            await Task.Delay(1);
-        }
-
-
-        private void MenuHome_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            //_ = HomeAsync();
-            _ = DashboardPageAsync();
-        }
-
-        private void MenuEmployee_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            _ = EmployeeAsync();
-        }
-
-        private void MenuAttendance_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            _ = AttendanceAsync();
-        }
-
-        private void MenuPayroll_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            _ = RegisterAsync();
-        }
-
-        private void MenuReport_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            _ = HomeAsync();
+            mitem = item;
         }
 
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
@@ -151,30 +34,6 @@ namespace Fasetto.Word
             this.WindowState = WindowState.Minimized;
         }
 
-        private void ButtonMaximize_Click(object sender, RoutedEventArgs e)
-        {
-            windowMaximized = !windowMaximized;
-            if (windowMaximized)
-            {
-                this.WindowState = WindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = WindowState.Normal;
-            }
-        }
-
-        private void ButtonMenu_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-           
-         
-           
-        }
 
   
         private void Btn_profile_Click_1(object sender, RoutedEventArgs e)
@@ -192,7 +51,7 @@ namespace Fasetto.Word
             var requestWindow = Window.GetWindow(this);
 
             requestWindow.Hide();
-            Request mw = new Request();
+            Request mw = new Request(mitem);
             mw.ShowDialog();
             requestWindow.Close();
         }

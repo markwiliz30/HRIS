@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using Fasetto.Word.Core;
 
 namespace Fasetto.Word
 {
@@ -20,13 +20,17 @@ namespace Fasetto.Word
     /// </summary>
     public partial class Time : Window
     {
-        public Time()
+        UserItem mitem = new UserItem();
+        UserTime utime = new UserTime();
+        public Time(UserItem item)
         {
             InitializeComponent();
             System.Windows.Threading.DispatcherTimer dispatcherTimer = new System.Windows.Threading.DispatcherTimer();
             dispatcherTimer.Tick += dispatcherTimer_Tick;
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
+
+            mitem = item;
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
         {
@@ -45,10 +49,18 @@ namespace Fasetto.Word
             var desktopWorkingArea = System.Windows.SystemParameters.WorkArea;
             this.Left = desktopWorkingArea.Right - this.Width;
             this.Top = desktopWorkingArea.Bottom - this.Height;
+            buttonProfile.Content = mitem._FNAME;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            var now = DateTime.Now.ToString("MM/dd/yyyyy");
+            var check = utime.Checker(mitem._EMPID, now);
+
+            if(check!= null)
+            {
+
+            }
             btn_time_in.IsEnabled = false;
             btn_time_out.IsEnabled = true;
         }
@@ -61,13 +73,16 @@ namespace Fasetto.Word
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            
             var parentWindow2 = Window.GetWindow(this);
 
             parentWindow2.Hide();
-            HRISMainWindow mw = new HRISMainWindow();
+            HRISMainWindow mw = new HRISMainWindow(mitem);
             mw.ShowDialog();
             parentWindow2.Show();
         }
+
+
     }
 
 }
