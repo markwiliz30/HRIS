@@ -30,6 +30,7 @@ namespace Fasetto.Word
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
 
+
             mitem = item;
         }
         private void dispatcherTimer_Tick(object sender, EventArgs e)
@@ -50,23 +51,69 @@ namespace Fasetto.Word
             this.Left = desktopWorkingArea.Right - this.Width;
             this.Top = desktopWorkingArea.Bottom - this.Height;
             buttonProfile.Content = mitem._FNAME;
+
+            var now = DateTime.Today.ToString("MM/dd/yy");
+            var check = utime.Checker(mitem._EMPID, now);
+            if(check == null)
+            {
+                btn_time_out.IsEnabled = false;
+                btn_time_in.IsEnabled = true;
+            }
+            else if (check.TIME_OUT == "waiting to timeout")
+            {
+                btn_time_in.IsEnabled = false;
+                btn_time_out.IsEnabled = true;
+            }
+            else
+            {
+                
+                btn_time_out.IsEnabled = false;
+                btn_time_in.IsEnabled = true;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var now = DateTime.Now.ToString("MM/dd/yyyyy");
-            var check = utime.Checker(mitem._EMPID, now);
 
-            if(check!= null)
-            {
 
-            }
-            btn_time_in.IsEnabled = false;
+            TimeItem itemtime = new TimeItem();
+            itemtime.EMP_ID = mitem._EMPID;
+            itemtime.TIME_IN = DateTime.Now.ToString("hh:mm");
+            itemtime.TIME_OUT = "waiting to timeout";
+            itemtime.DATE = DateTime.Today.ToString("MM/dd/yy");
+
+            AddTimein(itemtime);
             btn_time_out.IsEnabled = true;
+            btn_time_in.IsEnabled = false;
+        }
+
+        private void AddTimein(TimeItem newitem)
+        {
+            utime.Time_in(newitem);
+            
+        }
+
+        private void Timeout(TimeItem newitem)
+        {
+            utime.Time_out(newitem);
         }
 
         private void Btn_time_out_Click(object sender, RoutedEventArgs e)
         {
+            TimeItem itemtime = new TimeItem();
+            DateTime timein;
+            DateTime.TryParse(itemtime.TIME_IN , out timein);
+
+            DateTime timeout;
+            DateTime.TryParse(DateTime.Now.ToString("hh:mm"), out timeout);
+
+            double totalHours = (timein - timeout).TotalHours;
+
+            itemtime.EMP_ID = mitem._EMPID;
+            itemtime.TIME_OUT = DateTime.Now.ToString("hh:mm");
+            itemtime.HOURS = totalHours;
+
+            Timeout(itemtime);
             btn_time_in.IsEnabled = true;
             btn_time_out.IsEnabled = false;
         }
@@ -81,6 +128,7 @@ namespace Fasetto.Word
             mw.ShowDialog();
             parentWindow2.Show();
         }
+
 
 
     }

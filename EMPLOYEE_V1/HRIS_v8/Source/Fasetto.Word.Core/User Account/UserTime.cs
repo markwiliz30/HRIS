@@ -22,8 +22,8 @@ namespace Fasetto.Word.Core
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@EMP_ID", timeitem.EMP_ID));
                 cmd.Parameters.Add(new SqlParameter("@TIME_IN", timeitem.TIME_IN));
+                cmd.Parameters.Add(new SqlParameter("@TIME_OUT", timeitem.TIME_OUT));
                 cmd.Parameters.Add(new SqlParameter("@LOG_DATE", timeitem.DATE));
-                cmd.Parameters.Add(new SqlParameter("@HOURS", timeitem.HOURS));
                 cmd.ExecuteNonQuery();
                 db.Close();
             }
@@ -51,7 +51,8 @@ namespace Fasetto.Word.Core
                 if (reader.Read())
                 {
                     item.TIME_OUT = (string)reader["TIME_OUT"];
-               
+                    
+
                 }
                 db.Close();
                 return item;
@@ -64,10 +65,12 @@ namespace Fasetto.Word.Core
         {
             using(var db = DBConnection.CreateConnection())
             {
+                db.Open();
                 var sql = "dbo.TIME_OUT";
                 var cmd = new SqlCommand(sql, db);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@TIME_OUT", timeitem.TIME_OUT));
+                cmd.Parameters.Add(new SqlParameter("@LOG_TIME", timeitem.HOURS));
                 cmd.Parameters.Add(new SqlParameter("@EMP_ID", timeitem.EMP_ID));
                 cmd.ExecuteNonQuery();
                 db.Close();

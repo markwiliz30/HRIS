@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fasetto.Word.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,16 @@ namespace Fasetto.Word
     /// </summary>
     public partial class Attendance : Window
     {
-        public Attendance()
+        UserItem mitem = new UserItem();
+        public Attendance(UserItem item)
         {
             InitializeComponent();
+
+            mitem = item;
+        }
+        private void getAttendance()
+        {
+            
         }
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
         {
@@ -30,6 +38,17 @@ namespace Fasetto.Word
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            GetAttendance aitem = new GetAttendance();
+            aitem.GetUserAttendance(mitem._EMPID);
+
+            attendance.ItemsSource = StaticAttendanceList.staticAttendanceList;
+           
+            
+
         }
     }
 }

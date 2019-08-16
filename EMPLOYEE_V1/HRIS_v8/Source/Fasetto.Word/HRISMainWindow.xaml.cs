@@ -41,7 +41,7 @@ namespace Fasetto.Word
             var parentWindow = Window.GetWindow(this);
 
             parentWindow.Hide();
-            Profile mw = new Profile();
+            Profile mw = new Profile(mitem);
             mw.ShowDialog();
             parentWindow.Close();
         }
@@ -68,7 +68,7 @@ namespace Fasetto.Word
             var atten = Window.GetWindow(this);
 
             atten.Hide();
-            Attendance att = new Attendance();
+            Attendance att = new Attendance(mitem);
             att.ShowDialog();
             atten.Close();
         }

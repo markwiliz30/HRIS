@@ -25,7 +25,7 @@
             <Button x:Name="btn_time_in" Content="Time In" Background="#009688" Height="80" Margin="15" FontSize="24" Click="Button_Click"></Button>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="2">
-            <Button x:Name="btn_time_out" IsEnabled="False" Content="Time out" Background="#F44336" Height="80" Margin="15" FontSize="24" Click="Btn_time_out_Click"></Button>
+            <Button x:Name="btn_time_out" Content="Time out" Background="#F44336" Height="80" Margin="15" FontSize="24" Click="Btn_time_out_Click"></Button>
         </Grid>
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <TextBlock x:Name="timekeep"  VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="30" Foreground="#ffffff"></TextBlock>

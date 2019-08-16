@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Fasetto.Word"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Attendance" Height="720" Width="1280" ResizeMode="NoResize" WindowStyle="None">
+        Title="Attendance" Height="720" Width="1280" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded">
     <Grid Background="#263238">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -34,16 +34,36 @@
             
         </Grid>
         <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="20">
-            <DataGrid ItemsSource="{Binding Customers}" AutoGenerateColumns="False" >
+            <DataGrid Name="attendance" IsReadOnly="True" IsManipulationEnabled="True" AutoGenerateColumns="False">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="#ECEFF1" />
+                        <Setter Property="Padding" Value="15" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="FontSize" Value="16" />
+                        <Setter Property="BorderThickness" Value="0 0 1 2" />
+                        <Setter Property="BorderBrush" Value="#9E9e9e" />
+                    </Style>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Image" Width="SizeToCells" IsReadOnly="True">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Source="{Binding Image}" />
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Name"
+                                  Binding="{Binding FNAME}"      
+                                Width="420" >
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="Time in"
+                                Binding="{Binding TIMEIN}"
+                                Width="*"
+                                FontFamily="Times New Roman" />
+                    <DataGridTextColumn Header="Time out"
+                                Binding="{Binding TIMEOUT}"
+                                Width="*"
+                                FontFamily="Times New Roman" />
+                    <DataGridTextColumn Header="Date"
+                                Binding="{Binding DATE}"
+                                Width="*"
+                                FontFamily="Times New Roman" />
                 </DataGrid.Columns>
+
             </DataGrid>
         </Grid>
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10 3">

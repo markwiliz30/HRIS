@@ -59,8 +59,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\SecureStringHelpers.cs" />
     <Compile Include="User Account\AddRequest.cs" />
+    <Compile Include="User Account\AttendanceItem.cs" />
+    <Compile Include="User Account\GetAttendance.cs" />
     <Compile Include="User Account\RequestItem.cs" />
-    <Compile Include="User Account\StaticEmployeeCollection.cs" />
+    <Compile Include="User Account\StaticAttendanceList.cs" />
     <Compile Include="User Account\TimeItem.cs" />
     <Compile Include="User Account\UserItem.cs" />
     <Compile Include="User Account\Userlogin.cs" />
