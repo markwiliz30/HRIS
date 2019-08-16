@@ -61,7 +61,7 @@ namespace Fasetto.Word.Core
                 var sql = "dbo.spDeleteEmployee";
                 var cmd = new SqlCommand(sql, db);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add(new SqlParameter("@Employee_ID", employeeID));
+                cmd.Parameters.Add(new SqlParameter("@EMP_NO", employeeID));
                 cmd.ExecuteNonQuery();
                 db.Close();
             }

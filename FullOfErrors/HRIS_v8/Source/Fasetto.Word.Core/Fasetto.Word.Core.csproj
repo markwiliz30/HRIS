@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataModels\ApplicationPage.cs" />
+    <Compile Include="DataModels\EmployeeStatus.cs" />
     <Compile Include="DBCon\DBConnection.cs" />
     <Compile Include="Designation\DesignationItem.cs" />
     <Compile Include="Designation\PositionCollection.cs" />

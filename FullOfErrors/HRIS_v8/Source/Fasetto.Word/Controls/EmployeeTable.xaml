@@ -200,7 +200,7 @@
                 </Grid>
             </Border>
             <Border Grid.Row="2" Padding="10">
-                <DataGrid Name="employeeTable" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" SelectionMode="Single" IsReadOnly="True" IsManipulationEnabled="True" ItemsSource="{Binding observableEmpCollection}" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5">
+                <DataGrid Name="employeeTable" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" SelectionMode="Single" IsReadOnly="True" IsManipulationEnabled="True" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5">
                     <DataGrid.Resources>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="#26A69A" />
@@ -225,14 +225,14 @@
                         </Style>
                     </DataGrid.ItemContainerStyle>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Employee ID" Binding="{Binding _employeeId}" Width="120"/>
-                        <DataGridTextColumn Header="First Name" Binding="{Binding _firstName}" Width="120"/>
-                        <DataGridTextColumn Header="Middle Name" Binding="{Binding _middleName}" Width="120"/>
-                        <DataGridTextColumn Header="Last Name" Binding="{Binding _lastName}" Width="120"/>
-                        <DataGridTextColumn Header="Nationality" Binding="{Binding _nationality}" Width="120"/>
-                        <DataGridTextColumn Header="Email" Binding="{Binding _eMail}" Width="120"/>
-                        <DataGridTextColumn Header="Contact No." Binding="{Binding _contactNum}" Width="120"/>
-                        <DataGridTextColumn Header="Religion" Binding="{Binding _religion}" Width="120"/>
+                        <DataGridTextColumn Header="Employee ID" Binding="{Binding _EMP_NO}" Width="120"/>
+                        <DataGridTextColumn Header="First Name" Binding="{Binding _FIRST_NAME}" Width="120"/>
+                        <DataGridTextColumn Header="Middle Name" Binding="{Binding _MIDDLE_NAME}" Width="120"/>
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding _LAST_NAME}" Width="120"/>
+                        <DataGridTextColumn Header="Nationality" Binding="{Binding _NATIONALITY}" Width="120"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding _EMAIL_ADDRESS}" Width="120"/>
+                        <DataGridTextColumn Header="Contact No." Binding="{Binding _CONTACT}" Width="120"/>
+                        <DataGridTextColumn Header="Religion" Binding="{Binding _RELIGION}" Width="120"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>

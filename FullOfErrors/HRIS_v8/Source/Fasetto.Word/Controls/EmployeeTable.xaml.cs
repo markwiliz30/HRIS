@@ -54,7 +54,9 @@ namespace Fasetto.Word
 
         private void ButtonViewEmployee_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            ViewEmployeeDetails viewEmp = new ViewEmployeeDetails();
+            var vEmpItem = new EmployeeItem();
+            vEmpItem = empCollection.Where(t => t._EMP_NO.Equals(selectedEmployeeId)).FirstOrDefault();
+            ViewEmployeeDetails viewEmp = new ViewEmployeeDetails(vEmpItem);
             EmployeeManagement.mEmpTransitioner.Items.Add(viewEmp);
             EmployeeManagement.mEmpTransitioner.SelectedIndex = 1;
             GetAllEmployees();
@@ -62,20 +64,10 @@ namespace Fasetto.Word
 
         private void GetAllEmployees()
         {
-            //employeeTable.Items.Clear();
-
-            //observableEmpCollection = EmployeeCollection.RetreiveAllEmployee();
-            //myCollection.RetreiveAllEmployee();
-
             empCollection = StaticEmpoyeeCollection.staticEmployeeList;
 
             employeeTable.ItemsSource = empCollection;
         }
-
-        //private void ObservableGetAllEmployees()
-        //{
-        //    employeeTable.ItemsSource = observableEmployees;
-        //}
 
         private void ButtonNewEmployee_Click(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -137,7 +129,7 @@ namespace Fasetto.Word
 
         private void PersistentSearch_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            //employeeTable.ItemsSource = empCollection.Where(t => t._firstName.Contains(searchBox.SearchTerm) || t._middleName.Contains(searchBox.SearchTerm) || t._lastName.Contains(searchBox.SearchTerm));
+            employeeTable.ItemsSource = empCollection.Where(t => t._EMP_NO.ToLower().Contains(searchBox.SearchTerm.ToLower()) || t._FIRST_NAME.ToLower().Contains(searchBox.SearchTerm.ToLower()) || t._MIDDLE_NAME.ToLower().Contains(searchBox.SearchTerm.ToLower()) || t._LAST_NAME.ToLower().Contains(searchBox.SearchTerm.ToLower()));
         }
 
         private void ButtonAddPosition_Click(object sender, RoutedEventArgs e)

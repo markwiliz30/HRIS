@@ -17,7 +17,7 @@
             </Grid.RowDefinitions>
 
             <Border Background="#b1006a">
-                <TextBlock Text="Employee Details" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="Calibri" FontSize="30" FontWeight="SemiBold" />
+                <TextBlock Text="Manage Job Positions" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="Calibri" FontSize="30" FontWeight="SemiBold" />
             </Border>
 
             <Border Padding="10" Grid.Row="1">

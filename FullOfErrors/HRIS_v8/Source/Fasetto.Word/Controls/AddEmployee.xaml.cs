@@ -4,6 +4,7 @@ using Fasetto.Word.Core;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System;
+using System.Linq;
 
 namespace Fasetto.Word
 {
@@ -12,6 +13,8 @@ namespace Fasetto.Word
     /// </summary>
     public partial class AddEmployee : UserControl
     {
+        int selectedDesignation = -1;
+        string selectedEmpStatus;
         public AddEmployee()
         {
             InitializeComponent();
@@ -30,6 +33,7 @@ namespace Fasetto.Word
             dpWorkStart.SelectedDate = DateTime.Today;
 
             cbPosition.ItemsSource = StaticPositionCollection.staticPositionList;
+            cbEmpStatus.ItemsSource = Enum.GetValues(typeof(EmployeeStatus)).Cast<EmployeeStatus>();
         }
 
         private string genderSelectResult()
@@ -135,6 +139,7 @@ namespace Fasetto.Word
                     item._BIRTHDAY = dpBirthday.Text;
                     item._NATIONALITY = tbNationality.Text;
                     item._PASSPORT = tbPassportNo.Text;
+                    item._RELIGION = tbReligion.Text;
                     item._EMAIL_ADDRESS = tbEmail.Text;
                     item._CONTACT = tbContactNumber.Text;
                     item._BIRTH_PLACE = tbBirthPlace.Text;
@@ -144,18 +149,21 @@ namespace Fasetto.Word
                     item._IOE_CONTACT = tbContactPTC.Text;
                     item._IOE_RELATION = tbRelationPTC.Text;
                     item._IOE_ADDRESS = tbAddressPTC.Text;
-                    item._EMP_STATUS = cbEmpStatus.SelectedValue.ToString();
+                    item._EMP_STATUS = selectedEmpStatus;
                     item._DATE_JOINED = dpDateEmployed.Text;
                     item._END_PROVITION = dpEndProvision.Text;
-                    item._MONTHLY_SALARY = tbMonthlySalary.Text;
+                    item._POS_ID = selectedDesignation;
+                    item._MONTHLY_SALARY = double.Parse(tbMonthlySalary.Text);
                     item._SSS_NO = tbSSSNo.Text;
                     item._PHIL_HEALTH_NO = tbPhHealth.Text;
                     item._PAG_IBIG_NO = tbPagIbig.Text;
                     item._BIR_NO = tbBIR.Text;
-                    item._DEDUC_SSS = tbDedSSS.Text;
-                    item._DEDUC_PHIL_HEALTH = tbDedPhilHealth.Text;
-                    item._DEDUC_PAG_IBIG = tbDedPagIbig.Text;
-                    item._DEDUC_BIR = tbDedBIR.Text;
+                    item._DEDUC_SSS = double.Parse(tbDedSSS.Text);
+                    item._DEDUC_PHIL_HEALTH = double.Parse(tbDedPhilHealth.Text);
+                    item._DEDUC_PAG_IBIG = double.Parse(tbDedPagIbig.Text);
+                    item._DEDUC_BIR = double.Parse(tbDedBIR.Text);
+
+                    item._HOURLY_RATE = 300;
 
 
                     //try
@@ -171,17 +179,19 @@ namespace Fasetto.Word
                     EmployeeCollection myEmpList = new EmployeeCollection();
                     myEmpList.RetreiveAllEmployee();
 
+                    //ClearInputFields();
+
                     EmployeeManagement.mEmpTransitioner.SelectedIndex = 0;
                     EmployeeManagement.mEmpTransitioner.Items.RemoveAt(1);
 
-                    ClearInputFields();
+                    
                 }
             }
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
-            
+            SetValues();
         }
 
         private void SaveEmpoyeeDetails(EmployeeItem myItem)
@@ -213,7 +223,13 @@ namespace Fasetto.Word
         private void CbPosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var item = cbPosition.SelectedItem as DesignationItem;
-            MessageBox.Show(item._POS_ID.ToString());
+            selectedDesignation = Int32.Parse(item._POS_ID.ToString());
+            //MessageBox.Show(selectedDesignation.ToString());
+        }
+
+        private void CbEmpStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedEmpStatus = cbEmpStatus.SelectedValue.ToString();
         }
     }
 }

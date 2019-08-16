@@ -21,20 +21,20 @@
         public string _DATE_JOINED { get; set; }
         public string _END_PROVITION { get; set; }
         public string _DATE_REGULAZATION { get; set; }
-        public string _POS_ID { get; set; }
+        public int _POS_ID { get; set; }
         public string _IOE_PERSON { get; set; }
         public string _IOE_RELATION { get; set; }
         public string _IOE_ADDRESS { get; set; }
         public string _IOE_CONTACT { get; set; }
-        public string _HOURLY_RATE { get; set; }
-        public string _MONTHLY_SALARY { get; set; }
+        public double _HOURLY_RATE { get; set; }
+        public double _MONTHLY_SALARY { get; set; }
         public string _SSS_NO { get; set; }
         public string _PHIL_HEALTH_NO { get; set; }
         public string _PAG_IBIG_NO { get; set; }
         public string _BIR_NO { get; set; }
-        public string _DEDUC_SSS { get; set; }
-        public string _DEDUC_PHIL_HEALTH { get; set; }
-        public string _DEDUC_PAG_IBIG { get; set; }
-        public string _DEDUC_BIR { get; set; }
+        public double _DEDUC_SSS { get; set; }
+        public double _DEDUC_PHIL_HEALTH { get; set; }
+        public double _DEDUC_PAG_IBIG { get; set; }
+        public double _DEDUC_BIR { get; set; }
     }
 }
