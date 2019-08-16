@@ -30,16 +30,137 @@
            
         </Grid>
         <Grid Grid.Row="1">
-            <Border Width="auto" Height="auto" BorderThickness="2" CornerRadius="12" Background="#ECEFF1" Margin="10"></Border>
+            <Border Width="auto" Height="auto" BorderThickness="2" CornerRadius="12" Background="#ECEFF1" Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="250" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Name: " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empname" Text="Jeremiah Zyrel Guintu Pasion" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                   
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <Label Content="Position : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="emppos"  Text="Programmer" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <Label Content="Employee No. : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empno"  Text="0115300215" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Label Content="Birthday : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empbday"  Text="11/05/1998" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                        <Label Content="Gender: " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empgender"  Text="Male" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                        <Label Content="Contact : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empcontact" Text="09352391480" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                </Grid>
+            
+            </Border>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="3">
-            <Border Width="auto" Height="auto" BorderThickness="2" CornerRadius="12" Background="#ECEFF1" Margin="10"></Border>
+            <Border Width="auto" Height="auto" BorderThickness="2" CornerRadius="12" Background="#ECEFF1" Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                </Grid>
+            </Border>
         </Grid>
         <Grid Grid.Row="2">
-            <Border Width="auto" Height="auto" BorderThickness="2" CornerRadius="12" Background="#ECEFF1" Margin="10"></Border>
+            <Border Width="auto" Height="auto" BorderThickness="2" CornerRadius="12" Background="#ECEFF1" Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="250" />
+                    </Grid.ColumnDefinitions>
+                     <StackPanel Orientation="Horizontal">
+                        <Label Content="Email : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empemail" Text="zyrel05pasion1105@gmail.com" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                   
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <Label Content="Birth Place : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empbplace"  Text="City of San Fernando" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <Label Content="Address : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empadd"  Text="3rd St. San Jose Village C.S.F.P" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Label Content="Status : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empstatus"  Text="Trainee" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                        <Label Content="Joined Date: " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empjoined"  Text="07/09/2019" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                        <Label Content="Nationality : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empnation" Text="Filipino" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                </Grid> 
+            </Border>
         </Grid>
         <Grid Grid.Row="3">
-            <Border Width="auto" Height="auto" BorderThickness="2" CornerRadius="12" Background="#ECEFF1" Margin="10"></Border>
+            <Border Width="auto" Height="auto" BorderThickness="2" CornerRadius="12" Background="#ECEFF1" Margin="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="290" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="SSS no. : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empss" Text="1111111111" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <Label Content="PhilHealth No. : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empphil"  Text="222222222" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal">
+                        <Label Content="IOE Person : "  FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empioeperson"  Text="Test" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <Label Content="Pagibig no. : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="emppagibig"  Text="33333333" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+                        <Label Content="BIR no. : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empbir"  Text="444444444" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+                        <Label Content="IOE Person no. : " FontSize="15"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock x:Name="empioeno" Text="09352391480" FontSize="20" FontWeight="ExtraBlack" VerticalAlignment="Center" HorizontalAlignment="Left" Padding="20 0 0 0"></TextBlock>
+                    </StackPanel>
+
+                </Grid>
+            </Border>
         </Grid>
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10 3">
             <Button x:Name="ButtonMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" WindowChrome.IsHitTestVisibleInChrome="True" Click="ButtonMinimize_Click">
