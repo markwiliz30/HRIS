@@ -54,7 +54,9 @@ namespace Fasetto.Word
 
         private void ButtonViewEmployee_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            ViewEmployeeDetails viewEmp = new ViewEmployeeDetails();
+            var vEmpItem = new EmployeeItem();
+            vEmpItem = empCollection.Where(t => t._EMP_NO.Equals(selectedEmployeeId)).FirstOrDefault();
+            ViewEmployeeDetails viewEmp = new ViewEmployeeDetails(vEmpItem);
             EmployeeManagement.mEmpTransitioner.Items.Add(viewEmp);
             EmployeeManagement.mEmpTransitioner.SelectedIndex = 1;
             GetAllEmployees();
@@ -62,20 +64,10 @@ namespace Fasetto.Word
 
         private void GetAllEmployees()
         {
-            //employeeTable.Items.Clear();
-
-            //observableEmpCollection = EmployeeCollection.RetreiveAllEmployee();
-            //myCollection.RetreiveAllEmployee();
-
             empCollection = StaticEmpoyeeCollection.staticEmployeeList;
 
             employeeTable.ItemsSource = empCollection;
         }
-
-        //private void ObservableGetAllEmployees()
-        //{
-        //    employeeTable.ItemsSource = observableEmployees;
-        //}
 
         private void ButtonNewEmployee_Click(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -115,16 +107,16 @@ namespace Fasetto.Word
         private void AddToObservable()
         {
             EmployeeItem mark2 = new EmployeeItem();
-            mark2._employeeId = "34fgd";
-            mark2._firstName = "Mark2";
-            mark2._middleName = "Sese2";
-            mark2._lastName = "Del Moro2";
-            mark2._nationality = "Filipino2";
-            mark2._eMail = "mark@gmail.com2";
-            mark2._contactNum = "09999992";
-            mark2._religion = "INC2";
-            mark2._presentAddress = "mt.veiw";
-            mark2._permanentAddress = "Gatiawin";
+            //mark2._employeeId = "34fgd";
+            //mark2._firstName = "Mark2";
+            //mark2._middleName = "Sese2";
+            //mark2._lastName = "Del Moro2";
+            //mark2._nationality = "Filipino2";
+            //mark2._eMail = "mark@gmail.com2";
+            //mark2._contactNum = "09999992";
+            //mark2._religion = "INC2";
+            //mark2._presentAddress = "mt.veiw";
+            //mark2._permanentAddress = "Gatiawin";
 
             StaticEmpoyeeCollection.staticEmployeeList.Add(mark2);
         }
@@ -135,19 +127,16 @@ namespace Fasetto.Word
             selectedEmployeeId = (employeeTable.SelectedCells[0].Column.GetCellContent(item) as TextBlock).Text;
         }
 
-        private void ButtonEditEmployee_Click(object sender, RoutedEventArgs e)
-        {
-            //EditEmployeeDetails.SetValues(selectedEmployeeId);
-
-            EditEmployeeDetails editEmp = new EditEmployeeDetails();
-            EmployeeManagement.mEmpTransitioner.Items.Add(editEmp);
-            EmployeeManagement.mEmpTransitioner.SelectedIndex = 1;
-            GetAllEmployees();
-        }
-
         private void PersistentSearch_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            employeeTable.ItemsSource = empCollection.Where(t => t._firstName.Contains(searchBox.SearchTerm) || t._middleName.Contains(searchBox.SearchTerm) || t._lastName.Contains(searchBox.SearchTerm));
+            employeeTable.ItemsSource = empCollection.Where(t => t._EMP_NO.ToLower().Contains(searchBox.SearchTerm.ToLower()) || t._FIRST_NAME.ToLower().Contains(searchBox.SearchTerm.ToLower()) || t._MIDDLE_NAME.ToLower().Contains(searchBox.SearchTerm.ToLower()) || t._LAST_NAME.ToLower().Contains(searchBox.SearchTerm.ToLower()));
+        }
+
+        private void ButtonAddPosition_Click(object sender, RoutedEventArgs e)
+        {
+            PositionManagerUI posManagetUI = new PositionManagerUI();
+            EmployeeManagement.mEmpTransitioner.Items.Add(posManagetUI);
+            EmployeeManagement.mEmpTransitioner.SelectedIndex = 1;
         }
     }
 }

@@ -75,25 +75,25 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="-0.61"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ButtonEditEmployee">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ButtonManageJobPosition">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ButtonEditEmployee">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="ButtonManageJobPosition">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1.281"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ButtonEditEmployee">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="ButtonManageJobPosition">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="1.281"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ButtonEditEmployee">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ButtonManageJobPosition">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-0.167"/>
@@ -147,7 +147,7 @@
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="ButtonNewEmployee" Style="{DynamicResource MaterialDesignFloatingActionButton}" Margin="0 0 50 0" Click="ButtonNewEmployee_Click" RenderTransformOrigin="0.5,0.5">
+                    <Button x:Name="ButtonNewEmployee" ToolTip="Add Employee" Style="{DynamicResource MaterialDesignFloatingActionButton}" Margin="0 0 50 0" Click="ButtonNewEmployee_Click" RenderTransformOrigin="0.5,0.5">
                         <Button.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -162,7 +162,19 @@
                     <controls:PersistentSearch Grid.Column="1" x:Name="searchBox" VerticalAlignment="Top" Margin="8" Width="400" KeyUp="PersistentSearch_KeyUp" />
 
                     <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <Button x:Name="ButtonViewEmployee" Style="{DynamicResource MaterialDesignFloatingActionButton}" Click="ButtonViewEmployee_Click" RenderTransformOrigin="0.5,0.5">
+                        <Button x:Name="ButtonManageJobPosition" ToolTip="Manage Job   Positions" Style="{DynamicResource MaterialDesignFloatingActionButton}" RenderTransformOrigin="0.5,0.5" Margin="0 0 150 0" Click="ButtonAddPosition_Click" VerticalAlignment="Bottom">
+                            <Button.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Button.RenderTransform>
+                            <materialDesign:PackIcon Kind="AccountBadgeHorizontal" Height="25" Width="25"/>
+                        </Button>
+
+                        <Button x:Name="ButtonViewEmployee" ToolTip="Add Employee Details" Margin="10 0" Style="{DynamicResource MaterialDesignFloatingActionButton}" Click="ButtonViewEmployee_Click" RenderTransformOrigin="0.5,0.5">
                             <Button.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -173,18 +185,7 @@
                             </Button.RenderTransform>
                             <materialDesign:PackIcon Kind="Eye" Height="25" Width="25"/>
                         </Button>
-                        <Button x:Name="ButtonEditEmployee" Style="{DynamicResource MaterialDesignFloatingActionButton}" RenderTransformOrigin="0.5,0.5" Margin="10 0" Click="ButtonEditEmployee_Click" VerticalAlignment="Bottom">
-                            <Button.RenderTransform>
-                                <TransformGroup>
-                                    <ScaleTransform/>
-                                    <SkewTransform/>
-                                    <RotateTransform/>
-                                    <TranslateTransform/>
-                                </TransformGroup>
-                            </Button.RenderTransform>
-                            <materialDesign:PackIcon Kind="Edit" Height="25" Width="25"/>
-                        </Button>
-                        <Button x:Name="ButtonDeleteEmployee" Style="{DynamicResource MaterialDesignFloatingActionButton}" Click="ButtonDeleteEmployee_Click" RenderTransformOrigin="0.5,0.5" >
+                        <Button x:Name="ButtonDeleteEmployee" ToolTip="Delete Employee Details" Style="{DynamicResource MaterialDesignFloatingActionButton}" Click="ButtonDeleteEmployee_Click" RenderTransformOrigin="0.5,0.5" >
                             <Button.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -199,7 +200,7 @@
                 </Grid>
             </Border>
             <Border Grid.Row="2" Padding="10">
-                <DataGrid Name="employeeTable" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" SelectionMode="Single" IsReadOnly="True" IsManipulationEnabled="True" ItemsSource="{Binding observableEmpCollection}" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5">
+                <DataGrid Name="employeeTable" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" SelectionMode="Single" IsReadOnly="True" IsManipulationEnabled="True" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5">
                     <DataGrid.Resources>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="Background" Value="#26A69A" />
@@ -224,14 +225,14 @@
                         </Style>
                     </DataGrid.ItemContainerStyle>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Employee ID" Binding="{Binding _employeeId}" Width="120"/>
-                        <DataGridTextColumn Header="First Name" Binding="{Binding _firstName}" Width="120"/>
-                        <DataGridTextColumn Header="Middle Name" Binding="{Binding _middleName}" Width="120"/>
-                        <DataGridTextColumn Header="Last Name" Binding="{Binding _lastName}" Width="120"/>
-                        <DataGridTextColumn Header="Nationality" Binding="{Binding _nationality}" Width="120"/>
-                        <DataGridTextColumn Header="Email" Binding="{Binding _eMail}" Width="120"/>
-                        <DataGridTextColumn Header="Contact No." Binding="{Binding _contactNum}" Width="120"/>
-                        <DataGridTextColumn Header="Religion" Binding="{Binding _religion}" Width="120"/>
+                        <DataGridTextColumn Header="Employee ID" Binding="{Binding _EMP_NO}" Width="120"/>
+                        <DataGridTextColumn Header="First Name" Binding="{Binding _FIRST_NAME}" Width="120"/>
+                        <DataGridTextColumn Header="Middle Name" Binding="{Binding _MIDDLE_NAME}" Width="120"/>
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding _LAST_NAME}" Width="120"/>
+                        <DataGridTextColumn Header="Nationality" Binding="{Binding _NATIONALITY}" Width="120"/>
+                        <DataGridTextColumn Header="Email" Binding="{Binding _EMAIL_ADDRESS}" Width="120"/>
+                        <DataGridTextColumn Header="Contact No." Binding="{Binding _CONTACT}" Width="120"/>
+                        <DataGridTextColumn Header="Religion" Binding="{Binding _RELIGION}" Width="120"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>

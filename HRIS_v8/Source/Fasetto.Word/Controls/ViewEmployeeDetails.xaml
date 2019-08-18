@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:controls="clr-namespace:MaterialDesignExtensions.Controls;assembly=MaterialDesignExtensions"
              mc:Ignorable="d" 
-             d:DesignHeight="900" d:DesignWidth="1024">
+             d:DesignHeight="1000" d:DesignWidth="1500" Loaded="UserControl_Loaded">
     <Border Background="LightGray">
         <Grid>
             <Grid.RowDefinitions>
@@ -16,20 +16,23 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Border Background="#b1006a">
+            <Border Background="#4527A0">
                 <TextBlock Text="Employee Details" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" FontFamily="Calibri" FontSize="30" FontWeight="SemiBold" />
             </Border>
 
             <Border Padding="10" Grid.Row="1">
                 <StackPanel Orientation="Horizontal">
-                    <Button x:Name="ButtonCancel" Style="{DynamicResource MaterialDesignFlatButton}" Content="Cancel" Margin="5 0" Click="ButtonCancel_Click" />
-                    <Button x:Name="ButtonSave" Content="Save" Margin="0 0 5 0"/>
+                    <Button x:Name="ButtonCancel" Style="{DynamicResource MaterialDesignFlatButton}" Content="Back" Margin="5 0" Click="ButtonCancel_Click" />
+                    <Button x:Name="ButtonSave" Content="Edit" Margin="0 0 5 0"/>
                 </StackPanel>
             </Border>
 
             <TabControl Grid.Row="2" Style="{StaticResource MaterialDesignTabControl}">
                 <TabItem Header="PERSONAL">
-                    <Border Margin="30 10" HorizontalAlignment="Center">
+                    <Border Margin="30 10 30 30" HorizontalAlignment="Center" Background="#ECEFF1" Padding="30 30 30 10" CornerRadius="40">
+                        <Border.Effect>
+                            <DropShadowEffect Color="Black" Direction="-50" ShadowDepth="20" Opacity="0.3"/>
+                        </Border.Effect>
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -38,47 +41,116 @@
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Vertical" Margin="0 0 40 0">
-                                    <TextBox x:Name="tbFirstName" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="First Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20" IsReadOnly="True" Text="hello"/>
-                                    <TextBox x:Name="tbMiddleName" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Middle Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox x:Name="tbLastName" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Last Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox x:Name="tbNationality" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Nationality" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox x:Name="tbReligion" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Religion" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                </StackPanel>
-                                <StackPanel Grid.Column="1">
-                                    <TextBox x:Name="tbPresentAddress" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Present Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox x:Name="tbPermanentAddress" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Permanent Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBox x:Name="tbEmail" HorizontalAlignment="Left" Width="200" Margin="0 5 40 5" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                        <TextBox x:Name="tbContactNumber" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Contact Number" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBox x:Name="tbEmployeeId" HorizontalAlignment="Left" Width="200" Margin="0 5 10 5" materialDesign:HintAssist.Hint="Employee ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}">
-                                            <materialDesign:PackIcon Kind="Magic" Height="25" Width="25"/>
-                                        </Button>
-                                    </StackPanel>
+                                    <TextBox x:Name="tbEmployeeId" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 5 10 5" materialDesign:HintAssist.Hint="Employee ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbFirstName" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="First Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbMiddleName" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Middle Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbLastName" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Last Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbReligion" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Religion" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
                                     <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="Gender" FontSize="20" Margin="0 10 0 0" />
+                                        <TextBlock Text="Gender" Foreground="DarkSlateGray" FontSize="20" Margin="0 10 0 0" />
                                         <Viewbox Height="25" HorizontalAlignment="Left" Margin="0 5">
                                             <StackPanel Orientation="Horizontal">
-                                                <RadioButton Content="Male" Margin="0 0 20 0"/>
-                                                <RadioButton Content="Female"/>
+                                                <RadioButton x:Name="rbMale" IsEnabled="False" Content="Male" Margin="0 0 20 0"/>
+                                                <RadioButton x:Name="rbFemale" IsEnabled="False" Content="Female"/>
                                             </StackPanel>
                                         </Viewbox>
                                     </StackPanel>
-                                    <ComboBox HorizontalAlignment="Left" FontSize="18">
-                                        <ComboBoxItem>Janitor</ComboBoxItem>
-                                        <ComboBoxItem IsSelected="True">Production</ComboBoxItem>
-                                        <ComboBoxItem>Manager</ComboBoxItem>
-                                    </ComboBox>
-                                    <DatePicker x:Name="registerDatePicker" Focusable="False" IsTodayHighlighted="True" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" />
+                                    <StackPanel Orientation="Vertical" Margin="0 10 0 0">
+                                        <TextBlock Text="Birthday" Foreground="DarkSlateGray" FontSize="20" Margin="0 10 0 0" />
+                                        <DatePicker x:Name="dpBirthday" IsEnabled="False" FontSize="18" Focusable="False" IsTodayHighlighted="True" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" />
+                                    </StackPanel>
+                                    <!--<StackPanel Orientation="Vertical" Margin="0 10 0 0">
+                                        <TextBlock Text="Employee Status" Foreground="DarkSlateGray" FontSize="20" Margin="0 10 0 0" />
+                                        <ComboBox HorizontalAlignment="Left" FontSize="20">
+                                            <ComboBoxItem IsSelected="True">Provisionary</ComboBoxItem>
+                                            <ComboBoxItem>Regular</ComboBoxItem>
+                                            <ComboBoxItem>Contractual</ComboBoxItem>
+                                        </ComboBox>
+                                    </StackPanel>-->
+                                    <!--<TextBox x:Name="tbReligion" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Religion" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>-->
                                 </StackPanel>
+                                <StackPanel Grid.Column="1" Margin="0 0 40 0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox x:Name="tbNationality" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 5 40 5" materialDesign:HintAssist.Hint="Nationality" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                        <TextBox x:Name="tbPassportNo" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Passport Number" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox x:Name="tbEmail" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 5 40 5" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                        <TextBox x:Name="tbContactNumber" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Contact Number" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    </StackPanel>
+                                    <TextBox x:Name="tbBirthPlace" IsReadOnly="True" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Birth Place Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbPresentAddress" IsReadOnly="True" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Present Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbPermanentAddress" IsReadOnly="True" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Permanent Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
+                                        <TextBlock Text="In Case of Emergency" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBox x:Name="tbNamePTC" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 0 40 5" materialDesign:HintAssist.Hint="Person to Contact" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                        <TextBox x:Name="tbContactPTC" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 5" materialDesign:HintAssist.Hint="Contact Number" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBox x:Name="tbRelationPTC" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 0 40 5" materialDesign:HintAssist.Hint="Relation" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    </StackPanel>
+                                    <TextBox x:Name="tbAddressPTC" IsReadOnly="True" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="2" Margin="0 10 0 0">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBlock Text="Position Applied:" Foreground="DarkSlateGray" FontSize="20" Margin="0 10 44 0" />
+                                        <ComboBox x:Name="cbPosition" DisplayMemberPath="_POS_NAME"  SelectedValuePath="_POS_ID" SelectedIndex="0" Width="130" HorizontalAlignment="Left" FontSize="20" />
+                                        <Button x:Name="btnAddPosition" Visibility="Hidden" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="25 0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom">
+                                            <materialDesign:PackIcon Kind="Add"/>
+                                        </Button>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 20 0 0">
+                                        <TextBlock Text="Employment Status:" Foreground="DarkSlateGray" FontSize="20" Margin="0 10 20 0" />
+                                        <ComboBox x:Name="cbEmpStatus" HorizontalAlignment="Left" FontSize="20" Width="130" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0" VerticalAlignment="Center">
+                                        <TextBlock Text="Date Employed:" Foreground="DarkSlateGray" FontSize="20" Margin="0 0 50 0" />
+                                        <DatePicker x:Name="dpDateEmployed" IsEnabled="False" FontSize="18" Focusable="False" IsTodayHighlighted="True" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0" VerticalAlignment="Center">
+                                        <TextBlock Text="End of Provision:" Foreground="DarkSlateGray" FontSize="20" Margin="0 0 41 0" />
+                                        <DatePicker x:Name="dpEndProvision" IsEnabled="False" FontSize="18" Focusable="False" IsTodayHighlighted="True" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBox x:Name="tbMonthlySalary" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 0 40 5" materialDesign:HintAssist.Hint="Monthly Salary" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBox x:Name="tbSSSNo" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 0 40 5" materialDesign:HintAssist.Hint="SSS Number" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                        <TextBox x:Name="tbPhHealth" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 5" materialDesign:HintAssist.Hint="Phil Health Number" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBox x:Name="tbPagIbig" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 0 40 5" materialDesign:HintAssist.Hint="Pag-Ibig Number" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                        <TextBox x:Name="tbBIR" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 5" materialDesign:HintAssist.Hint="TIN Number" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
+                                        <TextBlock Text="Deductions" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBox x:Name="tbDedSSS" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 0 40 5" materialDesign:HintAssist.Hint="SSS Amount" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                        <TextBox x:Name="tbDedPhilHealth" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 5" materialDesign:HintAssist.Hint="Phil Health Amount" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <TextBox x:Name="tbDedPagIbig" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 0 40 5" materialDesign:HintAssist.Hint="Pag-Ibig Amount" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                        <TextBox x:Name="tbDedBIR" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 5" materialDesign:HintAssist.Hint="BIR Amount" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    </StackPanel>
+                                </StackPanel>
+
                             </Grid>
                         </ScrollViewer>
                     </Border>
                 </TabItem>
                 <TabItem Header="EDUCATION">
-                    <Border Margin="30 10" HorizontalAlignment="Center">
+                    <Border Margin="30 10 30 30" HorizontalAlignment="Center" Background="#ECEFF1" Padding="30 30 30 10" CornerRadius="40">
+                        <Border.Effect>
+                            <DropShadowEffect Color="Black" Direction="-50" ShadowDepth="20" Opacity="0.3"/>
+                        </Border.Effect>
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -86,90 +158,163 @@
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
-                                <StackPanel Orientation="Vertical" Margin="0 0 40 0">
-                                    <TextBox  HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="First Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox  HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Middle Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox  HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Last Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox  HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Nationality" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox  HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Religion" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                </StackPanel>
-                                <StackPanel Grid.Column="1">
-                                    <TextBox  HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Present Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox  HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Permanent Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBox  HorizontalAlignment="Left" Width="200" Margin="0 5 40 5" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                        <TextBox  HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Contact Number" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                <StackPanel Margin="0 0 40 0">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
+                                        <TextBlock Text="Primary Education" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20"/>
                                     </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBox  HorizontalAlignment="Left" Width="200" Margin="0 5 10 5" materialDesign:HintAssist.Hint="Employee ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}">
-                                            <materialDesign:PackIcon Kind="Magic" Height="25" Width="25"/>
+
+                                    <TextBox x:Name="tbSchoolNamePrimary" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Name of School" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbSchoolAddressPrimary" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="School Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+
+                                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0" VerticalAlignment="Center">
+                                        <TextBlock Text="Date Graduated:" Foreground="DarkSlateGray" FontSize="20" Margin="0 0 20 0" />
+                                        <DatePicker x:Name="dpEduPrimaryDate" FontSize="18" Focusable="False" IsTodayHighlighted="True" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" />
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 40 0 0">
+                                        <TextBlock Text="Secondary Education" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20"/>
+                                    </StackPanel>
+
+                                    <TextBox x:Name="tbSchoolNameSecondary" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Name of School" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbSchoolAddressSecondary" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="School Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+
+                                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0" VerticalAlignment="Center">
+                                        <TextBlock Text="Date Graduated:" Foreground="DarkSlateGray" FontSize="20" Margin="0 0 20 0" />
+                                        <DatePicker x:Name="dpEduSecondaryDate" FontSize="18" Focusable="False" IsTodayHighlighted="True" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" />
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 40 0 0">
+                                        <TextBlock Text="Tertiary Education" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20"/>
+                                    </StackPanel>
+
+                                    <TextBox x:Name="tbSchoolNameTertiary" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Name of School" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbSchoolAddressTertiary" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="School Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbDegreeTertiary" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Degree Earned" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0" VerticalAlignment="Center">
+                                        <TextBlock Text="Date Graduated:" Foreground="DarkSlateGray" FontSize="20" Margin="0 0 20 0" />
+                                        <DatePicker x:Name="dpEduTertiaryDate" FontSize="18" Focusable="False" IsTodayHighlighted="True" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Grid.Column="1" Margin="0 0 20 0">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
+                                        <TextBlock Text="Masteral Education" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20"/>
+                                    </StackPanel>
+
+                                    <TextBox x:Name="tbSchoolNameMasteral" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Name of School" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbSchoolAddressMasteral" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="School Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbDegreeMasteral" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Degree Earned" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0" VerticalAlignment="Center">
+                                        <TextBlock Text="Date Graduated:" Foreground="DarkSlateGray" FontSize="20" Margin="0 0 20 0" />
+                                        <DatePicker x:Name="dpEduMasteralDate" FontSize="18" Focusable="False" IsTodayHighlighted="True" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" />
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 40 0 0">
+                                        <TextBlock Text="Doctoral Education" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20"/>
+                                    </StackPanel>
+
+                                    <TextBox x:Name="tbSchoolNameDoctoral" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Name of School" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbSchoolAddressDoctoral" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="School Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbDegreeDoctoral" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Degree Earned" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0" VerticalAlignment="Center">
+                                        <TextBlock Text="Date Graduated:" Foreground="DarkSlateGray" FontSize="20" Margin="0 0 20 0" />
+                                        <DatePicker x:Name="dpEduDoctoralDate" FontSize="18" Focusable="False" IsTodayHighlighted="True" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Grid.Column="2" Margin="0 0 20 0">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
+                                        <TextBlock Text="Vocational Education" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20" VerticalAlignment="Center"/>
+                                        <Button x:Name="btnAddVocational" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="20 0" RenderTransformOrigin="0.5,0.5">
+                                            <materialDesign:PackIcon Kind="Add"/>
                                         </Button>
                                     </StackPanel>
-                                    <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="Gender" FontSize="20" Margin="0 10 0 0" />
-                                        <Viewbox Height="25" HorizontalAlignment="Left" Margin="0 5">
-                                            <StackPanel Orientation="Horizontal">
-                                                <RadioButton Content="Male" Margin="0 0 20 0"/>
-                                                <RadioButton Content="Female"/>
-                                            </StackPanel>
-                                        </Viewbox>
+
+                                    <TextBox x:Name="tbSchoolNameVocational" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Name of School" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbSchoolAddressVocational" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="School Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbDegreeVocational" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Degree Earned" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0" VerticalAlignment="Center">
+                                        <TextBlock Text="Date Graduated:" Foreground="DarkSlateGray" FontSize="20" Margin="0 0 20 0" />
+                                        <DatePicker x:Name="dpEduVocationalDate" FontSize="18" Focusable="False" IsTodayHighlighted="True" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" />
                                     </StackPanel>
-                                    <ComboBox HorizontalAlignment="Left" FontSize="18">
-                                        <ComboBoxItem>Janitor</ComboBoxItem>
-                                        <ComboBoxItem IsSelected="True">Production</ComboBoxItem>
-                                        <ComboBoxItem>Manager</ComboBoxItem>
-                                    </ComboBox>
-                                    <DatePicker Focusable="False" IsTodayHighlighted="True" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" />
+                                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0 20 0 0">
+                                        <TextBlock Text="Added Vocational Education" Foreground="DarkSlateGray" FontSize="20" Margin="0 10 20 0" />
+                                        <ComboBox x:Name="cbVocationalCollect" HorizontalAlignment="Left" FontSize="20">
+                                            <ComboBoxItem IsSelected="True">Education 1</ComboBoxItem>
+                                            <ComboBoxItem>Education 2</ComboBoxItem>
+                                            <ComboBoxItem>Education 3</ComboBoxItem>
+                                        </ComboBox>
+                                    </StackPanel>
                                 </StackPanel>
                             </Grid>
                         </ScrollViewer>
                     </Border>
                 </TabItem>
                 <TabItem Header="TRAININGS / EXPERIENCES">
-                    <Border Margin="30 10" HorizontalAlignment="Center">
+                    <Border Margin="30 10 30 30" HorizontalAlignment="Center" Background="#ECEFF1" Padding="30 30 30 10" CornerRadius="40">
+                        <Border.Effect>
+                            <DropShadowEffect Color="Black" Direction="-50" ShadowDepth="20" Opacity="0.3"/>
+                        </Border.Effect>
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="auto" />
-                                    <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
-                                <StackPanel Orientation="Vertical" Margin="0 0 40 0">
-                                    <TextBox  HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="First Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox  HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Middle Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox  HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Last Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox  HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Nationality" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox  HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Religion" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                </StackPanel>
-                                <StackPanel Grid.Column="1">
-                                    <TextBox  HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Present Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <TextBox  HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Permanent Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBox  HorizontalAlignment="Left" Width="200" Margin="0 5 40 5" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                        <TextBox  HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Contact Number" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBox  HorizontalAlignment="Left" Width="200" Margin="0 5 10 5" materialDesign:HintAssist.Hint="Employee ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                                        <Button Style="{DynamicResource MaterialDesignFloatingActionButton}">
-                                            <materialDesign:PackIcon Kind="Magic" Height="25" Width="25"/>
+                                <StackPanel Margin="0 0 40 0">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
+                                        <TextBlock Text="Working Experience" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20" VerticalAlignment="Center"/>
+                                        <Button x:Name="btnAddWorkExp" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="20 0" RenderTransformOrigin="0.5,0.5">
+                                            <materialDesign:PackIcon Kind="Add"/>
                                         </Button>
                                     </StackPanel>
-                                    <StackPanel Orientation="Vertical">
-                                        <TextBlock Text="Gender" FontSize="20" Margin="0 10 0 0" />
-                                        <Viewbox Height="25" HorizontalAlignment="Left" Margin="0 5">
-                                            <StackPanel Orientation="Horizontal">
-                                                <RadioButton Content="Male" Margin="0 0 20 0"/>
-                                                <RadioButton Content="Female"/>
-                                            </StackPanel>
-                                        </Viewbox>
+
+                                    <TextBox x:Name="tbDesignation" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Designation" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbCompanyName" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Company Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbComanyLocation" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Company Location" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Orientation="Vertical" Margin="0 20 0 0" VerticalAlignment="Center">
+                                            <TextBlock Text="Date Started:" Foreground="DarkSlateGray" FontSize="20" Margin="0 0 20 0" />
+                                            <DatePicker x:Name="dpWorkStart" FontSize="18" Focusable="False" IsTodayHighlighted="True" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" />
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="70 20 0 0">
+                                            <TextBlock Text="Date Ended:" Foreground="DarkSlateGray" FontSize="20" Margin="0 0 20 0" />
+                                            <DatePicker x:Name="dpWorkEnd" FontSize="18" Focusable="False" IsTodayHighlighted="True" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" />
+                                        </StackPanel>
                                     </StackPanel>
-                                    <ComboBox HorizontalAlignment="Left" FontSize="18">
-                                        <ComboBoxItem>Janitor</ComboBoxItem>
-                                        <ComboBoxItem IsSelected="True">Production</ComboBoxItem>
-                                        <ComboBoxItem>Manager</ComboBoxItem>
-                                    </ComboBox>
-                                    <DatePicker Focusable="False" IsTodayHighlighted="True" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top" Width="115" />
+
+                                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0 20 0 0">
+                                        <TextBlock Text="Added Working Experience" Foreground="DarkSlateGray" FontSize="20" Margin="0 10 20 0" />
+                                        <ComboBox x:Name="cbWorkCollection" HorizontalAlignment="Left" FontSize="20">
+                                            <ComboBoxItem IsSelected="True">Work 1</ComboBoxItem>
+                                            <ComboBoxItem>Work 2</ComboBoxItem>
+                                            <ComboBoxItem>Work 3</ComboBoxItem>
+                                        </ComboBox>
+                                    </StackPanel>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Grid.Column="1" Margin="0 0 20 0">
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
+                                        <TextBlock Text="Trainings and Seminars" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20" VerticalAlignment="Center"/>
+                                        <Button x:Name="btnAddTrainings" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="20 0" RenderTransformOrigin="0.5,0.5">
+                                            <materialDesign:PackIcon Kind="Add"/>
+                                        </Button>
+                                    </StackPanel>
+
+                                    <TextBox x:Name="tbTitle" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Title" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbInstitution" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Institution" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbLocation" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Location" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <StackPanel Orientation="Horizontal" Margin="0 20 0 0" VerticalAlignment="Center">
+                                        <TextBlock Text="Date Finished:" Foreground="DarkSlateGray" FontSize="20" Margin="0 0 20 0" />
+                                        <DatePicker x:Name="dpTrainingFinished" FontSize="18" Focusable="False" IsTodayHighlighted="True" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Width="125" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0 20 0 0">
+                                        <TextBlock Text="Added Trainings" Foreground="DarkSlateGray" FontSize="20" Margin="0 10 20 0" />
+                                        <ComboBox x:Name="cbTrainingCollection" HorizontalAlignment="Left" FontSize="20">
+                                            <ComboBoxItem IsSelected="True">Training 1</ComboBoxItem>
+                                            <ComboBoxItem>Training 1</ComboBoxItem>
+                                            <ComboBoxItem>Training 1</ComboBoxItem>
+                                        </ComboBox>
+                                    </StackPanel>
                                 </StackPanel>
                             </Grid>
                         </ScrollViewer>
