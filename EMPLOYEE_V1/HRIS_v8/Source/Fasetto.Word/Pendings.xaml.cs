@@ -16,15 +16,17 @@ using System.Windows.Shapes;
 namespace Fasetto.Word
 {
     /// <summary>
-    /// Interaction logic for Profile.xaml
+    /// Interaction logic for Pendings.xaml
     /// </summary>
-    public partial class Profile : Window
+    public partial class Pendings : Window
     {
         UserItem mitem = new UserItem();
-        public Profile(UserItem item)
+
+        public Pendings(UserItem item)
         {
             InitializeComponent();
             mitem = item;
+      
         }
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
         {
@@ -33,14 +35,18 @@ namespace Fasetto.Word
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            StaticPendingList.staticPendingList.Clear();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            empname.Text = mitem._FNAME+" "+mitem._MNAME+" "+mitem._LNAME;
-            empnumber.Text = mitem._EMPNO;
-            empemail.Text = mitem._EMAIL;
-            emppos.Text = mitem._POSITION;
+            UserPending pitem = new UserPending();
+            pitem.GetPending(mitem._EMPID);
+          
+            pending.ItemsSource = StaticPendingList.staticPendingList;
+
+            total.Content = StaticPendingList.staticPendingList.Count; 
+
         }
     }
 }

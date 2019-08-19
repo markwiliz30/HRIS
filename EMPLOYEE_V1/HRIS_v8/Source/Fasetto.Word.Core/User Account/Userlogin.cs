@@ -38,17 +38,8 @@ namespace Fasetto.Word.Core
                     item._FNAME = (string)reader["FIRST_NAME"];
                     item._LNAME = (string)reader["LAST_NAME"];
                     item._EMPPASSWORD = (string)reader["EMP_PASSWORD"];
-                    item._GENDER = (string)reader["GENDER"];
-                    item._BIRTHDAY = (string)reader["BIRTHDAY"];
-                    item._NATIONALITY = (string)reader["NATIONALITY"];
-                    item._PASSPORT = (string)reader["PASSPORT"];
-                    item._RELIGION = (string)reader["RELIGION"];
-                    item._BIRTHPLACE = (string)reader["BIRTH_PLACE"];
-                    item._STATUS = (string)reader["EMP_STATUS"];
                     item._EMAIL = (string)reader["EMAIL_ADDRESS"];
-                    item._CONTACT = (string)reader["CONTACT"];
-                    item._PREADD = (string)reader["PRESENT_ADDRESS"];
-                    item._PERADD = (string)reader["PERMANENT_ADDRESS"];
+                    item._POSITION = (string)reader["POS_NAME"];
                     //item._DATEJOINED = (string)reader["DATE_JOINED"];
                     //item._ENDPROVISION = (string)reader["END_PROVISION"];
                 }

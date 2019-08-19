@@ -32,8 +32,6 @@ namespace Fasetto.Word.Core
                     var item = new AttendanceItem();
 
                     item.FNAME = (string)reader["FIRST_NAME"];
-                    item.MNAME = (string)reader["MIDDLE_NAME"];
-                    item.LNAME = (string)reader["LAST_NAME"];
                     item.TIMEIN = (string)reader["TIME_IN"];
                     item.TIMEOUT = (string)reader["TIME_OUT"];
                     item.DATE = (string)reader["LOG_DATE"];

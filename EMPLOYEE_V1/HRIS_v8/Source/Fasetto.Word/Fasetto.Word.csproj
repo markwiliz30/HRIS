@@ -84,6 +84,12 @@
     <Compile Include="Animation\PageAnimation.cs" />
     <Compile Include="Animation\PageAnimations.cs" />
     <Compile Include="Animation\StoryboardHelpers.cs" />
+    <Compile Include="Approval.xaml.cs">
+      <DependentUpon>Approval.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApprovalModal.xaml.cs">
+      <DependentUpon>ApprovalModal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AttachedProperties\BaseAttachedProperty.cs" />
     <Compile Include="AttachedProperties\ButtonAttachedProperty.cs" />
     <Compile Include="AttachedProperties\FrameworkElementAnimationAttachedProperties.cs" />
@@ -127,6 +133,9 @@
     <Compile Include="Pages\TimeIn_Out.xaml.cs">
       <DependentUpon>TimeIn_Out.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pendings.xaml.cs">
+      <DependentUpon>Pendings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Profile.xaml.cs">
       <DependentUpon>Profile.xaml</DependentUpon>
     </Compile>
@@ -145,6 +154,14 @@
     <Compile Include="ViewModels\HRISWindowViewModel.cs" />
     <Compile Include="ViewModels\WindowViewModel.cs" />
     <Compile Include="Window\WindowResizer.cs" />
+    <Page Include="Approval.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ApprovalModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Attendance.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -194,6 +211,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\TimeIn_Out.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pendings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

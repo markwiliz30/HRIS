@@ -36,10 +36,10 @@ namespace Fasetto.Word
             //    MessageBox.Show("Please input User and Password");
             //}
             var user = myLogin.RetrieveUser(tbUserName.Text , pbPassword.Password);
-
+            
             if(user != null)
             {
-                MessageBox.Show(user._FNAME.ToString());
+            
                 parentWindow.Hide();
                parentWindow.Visibility = Visibility.Hidden;
                   Time mw = new Time(user);

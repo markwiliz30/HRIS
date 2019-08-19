@@ -121,12 +121,26 @@ namespace Fasetto.Word
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             
-            var parentWindow2 = Window.GetWindow(this);
+            if(mitem._POSITION == "Technician")
+            {
+                var pw = Window.GetWindow(this);
 
-            parentWindow2.Hide();
-            HRISMainWindow mw = new HRISMainWindow(mitem);
-            mw.ShowDialog();
-            parentWindow2.Show();
+                pw.Hide();
+                HeadContainer hc = new HeadContainer(mitem);
+                hc.ShowDialog();
+                pw.Show();
+            }
+            else
+            {
+                var parentWindow2 = Window.GetWindow(this);
+
+                parentWindow2.Hide();
+                HRISMainWindow mw = new HRISMainWindow(mitem);
+                mw.ShowDialog();
+                parentWindow2.Show();
+            }
+
+            
         }
 
 

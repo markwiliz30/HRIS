@@ -61,11 +61,13 @@
     <Compile Include="User Account\AddRequest.cs" />
     <Compile Include="User Account\AttendanceItem.cs" />
     <Compile Include="User Account\GetAttendance.cs" />
+    <Compile Include="User Account\PendingItem.cs" />
     <Compile Include="User Account\RequestItem.cs" />
     <Compile Include="User Account\StaticAttendanceList.cs" />
     <Compile Include="User Account\TimeItem.cs" />
     <Compile Include="User Account\UserItem.cs" />
     <Compile Include="User Account\Userlogin.cs" />
+    <Compile Include="User Account\UserPending.cs" />
     <Compile Include="User Account\UserTime.cs" />
     <Compile Include="ViewModel\ApplicationViewModel.cs" />
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />

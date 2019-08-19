@@ -16,31 +16,44 @@ using System.Windows.Shapes;
 namespace Fasetto.Word
 {
     /// <summary>
-    /// Interaction logic for Profile.xaml
+    /// Interaction logic for Approval.xaml
     /// </summary>
-    public partial class Profile : Window
+    
+    public partial class Approval : Window
     {
         UserItem mitem = new UserItem();
-        public Profile(UserItem item)
+        public Approval(UserItem item)
         {
             InitializeComponent();
+
             mitem = item;
         }
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }
+
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            StaticApprovalList.staticApprovalList.Clear();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            empname.Text = mitem._FNAME+" "+mitem._MNAME+" "+mitem._LNAME;
-            empnumber.Text = mitem._EMPNO;
-            empemail.Text = mitem._EMAIL;
-            emppos.Text = mitem._POSITION;
+
+            UserPending pitem = new UserPending();
+            pitem.RetrievePending();
+
+            approval.ItemsSource = StaticApprovalList.staticApprovalList;
+            total.Content = StaticApprovalList.staticApprovalList.Count;
+        }
+
+        private void Approval_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+            var main = Window.GetWindow(this);
+            main.Hide();
+
         }
     }
-}

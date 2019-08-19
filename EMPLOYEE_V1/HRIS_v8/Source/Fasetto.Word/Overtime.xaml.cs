@@ -60,13 +60,27 @@ namespace Fasetto.Word
                 item.TIME_FROM = fromTime.Text;
                 item.TIME_TO = toTime.Text;
 
+                PendingItem pitem = new PendingItem();
+
+                pitem.EMPID = mitem._EMPID;
+                pitem.PENDING_TYPE = "Overtime";
+                pitem.PENDING_STATUS = "Waiting for Approval";
+                pitem.PENDING_DATE = DateTime.Now.ToString("MM/dd/yyyy");
+                pitem.PENDING_POSITION = mitem._POSITION; ;
+
                 addOT(item);
+                addPend(pitem);
                 clear();
                 MessageBox.Show("Request sent!");
                 this.Close();
             }
 
             
+        }
+        private void addPend(PendingItem newitem)
+        {
+            UserPending upend = new UserPending();
+            upend.AddPending(newitem);
         }
         private void addOT(RequestItem newitem)
         {

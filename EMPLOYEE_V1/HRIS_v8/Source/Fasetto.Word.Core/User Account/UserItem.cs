@@ -26,6 +26,7 @@ namespace Fasetto.Word.Core
         public string _PREADD { get; set; }
         public string _PERADD { get; set; }
         public string _DATEJOINED { get; set; }
-        public string _ENDPROVISION { get; set; }   
+        public string _ENDPROVISION { get; set; }  
+        public string _POSITION { get; set; }
     }
 }

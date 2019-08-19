@@ -78,5 +78,14 @@ namespace Fasetto.Word
             this.Close();
 
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var main = Window.GetWindow(this);
+            main.Hide();
+            Pendings pendings = new Pendings(mitem);
+            pendings.ShowDialog();
+            main.Close();
+        }
     }
 }

@@ -38,6 +38,7 @@ namespace Fasetto.Word
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            StaticAttendanceList.staticAttendanceList.Clear();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -47,8 +48,6 @@ namespace Fasetto.Word
 
             attendance.ItemsSource = StaticAttendanceList.staticAttendanceList;
            
-            
-
         }
     }
 }

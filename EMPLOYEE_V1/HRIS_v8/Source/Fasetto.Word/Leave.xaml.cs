@@ -60,7 +60,17 @@ namespace Fasetto.Word
                 item.LEAVE_START = fromDate.Text;
                 item.LEAVE_END = toDate.Text;
 
+                PendingItem pitem = new PendingItem();
+
+                pitem.EMPID = mitem._EMPID;
+                pitem.PENDING_TYPE = "Leave";
+                pitem.PENDING_STATUS = "Waiting for Approval";
+                pitem.PENDING_DATE = DateTime.Now.ToString("MM/dd/yyyy");
+                pitem.PENDING_POSITION = mitem._POSITION;
+
+
                 Addleave(item);
+                addPend(pitem);
                 ClearInputs();
 
                 MessageBox.Show("Request sent!");
@@ -69,6 +79,11 @@ namespace Fasetto.Word
 
            
          
+        }
+        private void addPend(PendingItem newitem)
+        {
+            UserPending upend = new UserPending();
+            upend.AddPending(newitem);
         }
         private void Addleave(RequestItem newitem)
         {
