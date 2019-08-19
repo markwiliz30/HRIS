@@ -233,8 +233,11 @@
                                 <StackPanel Orientation="Vertical" Grid.Column="2" Margin="0 0 20 0">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
                                         <TextBlock Text="Vocational Education" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20" VerticalAlignment="Center"/>
-                                        <Button x:Name="btnAddVocational" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="20 0" RenderTransformOrigin="0.5,0.5" Click="BtnAddVocational_Click">
+                                        <Button x:Name="btnAddVocational" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="20 0 0 0" RenderTransformOrigin="0.5,0.5" Click="BtnAddVocational_Click">
                                             <materialDesign:PackIcon x:Name="btnVocAdd" Kind="Add"/>
+                                        </Button>
+                                        <Button x:Name="btnSaveVocational" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="10 0" RenderTransformOrigin="0.5,0.5" Click="BtnSaveVocational_Click" Visibility="Collapsed">
+                                            <materialDesign:PackIcon x:Name="btnVocSave" Kind="ContentSave"/>
                                         </Button>
                                     </StackPanel>
 
@@ -268,12 +271,15 @@
                                 <StackPanel Margin="0 0 40 0">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
                                         <TextBlock Text="Working Experience" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20" VerticalAlignment="Center"/>
-                                        <Button x:Name="btnAddWorkExp" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="20 0" RenderTransformOrigin="0.5,0.5">
-                                            <materialDesign:PackIcon Kind="Add"/>
+                                        <Button x:Name="btnAddWorkExp" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="10 0 0 0" RenderTransformOrigin="0.5,0.5" Click="BtnAddWorkExp_Click">
+                                            <materialDesign:PackIcon x:Name="btnWorkAdd" Kind="Add"/>
+                                        </Button>
+                                        <Button x:Name="btnSaveWorkExp" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="10 0" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Click="BtnSaveWorkExp_Click">
+                                            <materialDesign:PackIcon Kind="ContentSave"/>
                                         </Button>
                                     </StackPanel>
 
-                                    <TextBox x:Name="tbDesignation" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Designation" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbDesignation" HorizontalAlignment="Left" Width="250" Margin="0,5" materialDesign:HintAssist.Hint="Designation" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
                                     <TextBox x:Name="tbCompanyName" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Company Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
                                     <TextBox x:Name="tbComanyLocation" HorizontalAlignment="Left" Width="440" Margin="0,5" materialDesign:HintAssist.Hint="Company Location" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
 
@@ -291,18 +297,17 @@
 
                                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0 20 0 0">
                                         <TextBlock Text="Added Working Experience" Foreground="DarkSlateGray" FontSize="20" Margin="0 10 20 0" />
-                                        <ComboBox x:Name="cbWorkCollection" HorizontalAlignment="Left" FontSize="20">
-                                            <ComboBoxItem IsSelected="True">Work 1</ComboBoxItem>
-                                            <ComboBoxItem>Work 2</ComboBoxItem>
-                                            <ComboBoxItem>Work 3</ComboBoxItem>
-                                        </ComboBox>
+                                        <ComboBox x:Name="cbWorkCollection" DisplayMemberPath="_EXP_HOLDER" HorizontalAlignment="Left" FontSize="20" Width="130" SelectionChanged="CbWorkCollection_SelectionChanged"/>
                                     </StackPanel>
                                 </StackPanel>
                                 <StackPanel Orientation="Vertical" Grid.Column="1" Margin="0 0 20 0">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
                                         <TextBlock Text="Trainings and Seminars" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20" VerticalAlignment="Center"/>
-                                        <Button x:Name="btnAddTrainings" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="20 0" RenderTransformOrigin="0.5,0.5">
+                                        <Button x:Name="btnAddTrainings" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="20 0 0 0" RenderTransformOrigin="0.5,0.5">
                                             <materialDesign:PackIcon Kind="Add"/>
+                                        </Button>
+                                        <Button x:Name="btnSaveTrainings" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="10 0" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                                            <materialDesign:PackIcon Kind="ContentSave"/>
                                         </Button>
                                     </StackPanel>
 
@@ -315,11 +320,8 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0 20 0 0">
                                         <TextBlock Text="Added Trainings" Foreground="DarkSlateGray" FontSize="20" Margin="0 10 20 0" />
-                                        <ComboBox x:Name="cbTrainingCollection" HorizontalAlignment="Left" FontSize="20">
-                                            <ComboBoxItem IsSelected="True">Training 1</ComboBoxItem>
-                                            <ComboBoxItem>Training 1</ComboBoxItem>
-                                            <ComboBoxItem>Training 1</ComboBoxItem>
-                                        </ComboBox>
+                                        <ComboBox x:Name="cbTrainingCollection" Width="130" HorizontalAlignment="Left" FontSize="20" /> 
+
                                     </StackPanel>
                                 </StackPanel>
                             </Grid>

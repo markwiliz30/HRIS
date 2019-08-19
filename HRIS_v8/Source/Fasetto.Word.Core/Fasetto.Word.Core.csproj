@@ -65,6 +65,8 @@
     <Compile Include="Employee\EmployeeCollection.cs" />
     <Compile Include="Employee\EmployeeItem.cs" />
     <Compile Include="Employee\EmployeeManager.cs" />
+    <Compile Include="Employee\Experience\ExperienceItem.cs" />
+    <Compile Include="Employee\Experience\ExperienceManager.cs" />
     <Compile Include="Employee\StaticEmpoyeeCollection.cs" />
     <Compile Include="Expressions\ExpressionHelpers.cs" />
     <Compile Include="IoC\IoC.cs" />
