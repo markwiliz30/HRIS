@@ -12,7 +12,7 @@ namespace Fasetto.Word.Core
     {
         public void AddPending(PendingItem item)
         {
-            using(var db = DBConnection.CreateConnection())
+            using (var db = DBConnection.CreateConnection())
             {
                 db.Open();
 
@@ -31,7 +31,7 @@ namespace Fasetto.Word.Core
 
         public void GetPending(int empid)
         {
-            using(var db = DBConnection.CreateConnection())
+            using (var db = DBConnection.CreateConnection())
             {
                 db.Open();
 
@@ -60,7 +60,7 @@ namespace Fasetto.Word.Core
             }
         }
 
-        public void RetrievePending()
+        public void RetrievePending(int id)
         {
             using (var db = DBConnection.CreateConnection())
             {
@@ -69,6 +69,7 @@ namespace Fasetto.Word.Core
                 var sql = "dbo.GET_HEAD_APPROVAL";
                 var cmd = new SqlCommand(sql, db);
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@EMP_ID", id));
                 var reader = cmd.ExecuteReader();
 
                 if (!reader.HasRows)
@@ -78,6 +79,7 @@ namespace Fasetto.Word.Core
                 while (reader.Read())
                 {
                     var item = new PendingItem();
+                    item.EMPID = (int)reader["EMP_ID"];
                     item.PENDING_NAME = (string)reader["FIRST_NAME"];
                     item.PENDING_TYPE = (string)reader["PENDING_TYPE"];
                     item.PENDING_STATUS = (string)reader["PENDING_STATUS"];
@@ -87,6 +89,90 @@ namespace Fasetto.Word.Core
 
                 }
                 db.Close();
+            }
+        }
+        public void SpecificPendingLeave(int id, string type)
+        {
+            using (var db = DBConnection.CreateConnection())
+            {
+                db.Open();
+                var sql = "dbo.GET_SPECIFIC_PENDING";
+                var cmd = new SqlCommand(sql, db);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@EMP_ID", id));
+                cmd.Parameters.Add(new SqlParameter("@PENDING_TYPE", type));
+                var reader = cmd.ExecuteReader();
+
+                if (!reader.HasRows)
+                {
+                    return;
+                }
+                while (reader.Read())
+                {
+                    var item = new PendingItem();
+                    item.EMPID = (int)reader["EMP_ID"];
+                    item.PENDING_NAME = (string)reader["FIRST_NAME"];
+                    item.PENDING_TYPE = (string)reader["PENDING_TYPE"];
+                    item.PENDING_STATUS = (string)reader["PENDING_STATUS"];
+                    item.PENDING_DATE = (string)reader["PENDING_DATE"];
+                    item.PENDING_POSITION = (string)reader["PENDING_POSITION"];
+                    item.PENDING_LEAVE_FROM = (string)reader["LEAVE_START"];
+                    item.PENDING_LEAVE_TO = (string)reader["LEAVE_END"];
+                    item.PENDING_LEAVE_REASON = (string)reader["REASON"];
+
+                    StaticApprovalItem.staticApprovalModalItem = item;
+                }
+                db.Close();
+            }
+        }
+        public void SpecificPendingOT(int id, string type)
+        {
+            using (var db = DBConnection.CreateConnection())
+            {
+                db.Open();
+                var sql = "dbo.GET_SPECIFIC_PENDING";
+                var cmd = new SqlCommand(sql, db);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@EMP_ID", id));
+                cmd.Parameters.Add(new SqlParameter("@PENDING_TYPE", type));
+                var reader = cmd.ExecuteReader();
+
+                if (!reader.HasRows)
+                {
+                    return;
+                }
+                while (reader.Read())
+                {
+                    var item = new PendingItem();
+                    item.EMPID = (int)reader["EMP_ID"];
+                    item.PENDING_NAME = (string)reader["FIRST_NAME"];
+                    item.PENDING_TYPE = (string)reader["PENDING_TYPE"];
+                    item.PENDING_STATUS = (string)reader["PENDING_STATUS"];
+                    item.PENDING_DATE = (string)reader["PENDING_DATE"];
+                    item.PENDING_POSITION = (string)reader["PENDING_POSITION"];
+                    item.PENDING_OT_FROM = (string)reader["TIME_FROM"];
+                    item.PENDING_OT_TO = (string)reader["TIME_TO"];
+                    item.PENDING_OT_REASON = (string)reader["OT_REASON"];
+                    StaticApprovalItem.staticApprovalModalItem = item;
+                }
+                db.Close();
+            }
+        }
+        public void Approve(string status , string appby , int id) 
+        {
+            using (var db = DBConnection.CreateConnection())
+            {
+                db.Open();
+
+                var sql = "dbo.UPDATE_PENDING";
+                var cmd = new SqlCommand(sql, db);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@PENDING_STATUS", status));
+                cmd.Parameters.Add(new SqlParameter("@APPROVED_BY", appby));
+                cmd.Parameters.Add(new SqlParameter("@EMP_ID", id));
+                cmd.ExecuteNonQuery();
+                db.Close();
+
             }
         }
     }

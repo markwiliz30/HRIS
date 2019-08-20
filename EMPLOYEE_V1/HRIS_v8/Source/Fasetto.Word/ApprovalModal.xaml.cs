@@ -20,11 +20,15 @@ namespace Fasetto.Word
     /// </summary>
     public partial class ApprovalModal : Window
     {
-        PendingItem pitem = new PendingItem();
-        public ApprovalModal(PendingItem item)
+        int idholder;
+        string typeholder;
+        UserItem mitem = new UserItem();
+        public ApprovalModal(UserItem item,int id , string type)
         {
             InitializeComponent();
-            pitem = item;
+            mitem = item;
+            idholder = id;
+            typeholder = type;
         }
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
         {
@@ -32,6 +36,67 @@ namespace Fasetto.Word
         }
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+      
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+            if (typeholder == "Leave")
+            {
+
+                UserPending upend = new UserPending();
+                upend.SpecificPendingLeave(idholder, typeholder);
+
+
+
+
+
+                empname.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_NAME;
+                emptype.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_TYPE;
+                from.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_LEAVE_FROM;
+                to.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_LEAVE_TO;
+                Reason.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_LEAVE_REASON;
+
+            }
+            else
+            {
+
+                UserPending upend = new UserPending();
+                upend.SpecificPendingOT(idholder, typeholder);
+
+
+
+                empname.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_NAME;
+                emptype.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_TYPE;
+                from.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_OT_FROM;
+                to.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_OT_TO;
+                Reason.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_OT_REASON;
+
+            }
+
+
+
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            UserPending upend = new UserPending();
+            string stat = "Approved by Head";
+            int empid = StaticApprovalItem.staticApprovalModalItem.EMPID;
+            upend.Approve(stat, mitem._FNAME, empid);
+            MessageBox.Show("Approved!");
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            UserPending upend = new UserPending();
+            string stat = "Declined by Head";
+            int empid = StaticApprovalItem.staticApprovalModalItem.EMPID;
+            upend.Approve(stat, mitem._FNAME, empid);
+            MessageBox.Show("Declined!");
             this.Close();
         }
     }
