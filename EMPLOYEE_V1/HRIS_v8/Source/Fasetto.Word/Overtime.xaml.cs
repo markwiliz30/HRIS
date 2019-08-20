@@ -44,7 +44,7 @@ namespace Fasetto.Word
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (project.Text == "" || Reasonbox.Text == "" || fromTime.Text == "" || toTime.Text == "")
+            if (project.Text == "" || Reasonbox.Text == "" || Timefrom.Text == "" || TimeTo.Text == "" || toDate.Text == "")
             {
                 MessageBox.Show("Please fill required inputs");
             }
@@ -53,23 +53,23 @@ namespace Fasetto.Word
                 RequestItem item = new RequestItem();
 
                 item.EMP_ID = mitem._EMPID;
-                item.DATE = DateTime.Now.ToString("MM/dd/yyyy");
+                item.DATE = toDate.Text;
                 item.PROJECT = project.Text;
                 item.REASON = Reasonbox.Text;
                 item.STATUS = "Waiting for Approval";
-                item.TIME_FROM = fromTime.Text;
-                item.TIME_TO = toTime.Text;
+                item.TIME_FROM = Timefrom.Text;
+                item.TIME_TO = TimeTo.Text;
 
                 PendingItem pitem = new PendingItem();
 
                 pitem.EMPID = mitem._EMPID;
                 pitem.PENDING_TYPE = "Overtime";
                 pitem.PENDING_STATUS = "Waiting for Approval";
-                pitem.PENDING_DATE = DateTime.Now.ToString("MM/dd/yyyy");
+                pitem.PENDING_DATE = toDate.Text;
                 pitem.PENDING_POSITION = mitem._POSITION; ;
 
                 addOT(item);
-                addPend(pitem);
+                addPend(pitem,Reasonbox.Text);
                 clear();
                 MessageBox.Show("Request sent!");
                 this.Close();
@@ -77,10 +77,10 @@ namespace Fasetto.Word
 
             
         }
-        private void addPend(PendingItem newitem)
+        private void addPend(PendingItem newitem, string reason)
         {
             UserPending upend = new UserPending();
-            upend.AddPending(newitem);
+            upend.AddPending(newitem , reason);
         }
         private void addOT(RequestItem newitem)
         {
@@ -92,8 +92,8 @@ namespace Fasetto.Word
         {
             project.Text = "";
             Reasonbox.Text = "";
-            fromTime.Text = "";
-            toTime.Text = "";
+            Timefrom.Text = "";
+            TimeTo.Text = "";
         }
     }
 }

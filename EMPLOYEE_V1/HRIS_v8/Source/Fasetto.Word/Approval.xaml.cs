@@ -18,10 +18,11 @@ namespace Fasetto.Word
     /// <summary>
     /// Interaction logic for Approval.xaml
     /// </summary>
-    
+
     public partial class Approval : Window
     {
         UserItem mitem = new UserItem();
+        UserPending pitem = new UserPending();
         public Approval(UserItem item)
         {
             InitializeComponent();
@@ -42,18 +43,31 @@ namespace Fasetto.Word
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            UserPending pitem = new UserPending();
-            pitem.RetrievePending();
+            
+            pitem.RetrievePending(mitem._EMPID);
 
             approval.ItemsSource = StaticApprovalList.staticApprovalList;
             total.Content = StaticApprovalList.staticApprovalList.Count;
         }
-
+        string id;
+            string type;
         private void Approval_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            object item2 = approval.SelectedItem;
+            
+            id = (approval.SelectedCells[0].Column.GetCellContent(item2) as TextBlock).Text;
+            int idparse = Int32.Parse(id);
+            type = (approval.SelectedCells[2].Column.GetCellContent(item2) as TextBlock).Text;
 
-            var main = Window.GetWindow(this);
+            Window main = GetWindow(this);
             main.Hide();
+            ApprovalModal app = new ApprovalModal(mitem,idparse , type);
+            app.ShowDialog();
+            main.Close();
+            StaticApprovalList.staticApprovalList.Clear();
+
 
         }
     }
+
+}

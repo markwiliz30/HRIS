@@ -44,7 +44,7 @@ namespace Fasetto.Word
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
-            if(type1.IsChecked == false && type2.IsChecked == false && type3.IsChecked == false || Reason.Text == "" || fromDate.Text == "" || toDate.Text == "")
+            if(type1.IsChecked == false && type2.IsChecked == false && type3.IsChecked == false && type4.IsChecked == false && type5.IsChecked == false || Reason.Text == "" || fromDate.Text == "" || toDate.Text == "")
             {
                 MessageBox.Show("Please fill all required Inputs");
             }
@@ -64,13 +64,14 @@ namespace Fasetto.Word
 
                 pitem.EMPID = mitem._EMPID;
                 pitem.PENDING_TYPE = "Leave";
+                pitem.PENDING_LEAVE_REASON = Reason.Text;
                 pitem.PENDING_STATUS = "Waiting for Approval";
                 pitem.PENDING_DATE = DateTime.Now.ToString("MM/dd/yyyy");
                 pitem.PENDING_POSITION = mitem._POSITION;
 
 
                 Addleave(item);
-                addPend(pitem);
+                addPend(pitem,Reason.Text);
                 ClearInputs();
 
                 MessageBox.Show("Request sent!");
@@ -80,10 +81,10 @@ namespace Fasetto.Word
            
          
         }
-        private void addPend(PendingItem newitem)
+        private void addPend(PendingItem newitem , string reason)
         {
             UserPending upend = new UserPending();
-            upend.AddPending(newitem);
+            upend.AddPending(newitem,reason);
         }
         private void Addleave(RequestItem newitem)
         {
@@ -106,6 +107,8 @@ namespace Fasetto.Word
         {
             type2.IsChecked = false;
             type3.IsChecked = false;
+            type4.IsChecked = false;
+            type5.IsChecked = false;
             lastcheckcontent = type1.Content.ToString();
         }
 
@@ -113,14 +116,34 @@ namespace Fasetto.Word
         {
             type1.IsChecked = false;
             type3.IsChecked = false;
+            type4.IsChecked = false;
+            type5.IsChecked = false;
             lastcheckcontent = type2.Content.ToString();
         }
 
         private void Type3_Checked(object sender, RoutedEventArgs e)
         {
-            type2.IsChecked = false;
             type1.IsChecked = false;
+            type2.IsChecked = false;
+            type4.IsChecked = false;
+            type5.IsChecked = false;
             lastcheckcontent = type3.Content.ToString();
+        }
+             private void Type4_Checked(object sender, RoutedEventArgs e)
+        {
+            type1.IsChecked = false;
+            type2.IsChecked = false;
+            type3.IsChecked = false;
+            type5.IsChecked = false;
+            lastcheckcontent = type4.Content.ToString();
+        }
+        private void Type5_Checked(object sender, RoutedEventArgs e)
+        {
+            type1.IsChecked = false;
+            type2.IsChecked = false;
+            type3.IsChecked = false;
+            type4.IsChecked = false;
+            lastcheckcontent = type5.Content.ToString();
         }
     }
 

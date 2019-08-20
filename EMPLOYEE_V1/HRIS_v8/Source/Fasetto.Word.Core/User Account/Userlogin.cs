@@ -40,6 +40,7 @@ namespace Fasetto.Word.Core
                     item._EMPPASSWORD = (string)reader["EMP_PASSWORD"];
                     item._EMAIL = (string)reader["EMAIL_ADDRESS"];
                     item._POSITION = (string)reader["POS_NAME"];
+                    item._DEPARTMENT = (string)reader["POS_DEPARTMENT"];
                     //item._DATEJOINED = (string)reader["DATE_JOINED"];
                     //item._ENDPROVISION = (string)reader["END_PROVISION"];
                 }

@@ -63,6 +63,7 @@
     <Compile Include="User Account\GetAttendance.cs" />
     <Compile Include="User Account\PendingItem.cs" />
     <Compile Include="User Account\RequestItem.cs" />
+    <Compile Include="User Account\SpecificItem.cs" />
     <Compile Include="User Account\StaticAttendanceList.cs" />
     <Compile Include="User Account\TimeItem.cs" />
     <Compile Include="User Account\UserItem.cs" />

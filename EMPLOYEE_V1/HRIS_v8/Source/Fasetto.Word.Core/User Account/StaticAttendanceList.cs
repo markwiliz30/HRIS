@@ -18,4 +18,9 @@ namespace Fasetto.Word.Core
     {
         public static ObservableCollection<PendingItem> staticApprovalList = new ObservableCollection<PendingItem>();
     }
+
+    public class StaticApprovalItem
+    {
+        public static PendingItem staticApprovalModalItem = new PendingItem();
+    }
 }
