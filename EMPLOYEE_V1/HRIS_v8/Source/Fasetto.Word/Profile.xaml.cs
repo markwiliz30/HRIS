@@ -37,10 +37,11 @@ namespace Fasetto.Word
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            empname.Text = mitem._FNAME+" "+mitem._MNAME+" "+mitem._LNAME;
-            empnumber.Text = mitem._EMPNO;
-            empemail.Text = mitem._EMAIL;
-            emppos.Text = mitem._POSITION;
+          
+            empno.Text =  mitem._FNAME + " " + mitem._MNAME + " " + mitem._LNAME;
+            empname.Text = mitem._EMPNO;
+            emppos.Text = mitem._POSITION ;
+            empdep.Text = mitem._DEPARTMENT;
         }
     }
 }

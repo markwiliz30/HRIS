@@ -25,22 +25,22 @@
       
     Margin="50"
       Height="auto"  
-      Width="340"  
+      Width="320"  
       StrokeThickness="5"  
       Stroke="#E65100"/>
            
         </Grid>
-        <Border Grid.Row="1" BorderBrush="#E65100" Width="500"  BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12" Padding="15" Margin="15">
-            <TextBlock x:Name="empname" Text="alrasd asd asd" HorizontalAlignment="Center" Foreground="#ffffff" FontSize="25" />
+        <Border Grid.Row="1" BorderBrush="#E65100" Width="500"  BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12" Padding="15" Margin="20">
+            <TextBlock x:Name="empno" Text="" HorizontalAlignment="Center" Foreground="#ffffff" FontSize="18" />
         </Border>
-        <Border Grid.Row="2" BorderBrush="#E65100" Width="500"  BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12" Padding="15" Margin="15">
-            <TextBlock x:Name="empnumber" Text="0115300215" HorizontalAlignment="Center" Foreground="#ffffff" FontSize="25" />
+        <Border Grid.Row="2" BorderBrush="#E65100" Width="500"  BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12" Padding="15" Margin="20">
+            <TextBlock x:Name="empname" Text="" HorizontalAlignment="Center" Foreground="#ffffff" FontSize="18" />
         </Border>
-        <Border Grid.Row="3" BorderBrush="#E65100" Width="500"  BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12" Padding="15" Margin="15">
-            <TextBlock x:Name="emppos" Text="Programmer" HorizontalAlignment="Center" Foreground="#ffffff" FontSize="25" />
+        <Border Grid.Row="3" BorderBrush="#E65100" Width="500"  BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12" Padding="15" Margin="20">
+            <TextBlock x:Name="emppos" Text="" HorizontalAlignment="Center" Foreground="#ffffff" FontSize="18" />
         </Border>
-        <Border Grid.Row="4" BorderBrush="#E65100" Width="500"  BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12" Padding="15" Margin="15">
-            <TextBlock x:Name="empemail" Text="test@lagotronics.com" HorizontalAlignment="Center" Foreground="#ffffff" FontSize="25"/>
+        <Border Grid.Row="4" BorderBrush="#E65100" Width="500"  BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12" Padding="15" Margin="20">
+            <TextBlock x:Name="empdep" Text="" HorizontalAlignment="Center" Foreground="#ffffff" FontSize="18"/>
         </Border>
 
 

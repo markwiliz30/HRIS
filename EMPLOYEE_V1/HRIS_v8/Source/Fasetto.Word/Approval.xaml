@@ -42,11 +42,15 @@
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Employee Name"
                                   Binding="{Binding PENDING_NAME}"      
-                                Width="300" >
+                                Width="250" >
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Type"
                                 Binding="{Binding PENDING_TYPE}"
                                 Width="*"
+                                FontFamily="Times New Roman" />
+                    <DataGridTextColumn Header="Reason"
+                                Binding="{Binding PENDING_REASON}"
+                                Width="180"
                                 FontFamily="Times New Roman" />
                     <DataGridTextColumn Header="Date"
                                 Binding="{Binding PENDING_DATE}"

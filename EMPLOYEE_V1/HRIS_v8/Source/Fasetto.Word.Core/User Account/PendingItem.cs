@@ -8,6 +8,7 @@ namespace Fasetto.Word.Core
 {
    public class PendingItem
     {
+        public int PENDING_ID { get; set; }
         public int EMPID { get; set; }
         public string PENDING_TYPE { get; set; }
 
@@ -16,6 +17,7 @@ namespace Fasetto.Word.Core
         public string PENDING_DATE { get; set; }
         public string PENDING_NAME { get; set; }
 
+        public string  PENDING_REASON { get; set; }
         public string PENDING_POSITION { get; set; }
 
         public string PENDING_LEAVE_FROM { get; set; }

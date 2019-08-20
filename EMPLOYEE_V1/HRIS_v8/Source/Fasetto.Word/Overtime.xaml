@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Fasetto.Word"
         mc:Ignorable="d"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Overtime" Height="450" Width="800" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="Overtime" Height="500" Width="800" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
 
     <Grid Background="#263238">
         <Grid.ColumnDefinitions>
@@ -15,6 +15,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="270" />
             <RowDefinition Height="80" />
@@ -30,16 +31,25 @@
             </StackPanel>
 
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="2">
             <StackPanel Orientation="Horizontal">
-                <Label Content="From:" Margin="50 0 0 0" Foreground="#ECEFF1" FontSize="20"></Label>
-                <TextBox x:Name="fromTime" Width="70" Background="#ECEFF1" Height="30"  FontSize="18" Padding="2 0 0 0"></TextBox>
-                <Label Content="To:" Margin="50 0 0 0" Foreground="#ECEFF1" FontSize="20"></Label>
-                <TextBox x:Name="toTime" Width="70" Background="#ECEFF1" Height="30"  FontSize="18"  Padding="2 0 0 0"></TextBox>
+                <Label Content="Date:" Margin="50 0 0 0" Foreground="#ECEFF1" FontSize="20"></Label>
+                <DatePicker x:Name="toDate" Margin="20 0 0 0" Background="#ECEFF1"  Width="250" Height="30"></DatePicker>
             </StackPanel>
 
         </Grid>
-        <Grid Grid.Row="2" Grid.ColumnSpan="2">
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Label Content="To:" Margin="50 0 0 0" Foreground="#ECEFF1" FontSize="20"></Label>
+            <materialDesign:TimePicker x:Name="TimeTo" Margin="0 0 0 0" Background="#ECEFF1"  Width="150" Height="30"></materialDesign:TimePicker>
+        </Grid>
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+            <Label Content="From:" Margin="50 0 0 0" Foreground="#ECEFF1" FontSize="20"></Label>
+
+            <materialDesign:TimePicker x:Name="Timefrom" Margin="15 0 0 0" Background="#ECEFF1"  Width="150" Height="30"></materialDesign:TimePicker>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="3" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="33*"/>
                 <ColumnDefinition Width="67*"/>
@@ -47,10 +57,10 @@
             <TextBox x:Name="Reasonbox" Padding="10 5 10 0" FontSize="20" TextWrapping="Wrap" VerticalContentAlignment="Top" Height="230" Width="auto"  Margin="20" Background="#ECEFF1" Grid.ColumnSpan="2"></TextBox>
 
         </Grid>
-        <Grid Grid.Row="3" >
+        <Grid Grid.Row="4" >
             <Button Content="Cancel" FontSize="23" Background="#F44336" Height="auto" Width="auto" Margin="20" Click="Button_Click"></Button>
         </Grid>
-        <Grid Grid.Row="3" Grid.Column="1" >
+        <Grid Grid.Row="4" Grid.Column="1" >
             <Button Content="Send" FontSize="23" Background="#009688"  Height="auto" Width="auto" Margin="20" Click="Button_Click_1"></Button>
         </Grid>
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10 3">

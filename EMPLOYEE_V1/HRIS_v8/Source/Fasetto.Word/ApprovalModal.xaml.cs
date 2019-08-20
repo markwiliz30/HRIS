@@ -37,6 +37,7 @@ namespace Fasetto.Word
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+           
         }
       
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -85,7 +86,9 @@ namespace Fasetto.Word
             UserPending upend = new UserPending();
             string stat = "Approved by Head";
             int empid = StaticApprovalItem.staticApprovalModalItem.EMPID;
-            upend.Approve(stat, mitem._FNAME, empid);
+            string type = StaticApprovalItem.staticApprovalModalItem.PENDING_TYPE;
+            string sdate = StaticApprovalItem.staticApprovalModalItem.PENDING_DATE;
+            upend.Approve(stat, mitem._FNAME, empid,type,sdate,Reason.Text);
             MessageBox.Show("Approved!");
             this.Close();
         }
@@ -94,8 +97,10 @@ namespace Fasetto.Word
         {
             UserPending upend = new UserPending();
             string stat = "Declined by Head";
+            string type = StaticApprovalItem.staticApprovalModalItem.PENDING_TYPE;
+            string sdate = StaticApprovalItem.staticApprovalModalItem.PENDING_DATE;
             int empid = StaticApprovalItem.staticApprovalModalItem.EMPID;
-            upend.Approve(stat, mitem._FNAME, empid);
+            upend.Approve(stat, mitem._FNAME, empid,type,sdate,Reason.Text);
             MessageBox.Show("Declined!");
             this.Close();
         }
