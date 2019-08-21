@@ -27,6 +27,7 @@ namespace Fasetto.Word.Core
                 while(reader.Read())
                 {
                     var item = new ExperienceItem();
+                    item._EMP_NO = (string)reader["EMP_NO"];
                     item._DESIGNATION = (string)reader["DESIGNATION"];
                     item._COMPANY = (string)reader["COMPANY"];
                     item._DATE_START = (string)reader["DATE_START"];

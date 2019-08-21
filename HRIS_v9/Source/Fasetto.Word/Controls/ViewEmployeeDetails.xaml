@@ -106,7 +106,7 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 20 0 0">
                                         <TextBlock Text="Employment Status:" Foreground="DarkSlateGray" FontSize="20" Margin="0 10 20 0" />
-                                        <ComboBox x:Name="cbEmpStatus" IsEnabled="False" HorizontalAlignment="Left" FontSize="20" Width="130" />
+                                        <ComboBox x:Name="cbEmpStatus" IsEnabled="False" HorizontalAlignment="Left" FontSize="20" Width="130" SelectionChanged="CbEmpStatus_SelectionChanged" />
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="0 20 0 0" VerticalAlignment="Center">
                                         <TextBlock Text="Date Employed:" Foreground="DarkSlateGray" FontSize="20" Margin="0 0 50 0" />
@@ -312,7 +312,7 @@
                                     </StackPanel>
                                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="0 20 0 0">
                                         <TextBlock Text="Added Trainings" Foreground="DarkSlateGray" FontSize="20" Margin="0 10 20 0" />
-                                        <ComboBox x:Name="cbTrainingCollection" Width="130" SelectedIndex="0" HorizontalAlignment="Left" FontSize="20" />
+                                        <ComboBox x:Name="cbTrainingCollection" DisplayMemberPath="_TRAIN_HOLDER" Width="130" SelectedIndex="0" HorizontalAlignment="Left" FontSize="20" SelectionChanged="CbTrainingCollection_SelectionChanged" />
 
                                     </StackPanel>
                                 </StackPanel>

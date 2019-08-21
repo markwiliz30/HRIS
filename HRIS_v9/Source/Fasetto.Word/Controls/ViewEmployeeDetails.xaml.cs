@@ -4,6 +4,7 @@ using Fasetto.Word.Core;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Fasetto.Word
 {
@@ -12,17 +13,32 @@ namespace Fasetto.Word
     /// </summary>
     public partial class ViewEmployeeDetails : UserControl
     {
-        EducationItem selectedEduItem = new EducationItem();
         ExperienceItem selectedExpItem = new ExperienceItem();
+        TrainingItem selectedTrainItem = new TrainingItem();
 
         EmployeeItem mEmpItem = new EmployeeItem();
         List<EducationItem> mEduList = new List<EducationItem>();
         List<ExperienceItem> mExpList = new List<ExperienceItem>();
         List<TrainingItem> mTrainList = new List<TrainingItem>();
 
-        List<EducationItem> mVocationalEduListToBind = new List<EducationItem>();
-        List<ExperienceItem> mWorkExpToBind = new List<ExperienceItem>();
+        //List<EducationItem> mVocationalEduListToBind = new List<EducationItem>();
+        //List<ExperienceItem> mWorkExpToBind = new List<ExperienceItem>();
+        //List<TrainingItem> mTrainingToBind = new List<TrainingItem>();
 
+        bool editMode = false;
+
+        ObservableCollection<EducationItem> vocationalEduCollection = new ObservableCollection<EducationItem>();
+        ObservableCollection<ExperienceItem> workExpCollection = new ObservableCollection<ExperienceItem>();
+        ObservableCollection<TrainingItem> trainCollection = new ObservableCollection<TrainingItem>();
+
+        EducationItem selectedPrimaryEdu = new EducationItem();
+        EducationItem selectedSecondaryEdu = new EducationItem();
+        EducationItem selectedTertiaryEdu = new EducationItem();
+        EducationItem selectedMasteralEdu = new EducationItem();
+        EducationItem selectedDoctoralEdu = new EducationItem();
+        EducationItem selectedVocationalEdu = new EducationItem();
+
+        string selectedEmpStatus;
         public ViewEmployeeDetails(EmployeeItem empItem, List<EducationItem> eduList, List<ExperienceItem> expList, List<TrainingItem> trainList)
         {
             InitializeComponent();
@@ -95,35 +111,39 @@ namespace Fasetto.Word
 
         private void displayEducationDetails(List<EducationItem> eduList)
         {
-            foreach (var item in eduList)
+            if (eduList != null)
             {
-                switch (item._EDU_LEVEL)
+                foreach (var item in eduList)
                 {
-                    case "Primary":
-                        displayPrimaryEducation(item);
-                        break;
-                    case "Secondary":
-                        displaySecondaryEducation(item);
-                        break;
-                    case "Tertiary":
-                        displayTertiaryEducation(item);
-                        break;
-                    case "Masteral":
-                        displayMasteralEducation(item);
-                        break;
-                    case "Doctoral":
-                        displayDoctoralEducation(item);
-                        break;
-                    case "Vocational":
-                        setVocationalEducations(item);
-                        break;
+                    switch (item._EDU_LEVEL)
+                    {
+                        case "Primary":
+                            displayPrimaryEducation(item);
+                            break;
+                        case "Secondary":
+                            displaySecondaryEducation(item);
+                            break;
+                        case "Tertiary":
+                            displayTertiaryEducation(item);
+                            break;
+                        case "Masteral":
+                            displayMasteralEducation(item);
+                            break;
+                        case "Doctoral":
+                            displayDoctoralEducation(item);
+                            break;
+                        case "Vocational":
+                            setVocationalEducations(item);
+                            break;
+                    }
                 }
+                cbVocationalCollect.ItemsSource = vocationalEduCollection;
             }
-            cbVocationalCollect.ItemsSource = mVocationalEduListToBind;
         }
 
         private void displayPrimaryEducation(EducationItem item)
         {
+            selectedPrimaryEdu = item;
             tbSchoolNamePrimary.Text = item._EDU_SCHOOL_NAME;
             tbSchoolAddressPrimary.Text = item._EDU_SCHOOL_ADDRESS;
             dpEduPrimaryDate.SelectedDate = DateTime.Parse(item._EDU_DATE_GRADUATED);
@@ -131,6 +151,7 @@ namespace Fasetto.Word
 
         private void displaySecondaryEducation(EducationItem item)
         {
+            selectedSecondaryEdu = item;
             tbSchoolNameSecondary.Text = item._EDU_SCHOOL_NAME;
             tbSchoolAddressSecondary.Text = item._EDU_SCHOOL_ADDRESS;
             dpEduSecondaryDate.SelectedDate = DateTime.Parse(item._EDU_DATE_GRADUATED);
@@ -138,6 +159,7 @@ namespace Fasetto.Word
 
         private void displayTertiaryEducation(EducationItem item)
         {
+            selectedTertiaryEdu = item;
             tbSchoolNameTertiary.Text = item._EDU_SCHOOL_NAME;
             tbSchoolAddressTertiary.Text = item._EDU_SCHOOL_ADDRESS;
             tbDegreeTertiary.Text = item._EDU_DEGREE_EARNED;
@@ -146,6 +168,7 @@ namespace Fasetto.Word
 
         private void displayMasteralEducation(EducationItem item)
         {
+            selectedMasteralEdu = item;
             tbSchoolNameMasteral.Text = item._EDU_SCHOOL_NAME;
             tbSchoolAddressMasteral.Text = item._EDU_SCHOOL_ADDRESS;
             tbDegreeMasteral.Text = item._EDU_DEGREE_EARNED;
@@ -154,6 +177,7 @@ namespace Fasetto.Word
 
         private void displayDoctoralEducation(EducationItem item)
         {
+            selectedDoctoralEdu = item;
             tbSchoolNameDoctoral.Text = item._EDU_SCHOOL_NAME;
             tbSchoolAddressDoctoral.Text = item._EDU_SCHOOL_ADDRESS;
             tbDegreeDoctoral.Text = item._EDU_DEGREE_EARNED;
@@ -162,48 +186,37 @@ namespace Fasetto.Word
 
         private void setVocationalEducations(EducationItem item)
         {
-            var vocEduItem = new EducationItem();
-            vocEduItem._EDU_SCHOOL_NAME = item._EDU_SCHOOL_NAME;
-            vocEduItem._EDU_SCHOOL_ADDRESS = item._EDU_SCHOOL_ADDRESS;
-            vocEduItem._EDU_DEGREE_EARNED = item._EDU_DEGREE_EARNED;
-            vocEduItem._EDU_DATE_GRADUATED = item._EDU_DATE_GRADUATED;
-            vocEduItem._EDU_HOLDER = "Vocational " + (mVocationalEduListToBind.Count + 1);
+            item._EDU_HOLDER = "Vocational " + (vocationalEduCollection.Count + 1);
 
-            mVocationalEduListToBind.Add(vocEduItem);
+            vocationalEduCollection.Add(item);
         }
 
         private void displayExperieceDetails(List<ExperienceItem> expList)
         {
-            foreach (var item in expList)
+            if (expList != null)
             {
-                var mItem = new ExperienceItem();
-                mItem._DESIGNATION = item._DESIGNATION;
-                mItem._COMPANY = item._COMPANY;
-                mItem._WORK_LOCATION = item._WORK_LOCATION;
-                mItem._DATE_START = item._DATE_START;
-                mItem._DATE_END = item._DATE_END;
-                mItem._EXP_HOLDER = "Job " + (mWorkExpToBind.Count + 1);
+                foreach (var item in expList)
+                {
+                    item._EXP_HOLDER = "Job " + (workExpCollection.Count + 1);
 
-                mWorkExpToBind.Add(mItem);
+                    workExpCollection.Add(item);
+                }
+                cbWorkCollection.ItemsSource = workExpCollection;
             }
-            cbWorkCollection.ItemsSource = mWorkExpToBind;
         }
 
         private void displayTrainingDetails(List<TrainingItem> trainList)
         {
-            //foreach (var item in trainList)
-            //{
-            //    var mItem = new TrainingItem();
-            //    mItem._DESIGNATION = item._DESIGNATION;
-            //    mItem._COMPANY = item._COMPANY;
-            //    mItem._WORK_LOCATION = item._WORK_LOCATION;
-            //    mItem._DATE_START = item._DATE_START;
-            //    mItem._DATE_END = item._DATE_END;
-            //    mItem._EXP_HOLDER = "Job " + (mWorkExpToBind.Count + 1);
+            if (trainList != null)
+            {
+                foreach (var item in trainList)
+                {
+                    item._TRAIN_HOLDER = "Training " + (trainCollection.Count + 1);
 
-            //    mWorkExpToBind.Add(mItem);
-            //}
-            //cbWorkCollection.ItemsSource = mWorkExpToBind;
+                    trainCollection.Add(item);
+                }
+                cbTrainingCollection.ItemsSource = trainCollection;
+            }
         }
 
         private Enum SetEmpStatus(string item)
@@ -227,12 +240,483 @@ namespace Fasetto.Word
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            ChangeBtnEditState();
         }
 
         private void ChangeBtnEditState()
         {
+            editMode = !editMode;
 
+            if (editMode)
+            {
+                EnableEditingFields();
+                ButtonEdit.Content = "Save";
+                ButtonBack.Content = "Cancel";
+            }
+            else
+            {
+                //DisableEditingFields();
+                SetValues();
+                ButtonEdit.Content = "Edit";
+                ButtonBack.Content = "Back";
+            }
+        }
+
+        private void SetValues()
+        {
+            if (InputValidation())
+            {
+                EmployeeItem item = new EmployeeItem();
+
+                item._EMP_NO = tbEmployeeId.Text;
+                item._FIRST_NAME = tbFirstName.Text;
+                item._MIDDLE_NAME = tbMiddleName.Text;
+                item._LAST_NAME = tbLastName.Text;
+
+                if (rbMale.IsChecked == true)
+                {
+                    item._GENDER = "Male";
+                }
+                else if (rbFemale.IsChecked == true)
+                {
+                    item._GENDER = "Female";
+                }
+                item._BIRTHDAY = dpBirthday.Text;
+                item._NATIONALITY = tbNationality.Text;
+                item._PASSPORT = tbPassportNo.Text;
+                item._RELIGION = tbReligion.Text;
+                item._EMAIL_ADDRESS = tbEmail.Text;
+                item._CONTACT = tbContactNumber.Text;
+                item._BIRTH_PLACE = tbBirthPlace.Text;
+                item._PRESENT_ADDRESS = tbPresentAddress.Text;
+                item._PERMANENT_ADDRESS = tbPermanentAddress.Text;
+                item._IOE_PERSON = tbNamePTC.Text;
+                item._IOE_CONTACT = tbContactPTC.Text;
+                item._IOE_RELATION = tbRelationPTC.Text;
+                item._IOE_ADDRESS = tbAddressPTC.Text;
+                item._EMP_STATUS = selectedEmpStatus;
+                item._DATE_JOINED = dpDateEmployed.Text;
+                item._END_PROVITION = dpEndProvision.Text;
+                item._POS_ID = (int)cbPosition.SelectedValue;
+                item._MONTHLY_SALARY = double.Parse(tbMonthlySalary.Text);
+                item._SSS_NO = tbSSSNo.Text;
+                item._PHIL_HEALTH_NO = tbPhHealth.Text;
+                item._PAG_IBIG_NO = tbPagIbig.Text;
+                item._BIR_NO = tbBIR.Text;
+                item._DEDUC_SSS = double.Parse(tbDedSSS.Text);
+                item._DEDUC_PHIL_HEALTH = double.Parse(tbDedPhilHealth.Text);
+                item._DEDUC_PAG_IBIG = double.Parse(tbDedPagIbig.Text);
+                item._DEDUC_BIR = double.Parse(tbDedBIR.Text);
+
+                item._HOURLY_RATE = 300;
+
+                SetEduBackground(item._EMP_NO);
+                SetExpBackground(item._EMP_NO);
+                SetTrainBackground(item._EMP_NO);
+
+                //try
+                //{
+                UpdateEmpoyeeDetails(item);
+                MessageBox.Show("Employee details updated.");
+                //}
+                //catch (System.Exception)
+                //{
+                //MessageBox.Show("Error saving new employee.");
+                //}
+
+                EmployeeCollection myEmpList = new EmployeeCollection();
+                myEmpList.RetreiveAllEmployee();
+
+                //ClearInputFields();
+
+                EmployeeManagement.mEmpTransitioner.SelectedIndex = 0;
+                EmployeeManagement.mEmpTransitioner.Items.RemoveAt(1);
+            }
+        }
+
+        private void UpdateEmpoyeeDetails(EmployeeItem myItem)
+        {
+            EmployeeManager myManager = new EmployeeManager();
+            myManager.UpdateData(myItem);
+        }
+
+        private void SetEduBackground(string empId)
+        {
+            EducationManager mEduManager = new EducationManager();
+            List<EducationItem> eduBackgroundList = new List<EducationItem>();
+
+            if (!string.IsNullOrEmpty(tbSchoolNamePrimary.Text))
+            {
+                selectedPrimaryEdu._EMP_ID = empId;
+                selectedPrimaryEdu._EDU_SCHOOL_NAME = tbSchoolNamePrimary.Text;
+                selectedPrimaryEdu._EDU_SCHOOL_ADDRESS = tbSchoolAddressPrimary.Text;
+                selectedPrimaryEdu._EDU_DATE_GRADUATED = dpEduPrimaryDate.Text;
+
+                eduBackgroundList.Add(selectedPrimaryEdu);
+            }
+
+            if (!string.IsNullOrEmpty(tbSchoolNameSecondary.Text))
+            {
+                selectedSecondaryEdu._EMP_ID = empId;
+                selectedSecondaryEdu._EDU_SCHOOL_NAME = tbSchoolNameSecondary.Text;
+                selectedSecondaryEdu._EDU_SCHOOL_ADDRESS = tbSchoolAddressPrimary.Text;
+                selectedSecondaryEdu._EDU_DATE_GRADUATED = dpEduSecondaryDate.Text;
+
+                eduBackgroundList.Add(selectedSecondaryEdu);
+            }
+
+            if (!string.IsNullOrEmpty(tbSchoolNameTertiary.Text))
+            {
+                selectedTertiaryEdu._EMP_ID = empId;
+                selectedTertiaryEdu._EDU_SCHOOL_NAME = tbSchoolNameTertiary.Text;
+                selectedTertiaryEdu._EDU_SCHOOL_ADDRESS = tbSchoolAddressTertiary.Text;
+                selectedTertiaryEdu._EDU_DATE_GRADUATED = dpEduTertiaryDate.Text;
+                selectedTertiaryEdu._EDU_DEGREE_EARNED = tbDegreeTertiary.Text;
+
+                eduBackgroundList.Add(selectedTertiaryEdu);
+            }
+
+            if (!string.IsNullOrEmpty(tbSchoolNameMasteral.Text))
+            {
+                selectedMasteralEdu._EMP_ID = empId;
+                selectedMasteralEdu._EDU_SCHOOL_NAME = tbSchoolNameMasteral.Text;
+                selectedMasteralEdu._EDU_SCHOOL_ADDRESS = tbSchoolAddressMasteral.Text;
+                selectedMasteralEdu._EDU_DATE_GRADUATED = dpEduMasteralDate.Text;
+                selectedMasteralEdu._EDU_DEGREE_EARNED = tbDegreeMasteral.Text;
+
+                eduBackgroundList.Add(selectedMasteralEdu);
+            }
+
+            if (!string.IsNullOrEmpty(tbSchoolNameDoctoral.Text))
+            {
+                selectedDoctoralEdu._EMP_ID = empId;
+                selectedDoctoralEdu._EDU_SCHOOL_NAME = tbSchoolNameDoctoral.Text;
+                selectedDoctoralEdu._EDU_SCHOOL_ADDRESS = tbSchoolAddressDoctoral.Text;
+                selectedDoctoralEdu._EDU_DATE_GRADUATED = dpEduDoctoralDate.Text;
+                selectedDoctoralEdu._EDU_DEGREE_EARNED = tbDegreeDoctoral.Text;
+
+                eduBackgroundList.Add(selectedDoctoralEdu);
+            }
+
+            if (vocationalEduCollection.Count != 0)
+            {
+                vocationalEduCollection.Remove(selectedVocationalEdu);
+
+                foreach (var item in vocationalEduCollection)
+                {
+                    eduBackgroundList.Add(item);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(tbSchoolNameVocational.Text))
+            {
+                var eduItem = new EducationItem();
+                eduItem._EMP_ID = empId;
+                eduItem._EDU_LEVEL = "Vocational";
+                eduItem._EDU_SCHOOL_NAME = tbSchoolNameVocational.Text;
+                eduItem._EDU_SCHOOL_ADDRESS = tbSchoolAddressVocational.Text;
+                eduItem._EDU_DATE_GRADUATED = dpEduVocationalDate.Text;
+                eduItem._EDU_DEGREE_EARNED = tbDegreeVocational.Text;
+
+                eduBackgroundList.Add(eduItem);
+            }
+
+            mEduManager.DeleteEduData(empId);
+
+            foreach (var item in eduBackgroundList)
+            {
+                mEduManager.SaveEduData(item);
+            }
+        }
+
+        private void SetExpBackground(string empId)
+        {
+            ExperienceManager mExpManager = new ExperienceManager();
+            List<ExperienceItem> workExpList = new List<ExperienceItem>();
+
+            if (workExpCollection.Count != 0)
+            {
+                workExpCollection.Remove(selectedExpItem);
+
+                foreach (var item in workExpCollection)
+                {
+                    workExpList.Add(item);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(tbDesignation.Text))
+            {
+                var expItem = new ExperienceItem();
+                expItem._EMP_NO = empId;
+                expItem._DESIGNATION = tbDesignation.Text;
+                expItem._COMPANY = tbCompanyName.Text;
+                expItem._WORK_LOCATION = tbComanyLocation.Text;
+                expItem._DATE_START = dpWorkStart.Text;
+                expItem._DATE_END = dpWorkEnd.Text;
+
+                workExpList.Add(expItem);
+            }
+
+            mExpManager.DeleteExpData(empId);
+
+            foreach (var item in workExpList)
+            {
+                mExpManager.SaveExpData(item);
+            }
+        }
+
+        private void SetTrainBackground(string empId)
+        {
+            TrainingManager mTrainManager = new TrainingManager();
+            List<TrainingItem> trainList = new List<TrainingItem>();
+
+            if (trainCollection.Count != 0)
+            {
+                trainCollection.Remove(selectedTrainItem);
+
+                foreach (var item in trainCollection)
+                {
+                    trainList.Add(item);
+                }
+            }
+
+            if (!string.IsNullOrEmpty(tbTitle.Text))
+            {
+                var trainItem = new TrainingItem();
+                trainItem._EMP_ID = empId;
+                trainItem._TITLE = tbTitle.Text;
+                trainItem._INSTITUTION = tbInstitution.Text;
+                trainItem._TRAINING_LOCATION = tbLocation.Text;
+                trainItem._TRAINING_DATE = dpTrainingFinished.Text;
+
+                trainList.Add(trainItem);
+            }
+
+            mTrainManager.DeleteTrainData(empId);
+
+            foreach (var item in trainList)
+            {
+                mTrainManager.SaveTrainingData(item);
+            }
+        }
+
+        private bool InputValidation()
+        {
+            if (tbEmployeeId.Text == "" || tbEmployeeId.Text == null)
+            {
+                MessageBox.Show("Please input Employee ID");
+                return false;
+            }
+            else if (tbFirstName.Text == "" || tbFirstName.Text == null)
+            {
+                MessageBox.Show("Please input First Name");
+                return false;
+            }
+            else if (tbMiddleName.Text == "" || tbMiddleName.Text == null)
+            {
+                MessageBox.Show("Please input Middle Name");
+                return false;
+            }
+            else if (tbLastName.Text == "" || tbLastName.Text == null)
+            {
+                MessageBox.Show("Please input Last Name");
+                return false;
+            }
+            else if (rbMale.IsChecked == false && rbFemale.IsChecked == false)
+            {
+                MessageBox.Show("Please select gender");
+                return false;
+            }
+            else if (dpBirthday.Text == "" || dpBirthday.Text == null)
+            {
+                MessageBox.Show("Please input Birth Date");
+                return false;
+            }
+            else if (tbNationality.Text == "" || tbNationality == null)
+            {
+                MessageBox.Show("Please input Nationality");
+                return false;
+            }
+            else if (tbPresentAddress.Text == "" || tbPresentAddress.Text == null)
+            {
+                MessageBox.Show("Please input Present Address");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbSchoolAddressPrimary.Text) && !string.IsNullOrEmpty(tbSchoolNamePrimary.Text))
+            {
+                MessageBox.Show("Please input Primary school address.");
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(tbSchoolAddressPrimary.Text) && string.IsNullOrEmpty(tbSchoolNamePrimary.Text))
+            {
+                MessageBox.Show("Please input Primary school name.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbSchoolAddressSecondary.Text) && !string.IsNullOrEmpty(tbSchoolNameSecondary.Text))
+            {
+                MessageBox.Show("Please input Secondary school address.");
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(tbSchoolAddressSecondary.Text) && string.IsNullOrEmpty(tbSchoolNameSecondary.Text))
+            {
+                MessageBox.Show("Please input Secondary school name.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbSchoolAddressTertiary.Text) && !string.IsNullOrEmpty(tbSchoolNameTertiary.Text))
+            {
+                MessageBox.Show("Please input Tertiary school address.");
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(tbSchoolAddressTertiary.Text) && string.IsNullOrEmpty(tbSchoolNameTertiary.Text))
+            {
+                MessageBox.Show("Please input Tertiary school name.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbDegreeTertiary.Text) && !string.IsNullOrEmpty(tbSchoolNameTertiary.Text))
+            {
+                MessageBox.Show("Please input Tertiary Degree Earned.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbSchoolAddressMasteral.Text) && !string.IsNullOrEmpty(tbSchoolNameMasteral.Text))
+            {
+                MessageBox.Show("Please input Masteral school address.");
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(tbSchoolAddressMasteral.Text) && string.IsNullOrEmpty(tbSchoolNameMasteral.Text))
+            {
+                MessageBox.Show("Please input Masteral school name.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbDegreeMasteral.Text) && !string.IsNullOrEmpty(tbSchoolNameMasteral.Text))
+            {
+                MessageBox.Show("Please input Masteral Degree Earned.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbCompanyName.Text) && !string.IsNullOrEmpty(tbDesignation.Text))
+            {
+                MessageBox.Show("Please input Company name.");
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(tbCompanyName.Text) && string.IsNullOrEmpty(tbDesignation.Text))
+            {
+                MessageBox.Show("Please input Designation.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbComanyLocation.Text) && !string.IsNullOrEmpty(tbDesignation.Text))
+            {
+                MessageBox.Show("Please input Company location.");
+                return false;
+            }
+            else if (IsWorkExpDateValid(dpWorkStart.Text, dpWorkEnd.Text))
+            {
+                MessageBox.Show("Invalid working experience date");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbInstitution.Text) && !string.IsNullOrEmpty(tbTitle.Text))
+            {
+                MessageBox.Show("Please input training institution.");
+                return false;
+            }
+            else if (!string.IsNullOrEmpty(tbInstitution.Text) && string.IsNullOrEmpty(tbTitle.Text))
+            {
+                MessageBox.Show("Please input training title.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbLocation.Text) && !string.IsNullOrEmpty(tbTitle.Text))
+            {
+                MessageBox.Show("Please input training location.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private bool IsWorkExpDateValid(string workStart, string workEnd)
+        {
+            DateTime cWorkStart = DateTime.Parse(workStart);
+            DateTime cWorkEnd = DateTime.Parse(workEnd);
+            if (cWorkStart.Date < cWorkEnd.Date)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void EnableEditingFields()
+        {
+            tbEmployeeId.IsReadOnly = false;
+            tbFirstName.IsReadOnly = false;
+            tbMiddleName.IsReadOnly = false;
+            tbLastName.IsReadOnly = false;
+            tbReligion.IsReadOnly = false;
+            rbMale.IsEnabled = true;
+            rbFemale.IsEnabled = true;
+            dpBirthday.IsEnabled = true;
+            tbNationality.IsReadOnly = false;
+            tbPassportNo.IsReadOnly = false;
+            tbEmail.IsReadOnly = false;
+            tbContactNumber.IsReadOnly = false;
+            tbBirthPlace.IsReadOnly = false;
+            tbPresentAddress.IsReadOnly = false;
+            tbPermanentAddress.IsReadOnly = false;
+            tbNamePTC.IsReadOnly = false;
+            tbContactPTC.IsReadOnly = false;
+            tbRelationPTC.IsReadOnly = false;
+            tbAddressPTC.IsReadOnly = false;
+            cbPosition.IsEnabled = true;
+            cbEmpStatus.IsEnabled = true;
+            dpDateEmployed.IsEnabled = true;
+            dpEndProvision.IsEnabled = true;
+            tbMonthlySalary.IsReadOnly = false;
+            tbSSSNo.IsReadOnly = false;
+            tbPagIbig.IsReadOnly = false;
+            tbPhHealth.IsReadOnly = false;
+            tbBIR.IsReadOnly = false;
+            tbDedSSS.IsReadOnly = false;
+            tbDedPhilHealth.IsReadOnly = false;
+            tbDedPagIbig.IsReadOnly = false;
+            tbDedBIR.IsReadOnly = false;
+
+            tbSchoolNamePrimary.IsReadOnly = false;
+            tbSchoolAddressPrimary.IsReadOnly = false;
+            dpEduPrimaryDate.IsEnabled = true;
+            tbSchoolNameSecondary.IsReadOnly = false;
+            tbSchoolAddressSecondary.IsReadOnly = false;
+            dpEduSecondaryDate.IsEnabled = true;
+            tbSchoolNameTertiary.IsReadOnly = false;
+            tbSchoolAddressTertiary.IsReadOnly = false;
+            tbDegreeTertiary.IsReadOnly = false;
+            dpEduTertiaryDate.IsEnabled = true;
+            tbSchoolNameMasteral.IsReadOnly = false;
+            tbSchoolAddressMasteral.IsReadOnly = false;
+            tbDegreeMasteral.IsReadOnly = false;
+            dpEduMasteralDate.IsEnabled = true;
+            tbSchoolNameDoctoral.IsReadOnly = false;
+            tbSchoolAddressDoctoral.IsReadOnly = false;
+            tbDegreeDoctoral.IsReadOnly = false;
+            dpEduDoctoralDate.IsEnabled = true;
+            tbSchoolNameVocational.IsReadOnly = false;
+            tbSchoolAddressVocational.IsReadOnly = false;
+            tbDegreeVocational.IsReadOnly = false;
+            dpEduVocationalDate.IsEnabled = true;
+            btnAddVocational.Visibility = Visibility.Visible;
+
+            tbDesignation.IsReadOnly = false;
+            tbCompanyName.IsReadOnly = false;
+            tbComanyLocation.IsReadOnly = false;
+            dpWorkStart.IsEnabled = true;
+            dpWorkEnd.IsEnabled = true;
+            btnAddWorkExp.Visibility = Visibility.Visible;
+            tbTitle.IsReadOnly = false;
+            tbInstitution.IsReadOnly = false;
+            tbLocation.IsReadOnly = false;
+            dpTrainingFinished.IsEnabled = true;
+            btnAddTrainings.Visibility = Visibility.Visible;
         }
 
         private void CbVocationalCollect_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -240,7 +724,7 @@ namespace Fasetto.Word
             if (cbVocationalCollect.SelectedIndex != -1)
             {
                 var item = cbVocationalCollect.SelectedItem as EducationItem;
-                selectedEduItem = item;
+                selectedVocationalEdu = item;
 
                 ViewSelectedEdu();
                 //hasSelectedEdu = true;
@@ -252,10 +736,10 @@ namespace Fasetto.Word
         {
             if (cbVocationalCollect.SelectedIndex != -1)
             {
-                tbSchoolNameVocational.Text = selectedEduItem._EDU_SCHOOL_NAME;
-                tbSchoolAddressVocational.Text = selectedEduItem._EDU_SCHOOL_ADDRESS;
-                tbDegreeVocational.Text = selectedEduItem._EDU_DEGREE_EARNED;
-                dpEduVocationalDate.SelectedDate = DateTime.Parse(selectedEduItem._EDU_DATE_GRADUATED);
+                tbSchoolNameVocational.Text = selectedVocationalEdu._EDU_SCHOOL_NAME;
+                tbSchoolAddressVocational.Text = selectedVocationalEdu._EDU_SCHOOL_ADDRESS;
+                tbDegreeVocational.Text = selectedVocationalEdu._EDU_DEGREE_EARNED;
+                dpEduVocationalDate.SelectedDate = DateTime.Parse(selectedVocationalEdu._EDU_DATE_GRADUATED);
             }
         }
 
@@ -271,6 +755,17 @@ namespace Fasetto.Word
             }
         }
 
+        private void ViewSelectedTrain()
+        {
+            if (cbTrainingCollection.SelectedIndex != -1)
+            {
+                tbTitle.Text = selectedTrainItem._TITLE;
+                tbInstitution.Text = selectedTrainItem._INSTITUTION;
+                tbLocation.Text = selectedTrainItem._TRAINING_LOCATION;
+                dpTrainingFinished.SelectedDate = DateTime.Parse(selectedTrainItem._TRAINING_DATE);
+            }
+        }
+
         private void CbWorkCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbWorkCollection.SelectedIndex != -1)
@@ -282,6 +777,24 @@ namespace Fasetto.Word
                 //hasSelectedEdu = true;
                 //ChangeVocBtnIcon();
             }
+        }
+
+        private void CbTrainingCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbTrainingCollection.SelectedIndex != -1)
+            {
+                var item = cbTrainingCollection.SelectedItem as TrainingItem;
+                selectedTrainItem = item;
+
+                ViewSelectedTrain();
+                //hasSelectedEdu = true;
+                //ChangeVocBtnIcon();
+            }
+        }
+
+        private void CbEmpStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedEmpStatus = cbEmpStatus.SelectedValue.ToString();
         }
     }
 }

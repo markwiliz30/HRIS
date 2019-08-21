@@ -26,5 +26,21 @@ namespace Fasetto.Word.Core
                 db.Close();
             }
         }
+
+        public void DeleteEduData(string empId)
+        {
+            using (var db = DBConnection.CreateConnection())
+            {
+                db.Open();
+
+                var sql = "dbo.spDeleteEducation";
+                var cmd = new SqlCommand(sql, db);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@EMP_ID", empId));
+
+                cmd.ExecuteNonQuery();
+                db.Close();
+            }
+        }
     }
 }

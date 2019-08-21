@@ -30,5 +30,21 @@ namespace Fasetto.Word.Core
                 db.Close();
             }
         }
+
+        public void DeleteExpData(string empId)
+        {
+            using (var db = DBConnection.CreateConnection())
+            {
+                db.Open();
+
+                var sql = "dbo.spDeleteExperience";
+                var cmd = new SqlCommand(sql, db);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@EMP_NO", empId));
+
+                cmd.ExecuteNonQuery();
+                db.Close();
+            }
+        }
     }
 }

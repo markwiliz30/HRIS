@@ -176,6 +176,11 @@ namespace Fasetto.Word
                 MessageBox.Show("Please input Company location.");
                 return false;
             }
+            else if (IsWorkExpDateValid(dpWorkStart.Text, dpWorkEnd.Text))
+            {
+                MessageBox.Show("Invalid working experience date");
+                return false;
+            }
             else if (string.IsNullOrEmpty(tbInstitution.Text) && !string.IsNullOrEmpty(tbTitle.Text))
             {
                 MessageBox.Show("Please input training institution.");
@@ -189,6 +194,20 @@ namespace Fasetto.Word
             else if (string.IsNullOrEmpty(tbLocation.Text) && !string.IsNullOrEmpty(tbTitle.Text))
             {
                 MessageBox.Show("Please input training location.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private bool IsWorkExpDateValid(string workStart, string workEnd)
+        {
+            DateTime cWorkStart = DateTime.Parse(workStart);
+            DateTime cWorkEnd = DateTime.Parse(workEnd);
+            if (cWorkStart.Date < cWorkEnd.Date)
+            {
                 return false;
             }
             else
@@ -569,6 +588,11 @@ namespace Fasetto.Word
             else if (string.IsNullOrEmpty(tbEmployeeId.Text))
             {
                 MessageBox.Show("Please input Employee ID");
+                return false;
+            }
+            else if (IsWorkExpDateValid(dpWorkStart.Text, dpWorkEnd.Text))
+            {
+                MessageBox.Show("Invalid working experience date");
                 return false;
             }
             else

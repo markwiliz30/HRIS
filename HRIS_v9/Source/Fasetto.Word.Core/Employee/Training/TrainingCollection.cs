@@ -27,6 +27,7 @@ namespace Fasetto.Word.Core
                 while(reader.Read())
                 {
                     var item = new TrainingItem();
+                    item._EMP_ID = (string)reader["EMP_ID"];
                     item._TITLE = (string)reader["TITLE"];
                     item._INSTITUTION = (string)reader["INSTITUTION"];
                     item._TRAINING_DATE = (string)reader["TRAINING_DATE"];
