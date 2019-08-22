@@ -39,6 +39,7 @@ namespace Fasetto.Word
         {
             this.Close();
             StaticAttendanceList.staticAttendanceList.Clear();
+            StaticSortedListAttendance.staticSortedList.Clear();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -48,6 +49,22 @@ namespace Fasetto.Word
 
             attendance.ItemsSource = StaticAttendanceList.staticAttendanceList;
            
+        }
+
+        private void FromDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            toDate.IsEnabled = true;
+        }
+
+        private void ToDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UserPending upend = new UserPending();
+            string fromdate = fromDate.SelectedDate.ToString();
+            string todate = toDate.SelectedDate.ToString();
+            upend.BetweenDate(mitem._EMPID, fromdate, todate);
+
+            StaticAttendanceList.staticAttendanceList.Clear();
+            attendance.ItemsSource = StaticSortedListAttendance.staticSortedList;
         }
     }
 }

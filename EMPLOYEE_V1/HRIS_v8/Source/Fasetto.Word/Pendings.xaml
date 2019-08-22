@@ -6,12 +6,13 @@
         xmlns:local="clr-namespace:Fasetto.Word"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Pendings" Height="480" Width="830" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded">
+        Title="Pendings" Height="560" Width="830" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded">
     <Grid Background="#263238">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="80" />
             <RowDefinition Height="330" />
+            <RowDefinition Height="80" />
         </Grid.RowDefinitions>
         <Label Content="Pendings" Foreground="#ffffff" FontWeight="SemiBold" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="40" />
         <Border Grid.Row="1" Width="auto" BorderBrush="#ECEFF1" BorderThickness="2" Margin="15" CornerRadius="12">
@@ -21,7 +22,7 @@
             </StackPanel>
         </Border>
         <Border Grid.Row="2">
-            <DataGrid Name="pending" IsReadOnly="True" IsManipulationEnabled="True" AutoGenerateColumns="False" Margin="15">
+            <DataGrid Name="pending" IsReadOnly="True" IsManipulationEnabled="True" AutoGenerateColumns="False" Margin="15" MouseDoubleClick="Pending_MouseDoubleClick">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="Background" Value="#ECEFF1" />
@@ -35,6 +36,10 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID"
+                                  Binding="{Binding PENDING_ID}"      
+                                Width="80" >
+                    </DataGridTextColumn>
                     <DataGridTextColumn Header="Name"
                                   Binding="{Binding PENDING_NAME}"      
                                 Width="300" >
@@ -55,6 +60,9 @@
 
             </DataGrid>
         </Border>
+        <Grid Grid.Row="3">
+            <Button Content="Delete All" Height="auto" Width="350" Background="#F44336" Margin="0 20" Click="Button_Click"></Button>
+        </Grid>
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10 3">
             <Button x:Name="ButtonMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" WindowChrome.IsHitTestVisibleInChrome="True" Click="ButtonMinimize_Click">
                 <materialDesign:PackIcon Kind="WindowMinimize" Foreground="#05133C"/>

@@ -64,9 +64,13 @@ namespace Fasetto.Word
 
                 pitem.EMPID = mitem._EMPID;
                 pitem.PENDING_TYPE = "Overtime";
+                pitem.PENDING_LEAVE_REASON = Reasonbox.Text;
                 pitem.PENDING_STATUS = "Waiting for Approval";
-                pitem.PENDING_DATE = toDate.Text;
-                pitem.PENDING_POSITION = mitem._POSITION; ;
+                pitem.PENDING_DATE = DateTime.Now.ToString("MM/dd/yyyy");
+                pitem.PENDING_POSITION = mitem._POSITION;
+                pitem.PENDING_TIME = DateTime.Now.ToString("hh:mm:ss tt");
+                pitem.PENDING_OT_FROM = Timefrom.Text;
+                pitem.PENDING_OT_TO = TimeTo.Text;
 
                 addOT(item);
                 addPend(pitem,Reasonbox.Text);
@@ -80,7 +84,7 @@ namespace Fasetto.Word
         private void addPend(PendingItem newitem, string reason)
         {
             UserPending upend = new UserPending();
-            upend.AddPending(newitem , reason);
+            upend.AddPendingOT(newitem , reason);
         }
         private void addOT(RequestItem newitem)
         {

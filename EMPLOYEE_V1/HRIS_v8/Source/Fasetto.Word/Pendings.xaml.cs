@@ -48,5 +48,39 @@ namespace Fasetto.Word
             total.Content = StaticPendingList.staticPendingList.Count; 
 
         }
+
+        private void Pending_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            object item2 = pending.SelectedItem;
+
+            string id = (pending.SelectedCells[0].Column.GetCellContent(item2) as TextBlock).Text;
+            int idparse = Int32.Parse(id);
+            string type = (pending.SelectedCells[2].Column.GetCellContent(item2) as TextBlock).Text;
+            string pos = "Employee";
+            Window main = GetWindow(this);
+            main.Hide();
+            ApprovalModal app = new ApprovalModal(mitem, idparse, type,pos);
+            app.ShowDialog();
+            main.Close();
+            StaticPendingList.staticPendingList.Clear();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (MessageBox.Show("Are you Sure you want to Delete?", "Delete?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+
+                UserPending upend = new UserPending();
+                upend.DeleteAll(mitem._EMPID);
+                MessageBox.Show("Request Deleted!");
+                this.Close();
+                StaticPendingList.staticPendingList.Clear();
+            }
+            else
+            {
+                this.Close();
+            }
+
+        }
     }
 }

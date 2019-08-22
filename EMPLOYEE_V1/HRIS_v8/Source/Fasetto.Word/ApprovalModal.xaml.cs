@@ -22,13 +22,15 @@ namespace Fasetto.Word
     {
         int idholder;
         string typeholder;
+        string emppos;
         UserItem mitem = new UserItem();
-        public ApprovalModal(UserItem item,int id , string type)
+        public ApprovalModal(UserItem item,int id , string type,string pos)
         {
             InitializeComponent();
             mitem = item;
             idholder = id;
             typeholder = type;
+            emppos = pos;
         }
         private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
         {
@@ -42,10 +44,12 @@ namespace Fasetto.Word
       
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
-            if (typeholder == "Leave")
-            {
 
+            if (typeholder == "Leave" && emppos == "Head")
+            {
+                Delete.Visibility = Visibility.Hidden;
+                Cancel.Visibility = Visibility.Hidden;
+                string time = DateTime.Now.ToString("hh:mm:ss tt");
                 UserPending upend = new UserPending();
                 upend.SpecificPendingLeave(idholder, typeholder);
 
@@ -59,10 +63,13 @@ namespace Fasetto.Word
                 to.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_LEAVE_TO;
                 Reason.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_LEAVE_REASON;
 
-            }
-            else
-            {
+               
 
+            }
+            else if (typeholder == "Overtime" && emppos == "Head")
+            {
+                Delete.Visibility = Visibility.Hidden;
+                Cancel.Visibility = Visibility.Hidden;
                 UserPending upend = new UserPending();
                 upend.SpecificPendingOT(idholder, typeholder);
 
@@ -74,6 +81,35 @@ namespace Fasetto.Word
                 to.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_OT_TO;
                 Reason.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_OT_REASON;
 
+            }else if(typeholder == "Leave" && emppos == "Employee")
+            {
+                Approve.Visibility = Visibility.Hidden;
+                Decline.Visibility = Visibility.Hidden;
+                string time = DateTime.Now.ToString("hh:mm:ss tt");
+                UserPending upend = new UserPending();
+                upend.SpecificPendingLeave(idholder, typeholder);
+
+
+                empname.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_NAME;
+                emptype.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_TYPE;
+                from.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_LEAVE_FROM;
+                to.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_LEAVE_TO;
+                Reason.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_LEAVE_REASON;
+
+            }else if(typeholder == "Overtime" && emppos == "Employee")
+            {
+                Approve.Visibility = Visibility.Hidden;
+                Decline.Visibility = Visibility.Hidden;
+                string time = DateTime.Now.ToString("hh:mm:ss tt");
+                UserPending upend = new UserPending();
+                upend.SpecificPendingOT(idholder, typeholder);
+
+
+                empname.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_NAME;
+                emptype.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_TYPE;
+                from.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_OT_FROM;
+                to.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_OT_TO;
+                Reason.Text = StaticApprovalItem.staticApprovalModalItem.PENDING_OT_REASON;
             }
 
 
@@ -85,10 +121,9 @@ namespace Fasetto.Word
         {
             UserPending upend = new UserPending();
             string stat = "Approved by Head";
-            int empid = StaticApprovalItem.staticApprovalModalItem.EMPID;
-            string type = StaticApprovalItem.staticApprovalModalItem.PENDING_TYPE;
-            string sdate = StaticApprovalItem.staticApprovalModalItem.PENDING_DATE;
-            upend.Approve(stat, mitem._FNAME, empid,type,sdate,Reason.Text);
+            string appby = ""+mitem._FNAME+" "+mitem._LNAME+"";
+            int empid = StaticApprovalItem.staticApprovalModalItem.PENDING_ID;
+            upend.Approve(appby, empid,stat);
             MessageBox.Show("Approved!");
             this.Close();
         }
@@ -97,11 +132,33 @@ namespace Fasetto.Word
         {
             UserPending upend = new UserPending();
             string stat = "Declined by Head";
-            string type = StaticApprovalItem.staticApprovalModalItem.PENDING_TYPE;
-            string sdate = StaticApprovalItem.staticApprovalModalItem.PENDING_DATE;
-            int empid = StaticApprovalItem.staticApprovalModalItem.EMPID;
-            upend.Approve(stat, mitem._FNAME, empid,type,sdate,Reason.Text);
+            string appby = "" + mitem._FNAME + " " + mitem._LNAME + "";
+            int empid = StaticApprovalItem.staticApprovalModalItem.PENDING_ID;
+            upend.Approve(appby, empid, stat);
             MessageBox.Show("Declined!");
+            this.Close();
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            int empid = StaticApprovalItem.staticApprovalModalItem.PENDING_ID;
+           
+            if (MessageBox.Show("Are you Sure you want to Delete?", "Delete?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                UserPending upend = new UserPending();
+                upend.DeleteSpecific(empid);
+                MessageBox.Show("Request Deleted!");
+                this.Close();
+            }
+            else
+            {
+                this.Close();
+            }
+
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }

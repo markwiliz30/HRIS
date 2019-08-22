@@ -42,15 +42,16 @@ namespace Fasetto.Word
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            string headstatus = "Approved by Head";
             
-            pitem.RetrievePending(mitem._EMPID);
+            pitem.RetrievePending(mitem._EMPID,headstatus);
 
             approval.ItemsSource = StaticApprovalList.staticApprovalList;
             total.Content = StaticApprovalList.staticApprovalList.Count;
         }
         string id;
             string type;
+
         private void Approval_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             object item2 = approval.SelectedItem;
@@ -59,14 +60,15 @@ namespace Fasetto.Word
             int idparse = Int32.Parse(id);
             type = (approval.SelectedCells[2].Column.GetCellContent(item2) as TextBlock).Text;
 
+            string pos = "Head";
+
             Window main = GetWindow(this);
             main.Hide();
-            ApprovalModal app = new ApprovalModal(mitem,idparse , type);
+            ApprovalModal app = new ApprovalModal(mitem,idparse , type,pos);
             app.ShowDialog();
             main.Close();
+
             StaticApprovalList.staticApprovalList.Clear();
-
-
         }
     }
 

@@ -68,6 +68,9 @@ namespace Fasetto.Word
                 pitem.PENDING_STATUS = "Waiting for Approval";
                 pitem.PENDING_DATE = DateTime.Now.ToString("MM/dd/yyyy");
                 pitem.PENDING_POSITION = mitem._POSITION;
+                pitem.PENDING_TIME = DateTime.Now.ToString("hh:mm:ss tt");
+                pitem.PENDING_LEAVE_FROM = fromDate.Text;
+                pitem.PENDING_LEAVE_TO = toDate.Text;
 
 
                 Addleave(item);

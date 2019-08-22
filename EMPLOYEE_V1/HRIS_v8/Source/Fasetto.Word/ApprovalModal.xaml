@@ -46,8 +46,10 @@
             <TextBlock x:Name="Reason" Text="" Padding="10 5 10 0" FontSize="20" TextWrapping="Wrap" />
         </Border>
 
-        <Button Content="Approve" FontSize="20" Grid.Row="3" Grid.Column="1" Width="140" Height="40" Background="#009688" Click="Button_Click"></Button>
-        <Button Content="Decline" FontSize="20" Grid.Row="3" Grid.Column="0" Width="140" Height="40" Background="#F44336" Click="Button_Click_1"></Button>
+        <Button x:Name="Approve" Content="Approve" FontSize="20" Grid.Row="3" Grid.Column="1" Width="140" Height="40" Background="#009688" Click="Button_Click"/>
+        <Button x:Name="Decline"  Content="Decline" FontSize="20" Grid.Row="3" Grid.Column="0" Width="140" Height="40" Background="#F44336" Click="Button_Click_1"/>
+        <Button x:Name="Delete" Content="Delete" FontSize="20" Grid.Row="3" Grid.Column="1" Width="140" Height="40" Background="#009688" Click="Delete_Click" />
+        <Button x:Name="Cancel"  Content="Cancel" FontSize="20" Grid.Row="3" Grid.Column="0" Width="140" Height="40" Background="#F44336" Click="Cancel_Click" />
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10 3">
             <Button x:Name="ButtonMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" WindowChrome.IsHitTestVisibleInChrome="True" Click="ButtonMinimize_Click">
                 <materialDesign:PackIcon Kind="WindowMinimize" Foreground="#05133C"/>

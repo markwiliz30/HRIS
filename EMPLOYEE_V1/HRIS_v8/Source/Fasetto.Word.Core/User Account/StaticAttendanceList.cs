@@ -8,6 +8,10 @@ namespace Fasetto.Word.Core
     {
         public static ObservableCollection<AttendanceItem> staticAttendanceList = new ObservableCollection<AttendanceItem>();
     }
+    public class StaticSortedListAttendance
+    {
+        public static ObservableCollection<AttendanceItem> staticSortedList = new ObservableCollection<AttendanceItem>();
+    }
 
     public class StaticPendingList
     {
