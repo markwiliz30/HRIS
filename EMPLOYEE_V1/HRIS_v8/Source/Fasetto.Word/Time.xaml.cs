@@ -53,7 +53,7 @@ namespace Fasetto.Word
             buttonProfile.Content = mitem._FNAME;
 
             var now = DateTime.Today.ToString("MM/dd/yy");
-            var check = utime.Checker(mitem._EMPID, now);
+            var check = utime.Checker(mitem._EMPID);
             if(check == null)
             {
                 btn_time_out.IsEnabled = false;
@@ -82,7 +82,10 @@ namespace Fasetto.Word
             itemtime.TIME_OUT = "waiting to timeout";
             itemtime.DATE = DateTime.Today.ToString("MM/dd/yy");
 
+           
+            
             AddTimein(itemtime);
+            utime.GetSpecificId(itemtime);
             btn_time_out.IsEnabled = true;
             btn_time_in.IsEnabled = false;
         }
@@ -112,6 +115,7 @@ namespace Fasetto.Word
             itemtime.EMP_ID = mitem._EMPID;
             itemtime.TIME_OUT = DateTime.Now.ToString("hh:mm");
             itemtime.HOURS = totalHours;
+            itemtime.LOG_ID = LogItem.staticLogIdItem.LOG_ID;
 
             Timeout(itemtime);
             btn_time_in.IsEnabled = true;

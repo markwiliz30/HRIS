@@ -27,4 +27,9 @@ namespace Fasetto.Word.Core
     {
         public static PendingItem staticApprovalModalItem = new PendingItem();
     }
+
+    public class LogItem
+    {
+        public static TimeItem staticLogIdItem = new TimeItem();
+    }
 }

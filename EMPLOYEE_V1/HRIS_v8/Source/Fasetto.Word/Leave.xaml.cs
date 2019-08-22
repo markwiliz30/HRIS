@@ -148,6 +148,13 @@ namespace Fasetto.Word
             type4.IsChecked = false;
             lastcheckcontent = type5.Content.ToString();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            AttendanceItem aitem = new AttendanceItem();
+            fromDate.SelectedDate = aitem.NOW;
+            toDate.SelectedDate = aitem.NOW;
+        }
     }
 
 }

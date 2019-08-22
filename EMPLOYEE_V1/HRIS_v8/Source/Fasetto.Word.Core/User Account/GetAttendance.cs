@@ -30,7 +30,7 @@ namespace Fasetto.Word.Core
                 while (reader.Read())
                 {
                     var item = new AttendanceItem();
-
+                    item.LOG_ID = (int)reader["LOG_ID"];
                     item.FNAME = (string)reader["FIRST_NAME"];
                     item.TIMEIN = (string)reader["TIME_IN"];
                     item.TIMEOUT = (string)reader["TIME_OUT"];

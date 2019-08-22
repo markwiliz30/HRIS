@@ -31,10 +31,11 @@
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <StackPanel Orientation="Horizontal">
-                <Label Content="From:" Margin="50 0 0 0" Foreground="#ECEFF1" FontSize="20"></Label>
-                <TextBox Width="70" Background="#ECEFF1" Height="30"  FontSize="18" Padding="2 0 0 0"></TextBox>
-                <Label Content="To:" Margin="50 0 0 0" Foreground="#ECEFF1" FontSize="20"></Label>
-                <TextBox Width="70" Background="#ECEFF1" Height="30"  FontSize="18"  Padding="2 0 0 0"></TextBox>
+                <Label Content="From:" Margin="0 0 0 0" Foreground="#ECEFF1" FontSize="20"></Label>
+                <materialDesign:TimePicker x:Name="Fromtime" Background="#ECEFF1" Height="30" Width="120"  FontSize="18" Padding="2 0 0 0" />
+               
+                <Label Content="To:" Margin="30 0 0 0" Foreground="#ECEFF1" FontSize="20"></Label>
+                <materialDesign:TimePicker x:Name="Totime" Background="#ECEFF1" Height="30" Width="120"  FontSize="18" Padding="2 0 0 0" />
             </StackPanel>
 
         </Grid>

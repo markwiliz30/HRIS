@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Fasetto.Word"
         mc:Ignorable="d"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Overtime" Height="500" Width="800" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="Overtime" Height="500" Width="800" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
 
     <Grid Background="#263238">
         <Grid.ColumnDefinitions>

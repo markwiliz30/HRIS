@@ -48,23 +48,35 @@ namespace Fasetto.Word
             aitem.GetUserAttendance(mitem._EMPID);
 
             attendance.ItemsSource = StaticAttendanceList.staticAttendanceList;
-           
+            AttendanceItem item = new AttendanceItem();
+
+            fromDate.SelectedDate = item.NOW;
+            toDate.SelectedDate = item.NOW;
         }
 
-        private void FromDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            toDate.IsEnabled = true;
-        }
 
-        private void ToDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
+            sort.Visibility = Visibility.Hidden;
+            back.Visibility = Visibility.Visible;
             UserPending upend = new UserPending();
             string fromdate = fromDate.SelectedDate.ToString();
+            var date = DateTime.Parse(fromDate.SelectedDate.ToString());
             string todate = toDate.SelectedDate.ToString();
             upend.BetweenDate(mitem._EMPID, fromdate, todate);
 
             StaticAttendanceList.staticAttendanceList.Clear();
             attendance.ItemsSource = StaticSortedListAttendance.staticSortedList;
+        }
+
+        private void back_click(object sender, RoutedEventArgs e)
+        {
+            back.Visibility = Visibility.Hidden;
+            sort.Visibility = Visibility.Visible;
+
+            StaticSortedListAttendance.staticSortedList.Clear();
+            attendance.ItemsSource = StaticAttendanceList.staticAttendanceList;
+            AttendanceItem item = new AttendanceItem();
         }
     }
 }

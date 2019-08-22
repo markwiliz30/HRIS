@@ -99,5 +99,13 @@ namespace Fasetto.Word
             Timefrom.Text = "";
             TimeTo.Text = "";
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            AttendanceItem aitem = new AttendanceItem();
+            Timefrom.SelectedTime = aitem.NOW;
+            TimeTo.SelectedTime = aitem.NOW;
+            toDate.SelectedDate = aitem.NOW;
+        }
     }
 }

@@ -19,6 +19,9 @@ namespace Fasetto.Word.Core
         public string TIMEOUT { get; set; }
 
         public string DATE { get; set; }
+
+        public int LOG_ID { get; set; }
+        public DateTime NOW { get; set; } = DateTime.Now;
     }
 }
     
