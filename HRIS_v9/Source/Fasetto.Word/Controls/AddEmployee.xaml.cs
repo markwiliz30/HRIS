@@ -22,6 +22,7 @@ namespace Fasetto.Word
         TrainingItem selectedTrainItem = new TrainingItem();
         string selectedEmpStatus;
         bool hasSelectedEdu = false, hasSelectedWork = false, hasSelectedTraining = false;
+        double parseResult;
         public AddEmployee()
         {
             InitializeComponent();
@@ -176,7 +177,7 @@ namespace Fasetto.Word
                 MessageBox.Show("Please input Company location.");
                 return false;
             }
-            else if (IsWorkExpDateValid(dpWorkStart.Text, dpWorkEnd.Text))
+            else if (IsWorkExpDateInvalid(dpWorkStart.Text, dpWorkEnd.Text) && !string.IsNullOrEmpty(tbDesignation.Text))
             {
                 MessageBox.Show("Invalid working experience date");
                 return false;
@@ -196,13 +197,38 @@ namespace Fasetto.Word
                 MessageBox.Show("Please input training location.");
                 return false;
             }
+            else if (!double.TryParse(tbMonthlySalary.Text, out parseResult))
+            {
+                MessageBox.Show("Please input valid employee salary.");
+                return false;
+            }
+            else if (!double.TryParse(tbDedSSS.Text, out parseResult))
+            {
+                MessageBox.Show("Please input valid SSS deduction amount.");
+                return false;
+            }
+            else if (!double.TryParse(tbDedPagIbig.Text, out parseResult))
+            {
+                MessageBox.Show("Please input valid Pag-Ibig deduction amount.");
+                return false;
+            }
+            else if (!double.TryParse(tbDedPhilHealth.Text, out parseResult))
+            {
+                MessageBox.Show("Please input valid Phil Health deduction amount.");
+                return false;
+            }
+            else if (!double.TryParse(tbDedBIR.Text, out parseResult))
+            {
+                MessageBox.Show("Please input valid BIR deduction amount.");
+                return false;
+            }
             else
             {
                 return true;
             }
         }
 
-        private bool IsWorkExpDateValid(string workStart, string workEnd)
+        private bool IsWorkExpDateInvalid(string workStart, string workEnd)
         {
             DateTime cWorkStart = DateTime.Parse(workStart);
             DateTime cWorkEnd = DateTime.Parse(workEnd);
@@ -590,7 +616,7 @@ namespace Fasetto.Word
                 MessageBox.Show("Please input Employee ID");
                 return false;
             }
-            else if (IsWorkExpDateValid(dpWorkStart.Text, dpWorkEnd.Text))
+            else if (IsWorkExpDateInvalid(dpWorkStart.Text, dpWorkEnd.Text))
             {
                 MessageBox.Show("Invalid working experience date");
                 return false;
@@ -754,23 +780,30 @@ namespace Fasetto.Word
 
         private void BtnSaveVocational_Click(object sender, RoutedEventArgs e)
         {
-            if (VocEduValidation())
+            if (string.IsNullOrEmpty(tbSchoolNameVocational.Text) && string.IsNullOrEmpty(tbSchoolAddressVocational.Text) && string.IsNullOrEmpty(tbDegreeVocational.Text))
             {
-                var item = selectedEduItem;
-                item._EDU_SCHOOL_NAME = tbSchoolNameVocational.Text;
-                item._EDU_SCHOOL_ADDRESS = tbSchoolAddressVocational.Text;
-                item._EDU_DEGREE_EARNED = tbDegreeVocational.Text;
-                item._EDU_DATE_GRADUATED = dpEduVocationalDate.Text;
-
-                hasSelectedEdu = false;
-                ChangeVocBtnIcon();
-                ClearVocationalEduFields();
-                cbVocationalCollect.SelectedIndex = -1;
-
-                selectedEduItem = null;
-
-                MessageBox.Show("School record successfully updated.");
+                vocationalEduCollection.Remove(selectedEduItem);
             }
+            else
+            {
+                if (VocEduValidation())
+                {
+                    var item = selectedEduItem;
+                    item._EDU_SCHOOL_NAME = tbSchoolNameVocational.Text;
+                    item._EDU_SCHOOL_ADDRESS = tbSchoolAddressVocational.Text;
+                    item._EDU_DEGREE_EARNED = tbDegreeVocational.Text;
+                    item._EDU_DATE_GRADUATED = dpEduVocationalDate.Text;
+
+                }
+            }
+            hasSelectedEdu = false;
+            ChangeVocBtnIcon();
+            ClearVocationalEduFields();
+            cbVocationalCollect.SelectedIndex = -1;
+
+            selectedEduItem = null;
+
+            MessageBox.Show("School record successfully updated.");
         }
 
         private void CbWorkCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -788,45 +821,59 @@ namespace Fasetto.Word
 
         private void BtnSaveWorkExp_Click(object sender, RoutedEventArgs e)
         {
-            if (WorkExpValidation())
+            if (string.IsNullOrEmpty(tbDesignation.Text) && string.IsNullOrEmpty(tbCompanyName.Text) && string.IsNullOrEmpty(tbComanyLocation.Text))
             {
-                var item = selectedExpItem;
-                item._DESIGNATION = tbDesignation.Text;
-                item._COMPANY = tbCompanyName.Text;
-                item._WORK_LOCATION = tbComanyLocation.Text;
-                item._DATE_START = dpWorkStart.Text;
-                item._DATE_END = dpWorkEnd.Text;
-
-                hasSelectedWork = false;
-                ChangeWorkBtnIcon();
-                ClearWorkExpFields();
-                cbWorkCollection.SelectedIndex = -1;
-
-                selectedExpItem = null;
-
-                MessageBox.Show("Work experience record successfully updated.");
+                workExpCollection.Remove(selectedExpItem);
             }
+            else
+            {
+                if (WorkExpValidation())
+                {
+                    var item = selectedExpItem;
+                    item._DESIGNATION = tbDesignation.Text;
+                    item._COMPANY = tbCompanyName.Text;
+                    item._WORK_LOCATION = tbComanyLocation.Text;
+                    item._DATE_START = dpWorkStart.Text;
+                    item._DATE_END = dpWorkEnd.Text;
+                }
+            }
+
+            hasSelectedWork = false;
+            ChangeWorkBtnIcon();
+            ClearWorkExpFields();
+            cbWorkCollection.SelectedIndex = -1;
+
+            selectedExpItem = null;
+
+            MessageBox.Show("Work experience record successfully updated.");
         }
 
         private void BtnSaveTrainings_Click(object sender, RoutedEventArgs e)
         {
-            if (TrainingValidation())
+            if (string.IsNullOrEmpty(tbTitle.Text) && string.IsNullOrEmpty(tbInstitution.Text) && string.IsNullOrEmpty(tbLocation.Text))
             {
-                var item = selectedTrainItem;
-                item._TITLE = tbTitle.Text;
-                item._INSTITUTION = tbInstitution.Text;
-                item._TRAINING_LOCATION = tbLocation.Text;
-                item._TRAINING_DATE = dpTrainingFinished.Text;
-
-                hasSelectedTraining = false;
-                ChangeTrainBtnIcon();
-                ClearTrainingFields();
-                cbTrainingCollection.SelectedIndex = -1;
-
-                selectedTrainItem = null;
-
-                MessageBox.Show("Training record successfully updated.");
+                trainCollection.Remove(selectedTrainItem);
             }
+            else
+            {
+                if (TrainingValidation())
+                {
+                    var item = selectedTrainItem;
+                    item._TITLE = tbTitle.Text;
+                    item._INSTITUTION = tbInstitution.Text;
+                    item._TRAINING_LOCATION = tbLocation.Text;
+                    item._TRAINING_DATE = dpTrainingFinished.Text;
+                }
+            }
+
+            hasSelectedTraining = false;
+            ChangeTrainBtnIcon();
+            ClearTrainingFields();
+            cbTrainingCollection.SelectedIndex = -1;
+
+            selectedTrainItem = null;
+
+            MessageBox.Show("Training record successfully updated.");
         }
 
         private void CbTrainingCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)

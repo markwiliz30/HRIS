@@ -21,11 +21,8 @@ namespace Fasetto.Word
         List<ExperienceItem> mExpList = new List<ExperienceItem>();
         List<TrainingItem> mTrainList = new List<TrainingItem>();
 
-        //List<EducationItem> mVocationalEduListToBind = new List<EducationItem>();
-        //List<ExperienceItem> mWorkExpToBind = new List<ExperienceItem>();
-        //List<TrainingItem> mTrainingToBind = new List<TrainingItem>();
-
         bool editMode = false;
+        bool hasSelectedEdu = false, hasSelectedWork = false, hasSelectedTraining = false;
 
         ObservableCollection<EducationItem> vocationalEduCollection = new ObservableCollection<EducationItem>();
         ObservableCollection<ExperienceItem> workExpCollection = new ObservableCollection<ExperienceItem>();
@@ -138,6 +135,7 @@ namespace Fasetto.Word
                     }
                 }
                 cbVocationalCollect.ItemsSource = vocationalEduCollection;
+                cbVocationalCollect.SelectedIndex = 0;
             }
         }
 
@@ -202,6 +200,7 @@ namespace Fasetto.Word
                     workExpCollection.Add(item);
                 }
                 cbWorkCollection.ItemsSource = workExpCollection;
+                cbWorkCollection.SelectedIndex = 0;
             }
         }
 
@@ -216,6 +215,7 @@ namespace Fasetto.Word
                     trainCollection.Add(item);
                 }
                 cbTrainingCollection.ItemsSource = trainCollection;
+                cbTrainingCollection.SelectedIndex = 0;
             }
         }
 
@@ -255,7 +255,6 @@ namespace Fasetto.Word
             }
             else
             {
-                //DisableEditingFields();
                 SetValues();
                 ButtonEdit.Content = "Edit";
                 ButtonBack.Content = "Back";
@@ -327,8 +326,6 @@ namespace Fasetto.Word
                 EmployeeCollection myEmpList = new EmployeeCollection();
                 myEmpList.RetreiveAllEmployee();
 
-                //ClearInputFields();
-
                 EmployeeManagement.mEmpTransitioner.SelectedIndex = 0;
                 EmployeeManagement.mEmpTransitioner.Items.RemoveAt(1);
             }
@@ -348,6 +345,7 @@ namespace Fasetto.Word
             if (!string.IsNullOrEmpty(tbSchoolNamePrimary.Text))
             {
                 selectedPrimaryEdu._EMP_ID = empId;
+                selectedPrimaryEdu._EDU_LEVEL = "Primary";
                 selectedPrimaryEdu._EDU_SCHOOL_NAME = tbSchoolNamePrimary.Text;
                 selectedPrimaryEdu._EDU_SCHOOL_ADDRESS = tbSchoolAddressPrimary.Text;
                 selectedPrimaryEdu._EDU_DATE_GRADUATED = dpEduPrimaryDate.Text;
@@ -358,8 +356,9 @@ namespace Fasetto.Word
             if (!string.IsNullOrEmpty(tbSchoolNameSecondary.Text))
             {
                 selectedSecondaryEdu._EMP_ID = empId;
+                selectedSecondaryEdu._EDU_LEVEL = "Secondary";
                 selectedSecondaryEdu._EDU_SCHOOL_NAME = tbSchoolNameSecondary.Text;
-                selectedSecondaryEdu._EDU_SCHOOL_ADDRESS = tbSchoolAddressPrimary.Text;
+                selectedSecondaryEdu._EDU_SCHOOL_ADDRESS = tbSchoolAddressSecondary.Text;
                 selectedSecondaryEdu._EDU_DATE_GRADUATED = dpEduSecondaryDate.Text;
 
                 eduBackgroundList.Add(selectedSecondaryEdu);
@@ -368,6 +367,7 @@ namespace Fasetto.Word
             if (!string.IsNullOrEmpty(tbSchoolNameTertiary.Text))
             {
                 selectedTertiaryEdu._EMP_ID = empId;
+                selectedTertiaryEdu._EDU_LEVEL = "Tertiary";
                 selectedTertiaryEdu._EDU_SCHOOL_NAME = tbSchoolNameTertiary.Text;
                 selectedTertiaryEdu._EDU_SCHOOL_ADDRESS = tbSchoolAddressTertiary.Text;
                 selectedTertiaryEdu._EDU_DATE_GRADUATED = dpEduTertiaryDate.Text;
@@ -379,6 +379,7 @@ namespace Fasetto.Word
             if (!string.IsNullOrEmpty(tbSchoolNameMasteral.Text))
             {
                 selectedMasteralEdu._EMP_ID = empId;
+                selectedMasteralEdu._EDU_LEVEL = "Masteral";
                 selectedMasteralEdu._EDU_SCHOOL_NAME = tbSchoolNameMasteral.Text;
                 selectedMasteralEdu._EDU_SCHOOL_ADDRESS = tbSchoolAddressMasteral.Text;
                 selectedMasteralEdu._EDU_DATE_GRADUATED = dpEduMasteralDate.Text;
@@ -390,6 +391,7 @@ namespace Fasetto.Word
             if (!string.IsNullOrEmpty(tbSchoolNameDoctoral.Text))
             {
                 selectedDoctoralEdu._EMP_ID = empId;
+                selectedDoctoralEdu._EDU_LEVEL = "Doctoral";
                 selectedDoctoralEdu._EDU_SCHOOL_NAME = tbSchoolNameDoctoral.Text;
                 selectedDoctoralEdu._EDU_SCHOOL_ADDRESS = tbSchoolAddressDoctoral.Text;
                 selectedDoctoralEdu._EDU_DATE_GRADUATED = dpEduDoctoralDate.Text;
@@ -607,7 +609,7 @@ namespace Fasetto.Word
                 MessageBox.Show("Please input Company location.");
                 return false;
             }
-            else if (IsWorkExpDateValid(dpWorkStart.Text, dpWorkEnd.Text))
+            else if (IsWorkExpDateInvalid(dpWorkStart.Text, dpWorkEnd.Text) && !string.IsNullOrEmpty(tbDesignation.Text))
             {
                 MessageBox.Show("Invalid working experience date");
                 return false;
@@ -633,7 +635,7 @@ namespace Fasetto.Word
             }
         }
 
-        private bool IsWorkExpDateValid(string workStart, string workEnd)
+        private bool IsWorkExpDateInvalid(string workStart, string workEnd)
         {
             DateTime cWorkStart = DateTime.Parse(workStart);
             DateTime cWorkEnd = DateTime.Parse(workEnd);
@@ -649,7 +651,6 @@ namespace Fasetto.Word
 
         private void EnableEditingFields()
         {
-            tbEmployeeId.IsReadOnly = false;
             tbFirstName.IsReadOnly = false;
             tbMiddleName.IsReadOnly = false;
             tbLastName.IsReadOnly = false;
@@ -705,6 +706,8 @@ namespace Fasetto.Word
             tbDegreeVocational.IsReadOnly = false;
             dpEduVocationalDate.IsEnabled = true;
             btnAddVocational.Visibility = Visibility.Visible;
+            //btnSaveVocational.Visibility = Visibility.Visible;
+            ChangeVocBtnIcon();
 
             tbDesignation.IsReadOnly = false;
             tbCompanyName.IsReadOnly = false;
@@ -712,11 +715,15 @@ namespace Fasetto.Word
             dpWorkStart.IsEnabled = true;
             dpWorkEnd.IsEnabled = true;
             btnAddWorkExp.Visibility = Visibility.Visible;
+            //btnSaveWorkExp.Visibility = Visibility.Visible;
+            ChangeWorkBtnIcon();
             tbTitle.IsReadOnly = false;
             tbInstitution.IsReadOnly = false;
             tbLocation.IsReadOnly = false;
             dpTrainingFinished.IsEnabled = true;
             btnAddTrainings.Visibility = Visibility.Visible;
+            //btnSaveTrainings.Visibility = Visibility.Visible;
+            ChangeTrainBtnIcon();
         }
 
         private void CbVocationalCollect_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -727,8 +734,8 @@ namespace Fasetto.Word
                 selectedVocationalEdu = item;
 
                 ViewSelectedEdu();
-                //hasSelectedEdu = true;
-                //ChangeVocBtnIcon();
+                hasSelectedEdu = true;
+                ChangeVocBtnIcon();
             }
         }
 
@@ -774,8 +781,8 @@ namespace Fasetto.Word
                 selectedExpItem = item;
 
                 ViewSelectedExp();
-                //hasSelectedEdu = true;
-                //ChangeVocBtnIcon();
+                hasSelectedWork = true;
+                ChangeWorkBtnIcon();
             }
         }
 
@@ -787,14 +794,389 @@ namespace Fasetto.Word
                 selectedTrainItem = item;
 
                 ViewSelectedTrain();
-                //hasSelectedEdu = true;
-                //ChangeVocBtnIcon();
+                hasSelectedTraining = true;
+                ChangeTrainBtnIcon();
             }
         }
 
         private void CbEmpStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedEmpStatus = cbEmpStatus.SelectedValue.ToString();
+        }
+
+        private bool VocEduValidation()
+        {
+            if (string.IsNullOrEmpty(tbSchoolAddressVocational.Text))
+            {
+                MessageBox.Show("Please input Vocational school address.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbSchoolNameVocational.Text))
+            {
+                MessageBox.Show("Please input Vocational school name.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbDegreeVocational.Text))
+            {
+                MessageBox.Show("Please input Vocational Degree Earned.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbEmployeeId.Text))
+            {
+                MessageBox.Show("Please input Employee ID");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+        private void ChangeVocBtnIcon()
+        {
+            if (!hasSelectedEdu)
+            {
+                btnVocAdd.Kind = MaterialDesignThemes.Wpf.PackIconKind.Add;
+                btnSaveVocational.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                btnVocAdd.Kind = MaterialDesignThemes.Wpf.PackIconKind.Cancel;
+                if (editMode)
+                {
+                    btnSaveVocational.Visibility = Visibility.Visible;
+                }
+            }
+        }
+
+        private void BtnSaveVocational_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbSchoolNameVocational.Text) && string.IsNullOrEmpty(tbSchoolAddressVocational.Text) && string.IsNullOrEmpty(tbDegreeVocational.Text))
+            {
+                vocationalEduCollection.Remove(selectedVocationalEdu);
+            }
+            else
+            {
+                if (VocEduValidation())
+                {
+                    var item = selectedVocationalEdu;
+                    item._EDU_SCHOOL_NAME = tbSchoolNameVocational.Text;
+                    item._EDU_SCHOOL_ADDRESS = tbSchoolAddressVocational.Text;
+                    item._EDU_DEGREE_EARNED = tbDegreeVocational.Text;
+                    item._EDU_DATE_GRADUATED = dpEduVocationalDate.Text;
+                }
+
+            }
+            hasSelectedEdu = false;
+            ChangeVocBtnIcon();
+            ClearVocationalEduFields();
+            cbVocationalCollect.SelectedIndex = -1;
+
+            selectedVocationalEdu = null;
+
+            MessageBox.Show("School record successfully updated.");
+        }
+
+        private bool WorkExpValidation()
+        {
+            if (string.IsNullOrEmpty(tbCompanyName.Text))
+            {
+                MessageBox.Show("Please input Company name.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbDesignation.Text))
+            {
+                MessageBox.Show("Please input Designation.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbComanyLocation.Text))
+            {
+                MessageBox.Show("Please input Company location.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbEmployeeId.Text))
+            {
+                MessageBox.Show("Please input Employee ID");
+                return false;
+            }
+            else if (IsWorkExpDateInvalid(dpWorkStart.Text, dpWorkEnd.Text))
+            {
+                MessageBox.Show("Invalid working experience date");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+        private void ChangeWorkBtnIcon()
+        {
+            if (!hasSelectedWork)
+            {
+                btnWorkAdd.Kind = MaterialDesignThemes.Wpf.PackIconKind.Add;
+                btnSaveWorkExp.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                btnWorkAdd.Kind = MaterialDesignThemes.Wpf.PackIconKind.Cancel;
+                if (editMode)
+                {
+                    btnSaveWorkExp.Visibility = Visibility.Visible;
+                }
+            }
+        }
+
+        private void ClearWorkExpFields()
+        {
+            tbDesignation.Text = "";
+            tbCompanyName.Text = "";
+            tbComanyLocation.Text = "";
+
+            dpWorkStart.SelectedDate = DateTime.Today;
+            dpWorkEnd.SelectedDate = DateTime.Today;
+        }
+
+        private void BtnAddWorkExp_Click(object sender, RoutedEventArgs e)
+        {
+            if (WorkExpValidation())
+            {
+                if (hasSelectedWork)
+                {
+                    hasSelectedWork = false;
+                    ChangeWorkBtnIcon();
+                    ClearWorkExpFields();
+                    cbWorkCollection.SelectedIndex = -1;
+
+                    selectedExpItem = null;
+                }
+                else
+                {
+                    var expItem = new ExperienceItem();
+                    expItem._EMP_NO = tbEmployeeId.Text;
+                    expItem._DESIGNATION = tbDesignation.Text;
+                    expItem._COMPANY = tbCompanyName.Text;
+                    expItem._DATE_START = dpWorkStart.Text;
+                    expItem._DATE_END = dpWorkEnd.Text;
+                    expItem._WORK_LOCATION = tbComanyLocation.Text;
+                    expItem._EXP_HOLDER = "Job " + (workExpCollection.Count + 1);
+
+                    if (workExpCollection.Count == 0)
+                    {
+                        ChangeWorkBtnIcon();
+                        cbWorkCollection.SelectedIndex = -1;
+                    }
+
+                    workExpCollection.Add(expItem);
+
+                    cbWorkCollection.ItemsSource = workExpCollection;
+
+                    ClearWorkExpFields();
+
+                    MessageBox.Show("New work experience record added.");
+                }
+            }
+        }
+
+        private void BtnSaveWorkExp_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbDesignation.Text) && string.IsNullOrEmpty(tbCompanyName.Text) && string.IsNullOrEmpty(tbComanyLocation.Text))
+            {
+                workExpCollection.Remove(selectedExpItem);
+            }
+            else
+            {
+                if (WorkExpValidation())
+                {
+                    var item = selectedExpItem;
+                    item._DESIGNATION = tbDesignation.Text;
+                    item._COMPANY = tbCompanyName.Text;
+                    item._WORK_LOCATION = tbComanyLocation.Text;
+                    item._DATE_START = dpWorkStart.Text;
+                    item._DATE_END = dpWorkEnd.Text;
+                }
+            }
+            hasSelectedWork = false;
+            ChangeWorkBtnIcon();
+            ClearWorkExpFields();
+            cbWorkCollection.SelectedIndex = -1;
+
+            selectedExpItem = null;
+
+            MessageBox.Show("Work experience record successfully updated.");
+        }
+
+        private bool TrainingValidation()
+        {
+            if (string.IsNullOrEmpty(tbInstitution.Text))
+            {
+                MessageBox.Show("Please input training institution.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbTitle.Text))
+            {
+                MessageBox.Show("Please input training title.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbLocation.Text))
+            {
+                MessageBox.Show("Please input training location.");
+                return false;
+            }
+            else if (string.IsNullOrEmpty(tbEmployeeId.Text))
+            {
+                MessageBox.Show("Please input Employee ID");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void ChangeTrainBtnIcon()
+        {
+            if (!hasSelectedTraining)
+            {
+                btnTrainAdd.Kind = MaterialDesignThemes.Wpf.PackIconKind.Add;
+                btnSaveTrainings.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                btnTrainAdd.Kind = MaterialDesignThemes.Wpf.PackIconKind.Cancel;
+                if (editMode)
+                {
+                    btnSaveTrainings.Visibility = Visibility.Visible;
+                }
+            }
+        }
+
+        private void ClearTrainingFields()
+        {
+            tbTitle.Text = "";
+            tbInstitution.Text = "";
+            tbLocation.Text = "";
+
+            dpTrainingFinished.SelectedDate = DateTime.Today;
+        }
+
+        private void BtnAddTrainings_Click(object sender, RoutedEventArgs e)
+        {
+            if (TrainingValidation())
+            {
+                if (hasSelectedTraining)
+                {
+                    hasSelectedTraining = false;
+                    ChangeTrainBtnIcon();
+                    ClearTrainingFields();
+                    cbTrainingCollection.SelectedIndex = -1;
+
+                    selectedTrainItem = null;
+                }
+                else
+                {
+                    var trainItem = new TrainingItem();
+                    trainItem._EMP_ID = tbEmployeeId.Text;
+                    trainItem._TITLE = tbTitle.Text;
+                    trainItem._INSTITUTION = tbInstitution.Text;
+                    trainItem._TRAINING_LOCATION = tbLocation.Text;
+                    trainItem._TRAINING_DATE = dpTrainingFinished.Text;
+                    trainItem._TRAIN_HOLDER = "Training " + (trainCollection.Count + 1);
+
+                    if (trainCollection.Count == 0)
+                    {
+                        ChangeTrainBtnIcon();
+                        cbTrainingCollection.SelectedIndex = -1;
+                    }
+
+                    trainCollection.Add(trainItem);
+
+                    cbTrainingCollection.ItemsSource = trainCollection;
+
+                    ClearTrainingFields();
+
+                    MessageBox.Show("New work training record added.");
+                }
+            }
+        }
+
+        private void BtnSaveTrainings_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(tbTitle.Text) && string.IsNullOrEmpty(tbInstitution.Text) && string.IsNullOrEmpty(tbLocation.Text))
+            {
+                trainCollection.Remove(selectedTrainItem);
+            }
+            else
+            {
+                if (TrainingValidation())
+                {
+                    var item = selectedTrainItem;
+                    item._TITLE = tbTitle.Text;
+                    item._INSTITUTION = tbInstitution.Text;
+                    item._TRAINING_LOCATION = tbLocation.Text;
+                    item._TRAINING_DATE = dpTrainingFinished.Text;
+                }
+            }
+            hasSelectedTraining = false;
+            ChangeTrainBtnIcon();
+            ClearTrainingFields();
+            cbTrainingCollection.SelectedIndex = -1;
+
+            selectedTrainItem = null;
+
+            MessageBox.Show("Training record successfully updated.");
+        }
+
+        private void ClearVocationalEduFields()
+        {
+            tbSchoolNameVocational.Text = "";
+            tbSchoolAddressVocational.Text = "";
+            tbDegreeVocational.Text = "";
+
+            dpEduVocationalDate.SelectedDate = DateTime.Today;
+        }
+
+        private void BtnAddVocational_Click(object sender, RoutedEventArgs e)
+        {
+            if (VocEduValidation())
+            {
+                if (hasSelectedEdu)
+                {
+                    hasSelectedEdu = false;
+                    ChangeVocBtnIcon();
+                    ClearVocationalEduFields();
+                    cbVocationalCollect.SelectedIndex = -1;
+
+                    selectedVocationalEdu = null;
+                }
+                else
+                {
+                    var eduItem = new EducationItem();
+                    eduItem._EMP_ID = tbEmployeeId.Text;
+                    eduItem._EDU_LEVEL = "Vocational";
+                    eduItem._EDU_SCHOOL_NAME = tbSchoolNameVocational.Text;
+                    eduItem._EDU_SCHOOL_ADDRESS = tbSchoolAddressVocational.Text;
+                    eduItem._EDU_DATE_GRADUATED = dpEduVocationalDate.Text;
+                    eduItem._EDU_DEGREE_EARNED = tbDegreeVocational.Text;
+                    eduItem._EDU_HOLDER = "Education " + (vocationalEduCollection.Count + 1);
+
+                    if (vocationalEduCollection.Count == 0)
+                    {
+                        ChangeVocBtnIcon();
+                        cbVocationalCollect.SelectedIndex = -1;
+                    }
+
+                    vocationalEduCollection.Add(eduItem);
+
+                    cbVocationalCollect.ItemsSource = vocationalEduCollection;                    
+                    
+                    ClearVocationalEduFields();
+
+                    MessageBox.Show("New School Record added.");
+                }
+            }
         }
     }
 }
