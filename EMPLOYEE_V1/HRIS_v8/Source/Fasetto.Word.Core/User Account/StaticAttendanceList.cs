@@ -32,4 +32,10 @@ namespace Fasetto.Word.Core
     {
         public static TimeItem staticLogIdItem = new TimeItem();
     }
+
+    public class Comboboxitem
+    {
+        public static ObservableCollection<ComboBoxItem> ComboItem = new ObservableCollection<ComboBoxItem>();
+    }
+
 }

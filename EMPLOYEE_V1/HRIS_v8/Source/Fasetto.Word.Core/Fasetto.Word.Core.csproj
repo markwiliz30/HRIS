@@ -60,6 +60,7 @@
     <Compile Include="Security\SecureStringHelpers.cs" />
     <Compile Include="User Account\AddRequest.cs" />
     <Compile Include="User Account\AttendanceItem.cs" />
+    <Compile Include="User Account\Comboboxitem.cs" />
     <Compile Include="User Account\GetAttendance.cs" />
     <Compile Include="User Account\PendingItem.cs" />
     <Compile Include="User Account\RequestItem.cs" />

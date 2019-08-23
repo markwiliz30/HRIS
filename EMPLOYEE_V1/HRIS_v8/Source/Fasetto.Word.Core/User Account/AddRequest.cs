@@ -26,6 +26,7 @@ namespace Fasetto.Word.Core
                 cmd.Parameters.Add(new SqlParameter("@STATUS", leaveitem.STATUS));
                 cmd.Parameters.Add(new SqlParameter("@LEAVE_START", leaveitem.LEAVE_START));
                 cmd.Parameters.Add(new SqlParameter("@LEAVE_END", leaveitem.LEAVE_END));
+                cmd.Parameters.Add(new SqlParameter("@POS_ID", leaveitem.POS_ID));
                 cmd.ExecuteNonQuery();
                 db.Close();
 
@@ -48,6 +49,7 @@ namespace Fasetto.Word.Core
                 cmd.Parameters.Add(new SqlParameter("@STATUS", requestitem.STATUS));
                 cmd.Parameters.Add(new SqlParameter("@TIME_FROM", requestitem.TIME_FROM));
                 cmd.Parameters.Add(new SqlParameter("@TIME_TO", requestitem.TIME_TO));
+                cmd.Parameters.Add(new SqlParameter("@POS_ID", requestitem.POS_ID));
                 cmd.ExecuteNonQuery();
                 db.Close();
 

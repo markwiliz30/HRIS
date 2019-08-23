@@ -45,7 +45,17 @@
             <Button Content="Cancel" FontSize="23" Background="#F44336" Height="auto" Width="auto" Margin="20" Click="Button_Click"></Button>
         </Grid>
         <Grid Grid.Row="4" Grid.Column="1" >
-            <Button Content="Send" FontSize="23" Background="#009688"  Height="auto" Width="auto" Margin="20" Click="Button_Click_1"></Button>
+            <StackPanel Orientation="Horizontal">
+
+                <ComboBox x:Name="CB" Focusable="False" Foreground="#ffffff"  FontSize="20" Background="#009688"  Height="auto" Width="230" Margin="20">
+                <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <Button x:Name="Pos" Content="{Binding POS_NAME}" Foreground="#ffffff" Click="Button_Click_2" />
+                        </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+                <Button Content="Send" FontSize="23" Background="#009688"  Height="auto" Width="auto" Margin="20" Click="Button_Click_1"></Button>
+            </StackPanel>
         </Grid>
 
         <Grid Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center">

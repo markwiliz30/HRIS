@@ -22,5 +22,7 @@ namespace Fasetto.Word.Core
 
         public string TIME_TO { get; set; }
         public string PROJECT { get; set; }
+
+        public int POS_ID { get; set; }
     }
 }

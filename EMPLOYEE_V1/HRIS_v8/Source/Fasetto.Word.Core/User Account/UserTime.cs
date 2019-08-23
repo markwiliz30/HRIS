@@ -50,8 +50,9 @@ namespace Fasetto.Word.Core
                 if (reader.Read())
                 {
                     item.TIME_OUT = (string)reader["TIME_OUT"];
-                    
+                    item.LOG_ID = (int)reader["LOG_ID"];
 
+                    LogItem.staticLogIdItem = item;
                 }
                 db.Close();
                 return item;

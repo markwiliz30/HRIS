@@ -50,6 +50,7 @@ namespace Fasetto.Word
             attendance.ItemsSource = StaticAttendanceList.staticAttendanceList;
             AttendanceItem item = new AttendanceItem();
 
+
             fromDate.SelectedDate = item.NOW;
             toDate.SelectedDate = item.NOW;
         }
@@ -57,26 +58,22 @@ namespace Fasetto.Word
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            sort.Visibility = Visibility.Hidden;
-            back.Visibility = Visibility.Visible;
+             StaticSortedListAttendance.staticSortedList.Clear();
             UserPending upend = new UserPending();
-            string fromdate = fromDate.SelectedDate.ToString();
-            var date = DateTime.Parse(fromDate.SelectedDate.ToString());
-            string todate = toDate.SelectedDate.ToString();
-            upend.BetweenDate(mitem._EMPID, fromdate, todate);
+
+            DateTime fd = DateTime.Parse(fromDate.ToString());
+            string passfrom = fd.ToString("MM/dd/yy");
+
+
+            DateTime td = DateTime.Parse(toDate.ToString());
+            string passto = td.ToString("MM/dd/yy");
+
+            upend.BetweenDate(mitem._EMPID, passfrom, passto);
 
             StaticAttendanceList.staticAttendanceList.Clear();
+          
             attendance.ItemsSource = StaticSortedListAttendance.staticSortedList;
-        }
-
-        private void back_click(object sender, RoutedEventArgs e)
-        {
-            back.Visibility = Visibility.Hidden;
-            sort.Visibility = Visibility.Visible;
-
-            StaticSortedListAttendance.staticSortedList.Clear();
-            attendance.ItemsSource = StaticAttendanceList.staticAttendanceList;
-            AttendanceItem item = new AttendanceItem();
+           
         }
     }
 }

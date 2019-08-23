@@ -54,6 +54,7 @@ namespace Fasetto.Word
 
             var now = DateTime.Today.ToString("MM/dd/yy");
             var check = utime.Checker(mitem._EMPID);
+
             if(check == null)
             {
                 btn_time_out.IsEnabled = false;
@@ -81,9 +82,10 @@ namespace Fasetto.Word
             itemtime.TIME_IN = DateTime.Now.ToString("hh:mm");
             itemtime.TIME_OUT = "waiting to timeout";
             itemtime.DATE = DateTime.Today.ToString("MM/dd/yy");
+            DateTime passdate = DateTime.Parse(itemtime.DATE.ToString());
+            string finalpass = passdate.ToString("MM/dd/yy");
 
-           
-            
+
             AddTimein(itemtime);
             utime.GetSpecificId(itemtime);
             btn_time_out.IsEnabled = true;
@@ -108,9 +110,9 @@ namespace Fasetto.Word
             DateTime.TryParse(itemtime.TIME_IN , out timein);
 
             DateTime timeout;
-            DateTime.TryParse(DateTime.Now.ToString("hh:mm"), out timeout);
+            DateTime.TryParse(DateTime.Now.ToString("HH:mm"), out timeout);
 
-            double totalHours = (timein - timeout).TotalHours;
+            double totalHours = (timeout - timein).TotalHours;
 
             itemtime.EMP_ID = mitem._EMPID;
             itemtime.TIME_OUT = DateTime.Now.ToString("hh:mm");

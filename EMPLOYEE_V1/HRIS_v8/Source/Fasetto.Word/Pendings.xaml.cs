@@ -72,7 +72,7 @@ namespace Fasetto.Word
 
                 UserPending upend = new UserPending();
                 upend.DeleteAll(mitem._EMPID);
-                MessageBox.Show("Request Deleted!");
+                MessageBox.Show("All Request Deleted!");
                 this.Close();
                 StaticPendingList.staticPendingList.Clear();
             }

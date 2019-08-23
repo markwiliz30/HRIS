@@ -267,5 +267,30 @@ namespace Fasetto.Word.Core
                 db.Close();
             }
         }
+        public void ComboItems()
+        {
+            using (var db = DBConnection.CreateConnection())
+            {
+                db.Open();
+
+                var sql = "dbo.GET_DEPARTMENT_HEADS";
+                var cmd = new SqlCommand(sql, db);
+                cmd.CommandType = CommandType.StoredProcedure;
+                var reader = cmd.ExecuteReader();
+
+                if (!reader.HasRows)
+                {
+                    return;
+                }
+                while (reader.Read())
+                {
+                    var item = new ComboBoxItem();
+                    item.POS_NAME = (string)reader["POS_NAME"];
+
+                    Comboboxitem.ComboItem.Add(item);
+                }
+                db.Close();
+            }
+        }
     }
 }
