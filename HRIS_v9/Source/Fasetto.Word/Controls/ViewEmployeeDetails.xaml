@@ -101,7 +101,7 @@
                                         <TextBlock Text="Position Applied:" Foreground="DarkSlateGray" FontSize="20" Margin="0 10 44 0" />
                                         <ComboBox x:Name="cbPosition" IsEnabled="False" DisplayMemberPath="_POS_NAME"  SelectedValuePath="_POS_ID" SelectedIndex="0" Width="130" HorizontalAlignment="Left" FontSize="20" />
                                         <Button x:Name="btnAddPosition" Visibility="Collapsed" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="25 0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom">
-                                            <materialDesign:PackIcon Kind="Add"/>
+                                            <materialDesign:PackIcon Kind="AssignmentInd"/>
                                         </Button>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 20 0 0">

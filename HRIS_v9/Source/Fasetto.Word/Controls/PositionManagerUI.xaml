@@ -30,59 +30,82 @@
                 <Border.Effect>
                     <DropShadowEffect Color="Black" Direction="-50" ShadowDepth="20" Opacity="0.3"/>
                 </Border.Effect>
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="auto" />
-                            <ColumnDefinition Width="auto" />
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Margin="0 0 40 0">
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20 0 0">
-                                <TextBlock Text="List of Job Position" FontFamily="Champagne &amp; Limousines" Foreground="DarkSlateGray" FontSize="20" VerticalAlignment="Center"/>
-                            </StackPanel>
-
-                            <DataGrid Name="positionTable" Margin="10" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" SelectionMode="Single" IsReadOnly="True" IsManipulationEnabled="True" ItemsSource="{Binding observableEmpCollection}" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5">
-                                <DataGrid.Resources>
-                                    <Style TargetType="{x:Type DataGridColumnHeader}">
-                                        <Setter Property="Background" Value="#dd0074" />
-                                        <Setter Property="Padding" Value="15" />
-                                        <Setter Property="FontWeight" Value="Bold" />
-                                        <Setter Property="FontSize" Value="14" />
-                                        <Setter Property="BorderThickness" Value="0 0 1 2" />
-                                        <Setter Property="BorderBrush" Value="DarkGray" />
-                                        <Setter Property="Foreground" Value="White" />
-                                    </Style>
-                                </DataGrid.Resources>
-                                <DataGrid.RenderTransform>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Name="positionTable" Margin="10" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" SelectionMode="Single" IsReadOnly="True" IsManipulationEnabled="True" AutoGenerateColumns="False" RenderTransformOrigin="0.5,0.5">
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridColumnHeader}">
+                                <Setter Property="Background" Value="#dd0074" />
+                                <Setter Property="Padding" Value="15" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="BorderThickness" Value="0 0 1 2" />
+                                <Setter Property="BorderBrush" Value="DarkGray" />
+                                <Setter Property="Foreground" Value="White" />
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </DataGrid.RenderTransform>
+                        <DataGrid.ItemContainerStyle>
+                            <Style TargetType="DataGridRow">
+                                <EventSetter Event="MouseLeftButtonUp" Handler="Row_Click"/>
+                            </Style>
+                        </DataGrid.ItemContainerStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Position ID" Binding="{Binding _POS_ID}" Width="120"/>
+                            <DataGridTextColumn Header="Position Title" Binding="{Binding _POS_NAME}" Width="120"/>
+                            <DataGridTextColumn Header="Department" Binding="{Binding _POS_DEPARTMENT}" Width="120"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Orientation="Vertical" Grid.Column="1" Margin="10 0 20 0">
+                            <TextBox x:Name="tbJobTitle" HorizontalAlignment="Left" Width="200" Margin="0 40 0 5" materialDesign:HintAssist.Hint="Job Title" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                            <TextBox x:Name="tbDepartment" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Department" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 10">
+                            <Button x:Name="btnCancel" Margin="5 0" ToolTip="Manage Job Positions" Style="{DynamicResource MaterialDesignFloatingActionButton}" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom" Click="BtnCancel_Click">
+                                <Button.RenderTransform>
                                     <TransformGroup>
                                         <ScaleTransform/>
                                         <SkewTransform/>
                                         <RotateTransform/>
                                         <TranslateTransform/>
                                     </TransformGroup>
-                                </DataGrid.RenderTransform>
-                                <DataGrid.ItemContainerStyle>
-                                    <Style TargetType="DataGridRow">
-                                        <!--<EventSetter Event="MouseLeftButtonUp" Handler="Row_Click"/>-->
-                                    </Style>
-                                </DataGrid.ItemContainerStyle>
-                                <DataGrid.Columns>
-                                    <DataGridTextColumn Header="Position ID" Binding="{Binding _POS_ID}" Width="120"/>
-                                    <DataGridTextColumn Header="Position Title" Binding="{Binding _POS_NAME}" Width="120"/>
-                                    <DataGridTextColumn Header="Department" Binding="{Binding _POS_DEPARTMENT}" Width="120"/>
-                                </DataGrid.Columns>
-                            </DataGrid>
+                                </Button.RenderTransform>
+                                <materialDesign:PackIcon Kind="Cancel" Height="25" Width="25"/>
+                            </Button>
+                            <Button x:Name="btnDelete" Margin="5 0" ToolTip="Manage Job Positions" Style="{DynamicResource MaterialDesignFloatingActionButton}" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom" Visibility="Collapsed">
+                                <Button.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Button.RenderTransform>
+                                <materialDesign:PackIcon Kind="Delete" Height="25" Width="25"/>
+                            </Button>
+                            <Button x:Name="btnSave" Margin="5 0" ToolTip="Manage Job Positions" Style="{DynamicResource MaterialDesignFloatingActionButton}" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom" Click="BtnSave_Click">
+                                <Button.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Button.RenderTransform>
+                                <materialDesign:PackIcon x:Name="btnSaveIcon" Kind="ContentSave" Height="25" Width="25"/>
+                            </Button>
                         </StackPanel>
-                        <StackPanel Orientation="Vertical" Grid.Column="1" Margin="0 0 20 0">
-                            <TextBox x:Name="tbJobTitle" HorizontalAlignment="Left" Width="200" Margin="0 40 0 5" materialDesign:HintAssist.Hint="Job Title" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                            <TextBox x:Name="tbDepartment" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Department" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10 10">
-                                <Button x:Name="ButtonCancel" Content="Cancel" Margin="10 0"/>
-                                <Button x:Name="ButtonSave" Content="Save" Margin="10 0"/>
-                            </StackPanel>
                         </StackPanel>
                     </Grid>
-                </ScrollViewer>
             </Border>
         </Grid>
     </Border>

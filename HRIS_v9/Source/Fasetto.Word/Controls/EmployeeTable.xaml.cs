@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -54,22 +55,29 @@ namespace Fasetto.Word
 
         private void ButtonViewEmployee_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            EducationCollection selectedEduList = new EducationCollection();
-            ExperienceCollection selectedExpList = new ExperienceCollection();
-            TrainingCollection selectedTrainList = new TrainingCollection();
+            if (string.IsNullOrEmpty(selectedEmployeeId))
+            {
+                MessageBox.Show("Please select employee");
+            }
+            else
+            {
+                EducationCollection selectedEduList = new EducationCollection();
+                ExperienceCollection selectedExpList = new ExperienceCollection();
+                TrainingCollection selectedTrainList = new TrainingCollection();
 
-            var vEmpItem = new EmployeeItem();
-            var vEduList = new List<EducationItem>();
-            var vExpList = new List<ExperienceItem>();
-            var vTrainList = new List<TrainingItem>();
-            vEmpItem = empCollection.Where(t => t._EMP_NO.Equals(selectedEmployeeId)).FirstOrDefault();
-            vEduList = selectedEduList.RetreiveEmpEducation(vEmpItem._EMP_NO);
-            vExpList = selectedExpList.RetreiveEmpExperience(vEmpItem._EMP_NO);
-            vTrainList = selectedTrainList.RetreiveEmpTraining(vEmpItem._EMP_NO);
-            ViewEmployeeDetails viewEmp = new ViewEmployeeDetails(vEmpItem, vEduList, vExpList, vTrainList);
-            EmployeeManagement.mEmpTransitioner.Items.Add(viewEmp);
-            EmployeeManagement.mEmpTransitioner.SelectedIndex = 1;
-            GetAllEmployees();
+                var vEmpItem = new EmployeeItem();
+                var vEduList = new List<EducationItem>();
+                var vExpList = new List<ExperienceItem>();
+                var vTrainList = new List<TrainingItem>();
+                vEmpItem = empCollection.Where(t => t._EMP_NO.Equals(selectedEmployeeId)).FirstOrDefault();
+                vEduList = selectedEduList.RetreiveEmpEducation(vEmpItem._EMP_NO);
+                vExpList = selectedExpList.RetreiveEmpExperience(vEmpItem._EMP_NO);
+                vTrainList = selectedTrainList.RetreiveEmpTraining(vEmpItem._EMP_NO);
+                ViewEmployeeDetails viewEmp = new ViewEmployeeDetails(vEmpItem, vEduList, vExpList, vTrainList);
+                EmployeeManagement.mEmpTransitioner.Items.Add(viewEmp);
+                EmployeeManagement.mEmpTransitioner.SelectedIndex = 1;
+                GetAllEmployees();
+            }
         }
 
         private void GetAllEmployees()
@@ -89,7 +97,14 @@ namespace Fasetto.Word
 
         private void ButtonDeleteEmployee_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            DeleteEmployee();
+            if (string.IsNullOrEmpty(selectedEmployeeId))
+            {
+                MessageBox.Show("Please select employee");
+            }
+            else
+            {
+                DeleteEmployee();
+            }
         }
 
         private void DeleteEmployee()
@@ -139,7 +154,15 @@ namespace Fasetto.Word
 
         private void PersistentSearch_KeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            employeeTable.ItemsSource = empCollection.Where(t => t._EMP_NO.ToLower().Contains(searchBox.SearchTerm.ToLower()) || t._FIRST_NAME.ToLower().Contains(searchBox.SearchTerm.ToLower()) || t._MIDDLE_NAME.ToLower().Contains(searchBox.SearchTerm.ToLower()) || t._LAST_NAME.ToLower().Contains(searchBox.SearchTerm.ToLower()));
+            try
+            {
+                filterEmpTable();
+            }
+            catch (Exception x)
+            {
+
+            }
+            
         }
 
         private void ButtonAddPosition_Click(object sender, RoutedEventArgs e)
@@ -147,6 +170,33 @@ namespace Fasetto.Word
             PositionManagerUI posManagetUI = new PositionManagerUI();
             EmployeeManagement.mEmpTransitioner.Items.Add(posManagetUI);
             EmployeeManagement.mEmpTransitioner.SelectedIndex = 1;
+        }
+
+        private void filterEmpTable()
+        {
+            employeeTable.ItemsSource = empCollection.Where(t => t._EMP_NO.ToLower().Contains(searchBox.SearchTerm.ToLower()) || t._FIRST_NAME.ToLower().Contains(searchBox.SearchTerm.ToLower()) || t._MIDDLE_NAME.ToLower().Contains(searchBox.SearchTerm.ToLower()) || t._LAST_NAME.ToLower().Contains(searchBox.SearchTerm.ToLower()));
+        }
+
+        private void SearchBox_TextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            filterEmpTable();
+        }
+
+        private void SearchBox_Search(object sender, MaterialDesignExtensions.Controls.SearchEventArgs args)
+        {
+            filterEmpTable();
+        }
+
+        private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                filterEmpTable();
+            }
+            catch (Exception x)
+            {
+                employeeTable.ItemsSource = empCollection;
+            }
         }
     }
 }

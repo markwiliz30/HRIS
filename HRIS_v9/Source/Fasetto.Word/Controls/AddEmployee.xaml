@@ -41,7 +41,7 @@
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Orientation="Vertical" Margin="0 0 40 0">
-                                    <TextBox x:Name="tbEmployeeId" HorizontalAlignment="Left" Width="200" Margin="0 5 10 5" materialDesign:HintAssist.Hint="Employee ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
+                                    <TextBox x:Name="tbEmployeeId" IsReadOnly="True" HorizontalAlignment="Left" Width="200" Margin="0 5 10 5" materialDesign:HintAssist.Hint="Employee ID" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
                                     <TextBox x:Name="tbFirstName" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="First Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
                                     <TextBox x:Name="tbMiddleName" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Middle Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
                                     <TextBox x:Name="tbLastName" HorizontalAlignment="Left" Width="200" Margin="0,5" materialDesign:HintAssist.Hint="Last Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="20"/>
@@ -107,7 +107,7 @@
                                             <ComboBoxItem>Mechanical</ComboBoxItem>-->
                                         </ComboBox>
                                         <Button x:Name="btnAddPosition" Style="{DynamicResource MaterialDesignFloatingActionButton}" Height="30" Width="30"  Margin="25 0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Bottom">
-                                            <materialDesign:PackIcon Kind="Add"/>
+                                            <materialDesign:PackIcon Kind="AssignmentInd"/>
                                         </Button>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0 20 0 0">

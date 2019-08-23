@@ -42,6 +42,37 @@ namespace Fasetto.Word
 
             cbPosition.ItemsSource = StaticPositionCollection.staticPositionList;
             cbEmpStatus.ItemsSource = Enum.GetValues(typeof(EmployeeStatus)).Cast<EmployeeStatus>();
+
+            string stringGenID = "";
+            bool isIdUnique = false;
+
+            while (!isIdUnique)
+            {
+                stringGenID = generatedID();
+                isIdUnique = isGeneretedIDUnique(stringGenID);
+            }
+
+            tbEmployeeId.Text = stringGenID;
+        }
+
+        private bool isGeneretedIDUnique(string genId)
+        {
+            var tempEmpList = StaticEmpoyeeCollection.staticEmployeeList.Where(t => t._EMP_NO.Equals(genId));
+
+            if (tempEmpList.Count() != 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private string generatedID()
+        {
+            Random generator = new Random();
+            return generator.Next(0, 99999).ToString("D5");
         }
 
         private string genderSelectResult()
@@ -301,15 +332,15 @@ namespace Fasetto.Word
                     SetExpBackground(item._EMP_NO);
                     SetTrainBackground(item._EMP_NO);
 
-                    //try
-                    //{
-                    SaveEmpoyeeDetails(item);
-                    MessageBox.Show("New Employee added.");
-                    //}
-                    //catch (System.Exception)
-                    //{
-                    //MessageBox.Show("Error saving new employee.");
-                    //}
+                    try
+                    {
+                        SaveEmpoyeeDetails(item);
+                        MessageBox.Show("New Employee added.");
+                    }
+                    catch (System.Exception)
+                    {
+                        MessageBox.Show("Error saving new employee.");
+                    }
 
                     EmployeeCollection myEmpList = new EmployeeCollection();
                     myEmpList.RetreiveAllEmployee();

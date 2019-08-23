@@ -159,10 +159,10 @@
                         <materialDesign:PackIcon Kind="Register" Height="25" Width="25"/>
                     </Button>
 
-                    <controls:PersistentSearch Grid.Column="1" x:Name="searchBox" VerticalAlignment="Top" Margin="8" Width="400" KeyUp="PersistentSearch_KeyUp" />
+                    <controls:PersistentSearch Grid.Column="1" x:Name="searchBox" VerticalAlignment="Top" Margin="8" Width="400" KeyUp="PersistentSearch_KeyUp" Search="SearchBox_Search" LostFocus="SearchBox_LostFocus" />
 
                     <StackPanel Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center">
-                        <Button x:Name="ButtonManageJobPosition" ToolTip="Manage Job   Positions" Style="{DynamicResource MaterialDesignFloatingActionButton}" RenderTransformOrigin="0.5,0.5" Margin="0 0 150 0" Click="ButtonAddPosition_Click" VerticalAlignment="Bottom">
+                        <Button x:Name="ButtonManageJobPosition" ToolTip="Manage Job Positions" Style="{DynamicResource MaterialDesignFloatingActionButton}" RenderTransformOrigin="0.5,0.5" Margin="0 0 150 0" Click="ButtonAddPosition_Click" VerticalAlignment="Bottom">
                             <Button.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -171,7 +171,7 @@
                                     <TranslateTransform/>
                                 </TransformGroup>
                             </Button.RenderTransform>
-                            <materialDesign:PackIcon Kind="AccountBadgeHorizontal" Height="25" Width="25"/>
+                            <materialDesign:PackIcon Kind="AssignmentInd" Height="25" Width="25"/>
                         </Button>
 
                         <Button x:Name="ButtonViewEmployee" ToolTip="Add Employee Details" Margin="10 0" Style="{DynamicResource MaterialDesignFloatingActionButton}" Click="ButtonViewEmployee_Click" RenderTransformOrigin="0.5,0.5">
