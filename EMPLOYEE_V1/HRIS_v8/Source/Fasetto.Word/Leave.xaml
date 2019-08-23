@@ -47,12 +47,8 @@
         <Grid Grid.Row="4" Grid.Column="1" >
             <StackPanel Orientation="Horizontal">
 
-                <ComboBox x:Name="CB" Focusable="False" Foreground="#ffffff"  FontSize="20" Background="#009688"  Height="auto" Width="230" Margin="20">
-                <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <Button x:Name="Pos" Content="{Binding POS_NAME}" Foreground="#ffffff" Click="Button_Click_2" />
-                        </DataTemplate>
-                </ComboBox.ItemTemplate>
+                <ComboBox x:Name="CB" SelectedValuePath="POS_NAME" DisplayMemberPath="POS_NAME" Focusable="False" Foreground="#ffffff"  FontSize="20" Background="#009688"  Height="auto" Width="230" Margin="20">
+                
             </ComboBox>
                 <Button Content="Send" FontSize="23" Background="#009688"  Height="auto" Width="auto" Margin="20" Click="Button_Click_1"></Button>
             </StackPanel>

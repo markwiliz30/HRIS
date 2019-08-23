@@ -44,7 +44,7 @@ namespace Fasetto.Word
         {
             string headstatus = "Approved by Head";
             
-            pitem.RetrievePending(mitem._EMPID,headstatus);
+            pitem.RetrievePending(mitem._EMPID,headstatus,mitem._POSITION);
 
             approval.ItemsSource = StaticApprovalList.staticApprovalList;
             total.Content = StaticApprovalList.staticApprovalList.Count;

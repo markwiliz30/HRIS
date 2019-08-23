@@ -27,5 +27,8 @@ namespace Fasetto.Word.Core
         public string PENDING_LEAVE_REASON { get; set; }
         public string PENDING_TIME { get; set; }
         public string PENDING_OT_REASON { get; set; }
+
+        public string APPROVED_BY { get; set; }
+        public string SEND_TO { get; set; }
     }
 }

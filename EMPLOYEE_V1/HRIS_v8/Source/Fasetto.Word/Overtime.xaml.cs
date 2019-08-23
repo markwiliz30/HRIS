@@ -44,7 +44,7 @@ namespace Fasetto.Word
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (project.Text == "" || Reasonbox.Text == "" || Timefrom.Text == "" || TimeTo.Text == "" || toDate.Text == "")
+            if (project.Text == "" || Reasonbox.Text == "" || Timefrom.Text == "" || TimeTo.Text == "" || toDate.Text == "" || CB.Text == "")
             {
                 MessageBox.Show("Please fill required inputs");
             }
@@ -71,6 +71,8 @@ namespace Fasetto.Word
                 pitem.PENDING_TIME = DateTime.Now.ToString("hh:mm:ss tt");
                 pitem.PENDING_OT_FROM = Timefrom.Text;
                 pitem.PENDING_OT_TO = TimeTo.Text;
+                pitem.SEND_TO = CB.Text;
+                pitem.APPROVED_BY = "Waiting for Approval";
 
                 addOT(item);
                 addPend(pitem,Reasonbox.Text);
@@ -102,10 +104,16 @@ namespace Fasetto.Word
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Comboboxitem.ComboItem.Clear();
             AttendanceItem aitem = new AttendanceItem();
             Timefrom.SelectedTime = aitem.NOW;
             TimeTo.SelectedTime = aitem.NOW;
             toDate.SelectedDate = aitem.NOW;
+
+            UserPending upend = new UserPending();
+            upend.ComboItems();
+
+            CB.ItemsSource = Comboboxitem.ComboItem;
         }
     }
 }

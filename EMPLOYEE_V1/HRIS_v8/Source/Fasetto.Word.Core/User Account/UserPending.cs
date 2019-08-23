@@ -28,6 +28,8 @@ namespace Fasetto.Word.Core
                 cmd.Parameters.Add(new SqlParameter("@PENDING_TIME", item.PENDING_TIME));
                 cmd.Parameters.Add(new SqlParameter("@PENDING_LEAVE_FROM", item.PENDING_LEAVE_FROM));
                 cmd.Parameters.Add(new SqlParameter("@PENDING_LEAVE_TO", item.PENDING_LEAVE_TO));
+                cmd.Parameters.Add(new SqlParameter("@SEND_TO", item.SEND_TO));
+                cmd.Parameters.Add(new SqlParameter("@APPROVED_BY", item.APPROVED_BY));
                 cmd.ExecuteNonQuery();
                 db.Close();
             }
@@ -51,6 +53,8 @@ namespace Fasetto.Word.Core
                 cmd.Parameters.Add(new SqlParameter("@PENDING_TIME", item.PENDING_TIME));
                 cmd.Parameters.Add(new SqlParameter("@PENDING_OT_FROM", item.PENDING_OT_FROM));
                 cmd.Parameters.Add(new SqlParameter("@PENDING_OT_TO", item.PENDING_OT_TO));
+                cmd.Parameters.Add(new SqlParameter("@SEND_TO", item.SEND_TO));
+                cmd.Parameters.Add(new SqlParameter("@APPROVED_BY", item.APPROVED_BY));
                 cmd.ExecuteNonQuery();
                 db.Close();
             }
@@ -82,6 +86,7 @@ namespace Fasetto.Word.Core
                     item.PENDING_STATUS = (string)reader["PENDING_STATUS"];
                     item.PENDING_DATE = (string)reader["PENDING_DATE"];
                     item.PENDING_POSITION = (string)reader["PENDING_POSITION"];
+                    item.APPROVED_BY = (string)reader["APPROVED_BY"];
 
                     StaticPendingList.staticPendingList.Add(item);
                 }
@@ -89,7 +94,7 @@ namespace Fasetto.Word.Core
             }
         }
 
-        public void RetrievePending(int id , string status)
+        public void RetrievePending(int id , string status , string sendto)
         {
             using (var db = DBConnection.CreateConnection())
             {
@@ -100,6 +105,7 @@ namespace Fasetto.Word.Core
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@EMP_ID", id));
                 cmd.Parameters.Add(new SqlParameter("@PENDING_STATUS", status));
+                cmd.Parameters.Add(new SqlParameter("@SEND_TO", sendto));
                 var reader = cmd.ExecuteReader();
 
                 if (!reader.HasRows)
@@ -286,7 +292,7 @@ namespace Fasetto.Word.Core
                 {
                     var item = new ComboBoxItem();
                     item.POS_NAME = (string)reader["POS_NAME"];
-
+                    item.POS_ID = (int)reader["POS_ID"];
                     Comboboxitem.ComboItem.Add(item);
                 }
                 db.Close();

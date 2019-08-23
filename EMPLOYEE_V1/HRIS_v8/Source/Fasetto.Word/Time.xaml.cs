@@ -127,7 +127,7 @@ namespace Fasetto.Word
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             
-            if(mitem._POSITION == "Technician")
+            if(mitem._POSITION == "Engineering Head" || mitem._POSITION == "Electronics Head")
             {
                 var pw = Window.GetWindow(this);
 

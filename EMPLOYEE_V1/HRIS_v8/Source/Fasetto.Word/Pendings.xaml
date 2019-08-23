@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Fasetto.Word"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Pendings" Height="560" Width="830" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded">
+        Title="Pendings" Height="560" Width="930" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" Loaded="Window_Loaded">
     <Grid Background="#263238">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -42,7 +42,7 @@
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Name"
                                   Binding="{Binding PENDING_NAME}"      
-                                Width="300" >
+                                Width="220" >
                     </DataGridTextColumn>
                     <DataGridTextColumn Header="Type"
                                 Binding="{Binding PENDING_TYPE}"
@@ -55,6 +55,10 @@
                     <DataGridTextColumn Header="Date"
                                 Binding="{Binding PENDING_DATE}"
                                 Width="*"
+                                FontFamily="Times New Roman" />
+                    <DataGridTextColumn Header="Approved by"
+                                Binding="{Binding APPROVED_BY}"
+                                Width="180"
                                 FontFamily="Times New Roman" />
                 </DataGrid.Columns>
 

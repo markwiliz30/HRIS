@@ -18,8 +18,10 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="45" />
         </Grid.RowDefinitions>
-        <Grid Grid.ColumnSpan="2" Grid.Row="0" >
+        <Grid Grid.ColumnSpan="2" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+        
             <Button x:Name="buttonProfile" Content="Profile" BorderThickness="0"  Background="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" Foreground="#ffffff" Click="Button_Click_1"/>
+  
         </Grid>
         <Grid Grid.Row="1">
             <Button x:Name="btn_time_in" Content="Time In" Background="#009688" Height="80" Margin="15" FontSize="24" Click="Button_Click"></Button>

@@ -9,5 +9,6 @@ namespace Fasetto.Word.Core
     public class ComboBoxItem
     {
         public string POS_NAME { get; set; }
+        public int POS_ID { get; set; }
     }
 }
