@@ -25,10 +25,10 @@
         <Border Background="#1A237E" Grid.ColumnSpan="2" />
         <Grid Grid.Row="1" Margin="10">
 
-            <Button x:Name="btn_profile" BorderThickness="0" Background="#607D8B" Height="auto" Click="Btn_profile_Click_1">
+            <Button x:Name="btn_profile" BorderThickness="0" Background="#455A64" Height="auto" Click="Btn_profile_Click_1">
                 
                 <Button.BitmapEffect>
-                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.8" />
                 </Button.BitmapEffect>
              
                     <materialDesign:PackIcon x:Name="packIcon" Kind="AccountBadgeHorizontalOutline" Height="auto" Width="auto" Foreground="#ECEFF1" RenderTransformOrigin="0.5,0.5">
@@ -40,36 +40,36 @@
         </Grid>
         <Grid Grid.Column="1" Grid.Row="1"  Margin="10">
 
-            <Button Background="#607D8B" BorderThickness="0" Height="auto" Click="Button_Click">
+            <Button Background="#455A64" BorderThickness="0" Height="auto" Click="Button_Click">
                 <Button.BitmapEffect>
-                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.8" />
                 </Button.BitmapEffect>
                 <materialDesign:PackIcon x:Name="packIcon2" Kind="FileDocumentBoxCheckOutline" Height="auto" Width="auto" Foreground="#ECEFF1" RenderTransformOrigin="0.5,0.5">
                 </materialDesign:PackIcon>
             </Button>
         </Grid>
         <Grid Grid.Row="2" Margin="10">
-            <Button Background="#607D8B" BorderThickness="0" Height="auto" Click="Button_Click_1">
+            <Button Background="#455A64" BorderThickness="0" Height="auto" Click="Button_Click_1">
                 <Button.BitmapEffect>
-                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.8" />
                 </Button.BitmapEffect>
                 <materialDesign:PackIcon x:Name="packIcon3" Kind="History" Height="auto" Width="auto" Foreground="#ECEFF1" RenderTransformOrigin="0.5,0.5">
                 </materialDesign:PackIcon>
             </Button>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1" Margin="10">
-            <Button BorderThickness="0" Background="#607D8B" Height="auto">
+            <Button BorderThickness="0" Background="#455A64" Height="auto">
                 <Button.BitmapEffect>
-                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.8" />
                 </Button.BitmapEffect>
                 <materialDesign:PackIcon x:Name="packIcon4" Kind="CalendarAlert" Height="auto" Width="auto" Foreground="#ECEFF1" RenderTransformOrigin="0.5,0.5">
                 </materialDesign:PackIcon>
             </Button>
         </Grid>
         <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="10">
-            <Button BorderThickness="0" Background="#607D8B" Height="auto" Click="Button_Click_2">
+            <Button BorderThickness="0" Background="#455A64" Height="auto" Click="Button_Click_2">
                 <Button.BitmapEffect>
-                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.8" />
                 </Button.BitmapEffect>
                 <materialDesign:PackIcon x:Name="packIcon5" Kind="AccountClockOutline" Height="auto" Width="auto" Foreground="#ECEFF1" RenderTransformOrigin="0.5,0.5">
                 </materialDesign:PackIcon>

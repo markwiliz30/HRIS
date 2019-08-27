@@ -20,15 +20,14 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid Grid.ColumnSpan="2">
-         
-                <Ellipse  
-      
-    Margin="50"
-      Height="auto"  
-      Width="320"  
-      StrokeThickness="5"  
-      Stroke="#E65100"/>
-           
+
+            <Ellipse Height="300" Width="300" StrokeThickness="1" >
+                <Ellipse.Fill>
+                
+                    <ImageBrush  ImageSource="/Images/Logo/1.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+
         </Grid>
         <Border Grid.Row="1" BorderBrush="#E65100" Width="500"  BorderThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center" CornerRadius="12" Padding="15" Margin="20">
             <TextBlock x:Name="empno" Text="" HorizontalAlignment="Center" Foreground="#ffffff" FontSize="18" />

@@ -23,6 +23,7 @@ namespace Fasetto.Word
     {
 
         UserItem mitem = new UserItem();
+
         public HRISMainWindow(UserItem item)
         {
             InitializeComponent();

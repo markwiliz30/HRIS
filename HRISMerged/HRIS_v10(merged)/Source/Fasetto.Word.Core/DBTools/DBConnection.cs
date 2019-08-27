@@ -13,14 +13,14 @@ namespace Fasetto.Word.Core
         {
             var builder = new SqlConnectionStringBuilder()
             {
-                //DataSource = "192.168.1.133,1433",
-                //UserID = "sa",
-                //Password = "password",
-                //InitialCatalog = "HRIS"
+                DataSource = "192.168.1.133,1433",
+                UserID = "sa",
+                Password = "password",
+                InitialCatalog = "HRIS"
 
-                DataSource = ".",
-                InitialCatalog = "HRIS",
-                IntegratedSecurity = true
+                //DataSource = ".",
+                //InitialCatalog = "HRIS",
+                //IntegratedSecurity = true
             };
             var db = new SqlConnection(builder.ToString());
 

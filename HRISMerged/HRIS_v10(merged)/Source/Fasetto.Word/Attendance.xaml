@@ -53,11 +53,11 @@
                                   Binding="{Binding FNAME}"      
                                 Width="420" >
                     </DataGridTextColumn>
-                    <DataGridTextColumn Header="Time In"
+                    <DataGridTextColumn Header="Clock In"
                                 Binding="{Binding TIMEIN}"
                                 Width="*"
                                 FontFamily="Times New Roman" />
-                    <DataGridTextColumn Header="Time Out"
+                    <DataGridTextColumn Header="Clock Out"
                                 Binding="{Binding TIMEOUT}"
                                 Width="*"
                                 FontFamily="Times New Roman" />

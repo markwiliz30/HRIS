@@ -29,7 +29,7 @@
             <Button x:Name="btn_profile" BorderThickness="0" Background="#455A64" Height="auto" Click="Btn_profile_Click">
 
                 <Button.BitmapEffect>
-                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.8" />
                 </Button.BitmapEffect>
 
                 <materialDesign:PackIcon x:Name="packIcon" Kind="AccountBadgeHorizontalOutline" Height="auto" Width="auto" Foreground="#ECEFF1" RenderTransformOrigin="0.5,0.5">
@@ -43,7 +43,7 @@
 
             <Button Background="#455A64" BorderThickness="0" Height="auto" Click="Button_Click" >
                 <Button.BitmapEffect>
-                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.8" />
                 </Button.BitmapEffect>
                 <materialDesign:PackIcon x:Name="packIcon2" Kind="FileDocumentBoxCheckOutline" Height="auto" Width="auto" Foreground="#ECEFF1" RenderTransformOrigin="0.5,0.5">
                 </materialDesign:PackIcon>
@@ -52,7 +52,7 @@
         <Grid Grid.Row="2" Margin="10">
             <Button Background="#455A64" BorderThickness="0" Height="auto" Click="Button_Click_1">
                 <Button.BitmapEffect>
-                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity=".8" />
                 </Button.BitmapEffect>
                 <materialDesign:PackIcon x:Name="packIcon3" Kind="History" Height="auto" Width="auto" Foreground="#ECEFF1" RenderTransformOrigin="0.5,0.5">
                 </materialDesign:PackIcon>
@@ -61,7 +61,7 @@
         <Grid Grid.Row="2" Grid.Column="1" Margin="10">
             <Button Background="#455A64" BorderThickness="0" Height="auto" Click="Button_Click_2">
                 <Button.BitmapEffect>
-                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.8" />
                 </Button.BitmapEffect>
                 <materialDesign:PackIcon x:Name="packIcon4" Kind="CalendarAlert" Height="auto" Width="auto" Foreground="#ECEFF1" RenderTransformOrigin="0.5,0.5">
                 </materialDesign:PackIcon>
@@ -70,7 +70,7 @@
         <Grid Grid.Row="3"  Margin="10">
             <Button Background="#455A64" BorderThickness="0" Height="auto" Click="Button_Click_3">
                 <Button.BitmapEffect>
-                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.8" />
                 </Button.BitmapEffect>
                 <materialDesign:PackIcon x:Name="packIcon5" Kind="AccountClockOutline" Height="auto" Width="auto" Foreground="#ECEFF1" RenderTransformOrigin="0.5,0.5">
                 </materialDesign:PackIcon>
@@ -80,7 +80,7 @@
         <Grid Grid.Row="3" Grid.Column="1" Margin="10">
             <Button Background="#455A64" BorderThickness="0" Height="auto" Click="Button_Click_4">
                 <Button.BitmapEffect>
-                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
+                    <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.8" />
                 </Button.BitmapEffect>
                 <materialDesign:PackIcon x:Name="packIcon6" Kind="ProgressCheck" Height="auto" Width="auto" Foreground="#ECEFF1" RenderTransformOrigin="0.5,0.5">
                 </materialDesign:PackIcon>

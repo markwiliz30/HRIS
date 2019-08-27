@@ -32,8 +32,8 @@ namespace Fasetto.Word.Core
                     var item = new AttendanceItem();
                     item.LOG_ID = (int)reader["LOG_ID"];
                     item.FNAME = (string)reader["FIRST_NAME"];
-                    item.TIMEIN = (string)reader["TIME_IN"];
-                    item.TIMEOUT = (string)reader["TIME_OUT"];
+                    item.TIMEIN = (string)reader["CLOCK_IN"];
+                    item.TIMEOUT = (string)reader["CLOCK_OUT"];
                     item.DATE = (string)reader["LOG_DATE"];
 
                     StaticAttendanceList.staticAttendanceList.Add(item);
