@@ -11,19 +11,21 @@
             CaptionHeight="42"/>
     </WindowChrome.WindowChrome>
 
-    <Grid Background="#263238">
+    <Grid Background="#eeeeee">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid Margin="10">
-            
-            <Button x:Name="btn_profile" Background="#607D8B" Height="auto" Click="Btn_profile_Click_1">
+        <Border Background="#1A237E" Grid.ColumnSpan="2" />
+        <Grid Grid.Row="1" Margin="10">
+
+            <Button x:Name="btn_profile" BorderThickness="0" Background="#607D8B" Height="auto" Click="Btn_profile_Click_1">
                 
                 <Button.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
@@ -36,9 +38,9 @@
              
             </Button>
         </Grid>
-        <Grid Grid.Column="1"  Margin="10">
-            
-            <Button Background="#607D8B" Height="auto" Click="Button_Click">
+        <Grid Grid.Column="1" Grid.Row="1"  Margin="10">
+
+            <Button Background="#607D8B" BorderThickness="0" Height="auto" Click="Button_Click">
                 <Button.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
                 </Button.BitmapEffect>
@@ -46,8 +48,8 @@
                 </materialDesign:PackIcon>
             </Button>
         </Grid>
-        <Grid Grid.Row="1" Margin="10">
-            <Button Background="#607D8B" Height="auto" Click="Button_Click_1">
+        <Grid Grid.Row="2" Margin="10">
+            <Button Background="#607D8B" BorderThickness="0" Height="auto" Click="Button_Click_1">
                 <Button.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
                 </Button.BitmapEffect>
@@ -55,8 +57,8 @@
                 </materialDesign:PackIcon>
             </Button>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="1" Margin="10">
-            <Button Background="#607D8B" Height="auto">
+        <Grid Grid.Row="2" Grid.Column="1" Margin="10">
+            <Button BorderThickness="0" Background="#607D8B" Height="auto">
                 <Button.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
                 </Button.BitmapEffect>
@@ -64,8 +66,8 @@
                 </materialDesign:PackIcon>
             </Button>
         </Grid>
-        <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="10">
-            <Button Background="#607D8B" Height="auto" Click="Button_Click_2">
+        <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="10">
+            <Button BorderThickness="0" Background="#607D8B" Height="auto" Click="Button_Click_2">
                 <Button.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.5" />
                 </Button.BitmapEffect>
@@ -74,12 +76,12 @@
             </Button>
         </Grid>
 
-        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10 3">
+        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right">
             <Button x:Name="ButtonMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" WindowChrome.IsHitTestVisibleInChrome="True" Click="ButtonMinimize_Click">
-                <materialDesign:PackIcon Kind="WindowMinimize" Foreground="#05133C"/>
+                <materialDesign:PackIcon Kind="WindowMinimize" Foreground="#ffffff"/>
             </Button>
             <Button x:Name="ButtonClose" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" WindowChrome.IsHitTestVisibleInChrome="True" Click="ButtonClose_Click">
-                <materialDesign:PackIcon Kind="Power" Foreground="#05133C"/>
+                <materialDesign:PackIcon Kind="Power" Foreground="#ffffff"/>
             </Button>
         </StackPanel>
     </Grid>

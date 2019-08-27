@@ -135,6 +135,13 @@ namespace Fasetto.Word
                 HeadContainer hc = new HeadContainer(mitem);
                 hc.ShowDialog();
                 pw.Show();
+            }else if(mitem._POSITION == "Human Resources Head")
+            {
+                var parent = Window.GetWindow(this);
+                parent.Hide();
+                HRISContainer hr = new HRISContainer(mitem);
+                hr.ShowDialog();
+                parent.Show();
             }
             else
             {

@@ -58,14 +58,14 @@
 
         </Grid>
         <Grid Grid.Row="4" >
-            <Button Content="Cancel" FontSize="23" Background="#F44336" Height="auto" Width="auto" Margin="20" Click="Button_Click"></Button>
+            <Button  BorderThickness="0" Content="Cancel" FontSize="23" Background="#F44336" Height="auto" Width="auto" Margin="20" Click="Button_Click"></Button>
         </Grid>
         <Grid Grid.Row="4" Grid.Column="1" >
             <StackPanel Orientation="Horizontal">
                 <ComboBox x:Name="CB" SelectedValuePath="POS_NAME" DisplayMemberPath="POS_NAME" Focusable="False" Foreground="#ffffff"  FontSize="20" Background="#009688"  Height="auto" Width="230" Margin="20">
 
                 </ComboBox>
-                <Button Content="Send" FontSize="23" Background="#009688"  Height="auto" Width="auto" Margin="20" Click="Button_Click_1"></Button>
+                <Button BorderThickness="0" Content="Send" FontSize="23" Background="#009688"  Height="auto" Width="auto" Margin="20" Click="Button_Click_1"></Button>
             </StackPanel>
         </Grid>
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10 3">

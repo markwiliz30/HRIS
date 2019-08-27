@@ -48,10 +48,10 @@
 
         </Grid>
         <Grid Grid.Row="3" >
-            <Button Content="Cancel" FontSize="23" Background="#F44336" Height="auto" Width="auto" Margin="20" Click="Button_Click"></Button>
+            <Button Content="Cancel" BorderThickness="0" FontSize="23" Background="#F44336" Height="auto" Width="auto" Margin="20" Click="Button_Click"></Button>
         </Grid>
         <Grid Grid.Row="3" Grid.Column="1" >
-            <Button Content="Send" FontSize="23" Background="#009688"  Height="auto" Width="auto" Margin="20"></Button>
+            <Button BorderThickness="0" Content="Send" FontSize="23" Background="#009688"  Height="auto" Width="auto" Margin="20"></Button>
         </Grid>
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10 3">
             <Button x:Name="ButtonMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" WindowChrome.IsHitTestVisibleInChrome="True" Click="ButtonMinimize_Click">

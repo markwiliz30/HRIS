@@ -65,7 +65,7 @@
             </DataGrid>
         </Border>
         <Grid Grid.Row="3">
-            <Button Content="Delete All" Height="auto" Width="350" Background="#F44336" Margin="0 20" Click="Button_Click"></Button>
+            <Button Content="Delete All" BorderThickness="0" Height="auto" Width="350" Background="#F44336" Margin="0 20" Click="Button_Click"></Button>
         </Grid>
         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" Margin="10 3">
             <Button x:Name="ButtonMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" WindowChrome.IsHitTestVisibleInChrome="True" Click="ButtonMinimize_Click">

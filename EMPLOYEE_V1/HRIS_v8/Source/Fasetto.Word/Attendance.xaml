@@ -30,7 +30,7 @@
                     <DatePicker x:Name="fromDate"  FontSize="25"  Margin="20 0 0 0" Background="#ECEFF1"  Width="350" Height="40" />
                     <Label Content="To:" Margin="10 0 0 0" Foreground="#ffffff" FontSize="35"></Label>
                     <DatePicker x:Name="toDate" FontSize="25"  Margin="20 0 0 0" Background="#ECEFF1"  Width="350" Height="40" />
-                    <Button x:Name="sort" Content="Sort" Height="40" Margin="40 0 0 0" Width="240" FontSize="25" Background="#009688" Click="Button_Click"/>
+                    <Button x:Name="sort" BorderThickness="0" Content="Sort" Height="40" Margin="40 0 0 0" Width="240" FontSize="25" Background="#009688" Click="Button_Click"/>
                
                 </StackPanel>
             </Border>

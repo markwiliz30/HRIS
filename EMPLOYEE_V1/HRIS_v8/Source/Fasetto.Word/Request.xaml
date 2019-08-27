@@ -15,19 +15,19 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <Button Content="Leave" FontSize="30" Foreground="#ECEFF1" Background="#009688" Height="auto" Margin="20" Click="Button_Click_1"></Button>
+            <Button Content="Leave" BorderThickness="0" FontSize="30" Foreground="#ECEFF1" Background="#009688" Height="auto" Margin="20" Click="Button_Click_1"></Button>
             
         </Grid>
         <Grid Grid.Row="1">
-            <Button Content="Overtime" FontSize="30" Foreground="#ECEFF1" Background="#009688" Height="auto" Margin="20" Click="Button_Click_2"></Button>
+            <Button Content="Overtime" BorderThickness="0" FontSize="30" Foreground="#ECEFF1" Background="#009688" Height="auto" Margin="20" Click="Button_Click_2"></Button>
 
         </Grid>
         <Grid Grid.Row="2">
-            <Button Content="Daily Report" FontSize="30" Foreground="#ECEFF1" Background="#009688" Height="auto" Margin="20" Click="Button_Click_3"></Button>
+            <Button Content="Daily Report" BorderThickness="0" FontSize="30" Foreground="#ECEFF1" Background="#009688" Height="auto" Margin="20" Click="Button_Click_3"></Button>
 
         </Grid>
         <Grid Grid.Row="3">
-            <Button Content="Cancel" FontSize="30" Foreground="#ECEFF1" Background="#F44336" Height="auto" Margin="20" Click="Button_Click"></Button>
+            <Button Content="Cancel" BorderThickness="0" FontSize="30" Foreground="#ECEFF1" Background="#F44336" Height="auto" Margin="20" Click="Button_Click"></Button>
 
         </Grid>
     </Grid>

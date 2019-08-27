@@ -110,6 +110,9 @@
     <Compile Include="HeadContainer.xaml.cs">
       <DependentUpon>HeadContainer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HRISContainer.xaml.cs">
+      <DependentUpon>HRISContainer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HRISMainWindow.xaml.cs">
       <DependentUpon>HRISMainWindow.xaml</DependentUpon>
     </Compile>
@@ -179,6 +182,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HeadContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HRISContainer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
