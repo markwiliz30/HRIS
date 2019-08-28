@@ -42,20 +42,22 @@ namespace Fasetto.Word
         string headstatus;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
             if(mitem._POSITION == "Human Resources Head")
             {
-               headstatus = "Approved by Human Resources Head";
+                pitem.RetrieveHRPending();
+                approval.ItemsSource = StaticHRList.HRlist;
+                total.Content = StaticApprovalList.staticApprovalList.Count;
             }
             else
             {
-                headstatus = "Approved by Head";
+                pitem.RetrievePending(mitem._EMPID, mitem._POSITION);
+                approval.ItemsSource = StaticApprovalList.staticApprovalList;
+                total.Content = StaticApprovalList.staticApprovalList.Count;
             }
-          
-            
-            pitem.RetrievePending(mitem._EMPID,headstatus,mitem._POSITION);
+         
 
-            approval.ItemsSource = StaticApprovalList.staticApprovalList;
-            total.Content = StaticApprovalList.staticApprovalList.Count;
+          
         }
         string id;
             string type;
@@ -81,55 +83,65 @@ namespace Fasetto.Word
         private void Pendings(object sender, RoutedEventArgs e)
         {
             StaticApprovalList.staticApprovalList.Clear();
+            StaticHRList.HRlist.Clear();
 
             if (mitem._POSITION == "Human Resources Head")
             {
-                headstatus = "Approved by Human Resources Head";
+                pitem.RetrieveHRPending();
+                approval.ItemsSource = StaticHRList.HRlist;
+                pending.Visibility = Visibility.Hidden;
             }
             else
             {
-                headstatus = "Approved by Head";
+                pitem.RetrievePending(mitem._EMPID, mitem._POSITION);
+                approval.ItemsSource = StaticApprovalList.staticApprovalList;
+                pending.Visibility = Visibility.Hidden;
             }
 
 
-            pitem.RetrievePending(mitem._EMPID, headstatus, mitem._POSITION);
-
-            approval.ItemsSource = StaticApprovalList.staticApprovalList;
-            pending.Visibility = Visibility.Hidden;
+     
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             StaticApprovalList.staticApprovalList.Clear();
-
-            if (mitem._POSITION == "Human Resources Head")
+            StaticHRList.HRlist.Clear();
+            
+            if(mitem._POSITION == "Human Resources Head")
             {
-                headstatus = "Declined by Human Resources Head";
+              
+                pitem.RetrieveHrDeclined(mitem._EMPID);
+                approval.ItemsSource = StaticHRList.HRlist;
+                pending.Visibility = Visibility.Visible;
             }
             else
             {
-                headstatus = "Declined by Head";
+                pitem.RetrieveDeclined(mitem._EMPID, mitem._POSITION);
+                pending.Visibility = Visibility.Visible;
+                approval.ItemsSource = StaticApprovalList.staticApprovalList;
             }
-            pitem.RetrieveDeclined(mitem._EMPID, headstatus, mitem._POSITION);
-            pending.Visibility = Visibility.Visible;
-            approval.ItemsSource = StaticApprovalList.staticApprovalList;
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             StaticApprovalList.staticApprovalList.Clear();
-
-            if (mitem._POSITION == "Human Resources Head")
+            StaticHRList.HRlist.Clear();
+            if(mitem._POSITION == "Human Resources Head")
             {
-                headstatus = "Approved by Human Resources Head";
+                pitem.RetrieveHrApprove(mitem._EMPID);
+                approval.ItemsSource = StaticHRList.HRlist;
+                pending.Visibility = Visibility.Visible;
             }
             else
             {
-                headstatus = "Approved by Head";
+
+                pitem.RetrieveApproved(mitem._EMPID, mitem._POSITION);
+                pending.Visibility = Visibility.Visible;
+                approval.ItemsSource = StaticApprovalList.staticApprovalList;
             }
-            pitem.RetrieveApproved(mitem._EMPID,headstatus ,mitem._POSITION);
-            pending.Visibility = Visibility.Visible;
-            approval.ItemsSource = StaticApprovalList.staticApprovalList;
+        
         }
     }
 

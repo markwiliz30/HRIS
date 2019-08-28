@@ -41,4 +41,8 @@ namespace Fasetto.Word.Core
     {
         public static HolidayItem holitem = new HolidayItem();
     }
+    public class StaticHRList
+    {
+        public static ObservableCollection<PendingItem> HRlist = new ObservableCollection<PendingItem>();
+    }
 }

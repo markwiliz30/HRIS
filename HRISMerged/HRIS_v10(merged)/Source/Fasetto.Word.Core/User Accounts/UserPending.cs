@@ -93,8 +93,106 @@ namespace Fasetto.Word.Core
                 db.Close();
             }
         }
+        public void RetrieveHRPending()
+        {
+            using(var db = DBConnection.CreateConnection())
+            {
+                db.Open();
+                var sql = "dbo.GET_HR_PENDING";
+                var cmd = new SqlCommand(sql, db);
+                cmd.CommandType = CommandType.StoredProcedure;
+                var reader = cmd.ExecuteReader();
 
-        public void RetrievePending(int id , string status , string sendto)
+                if (!reader.HasRows)
+                {
+                    return;
+                }
+                while (reader.Read())
+                {
+                    var item =new PendingItem();
+                    item.PENDING_ID = (int)reader["PENDING_ID"];
+                    item.EMPID = (int)reader["EMP_ID"];
+                    item.PENDING_NAME = (string)reader["FIRST_NAME"];
+                    item.PENDING_TYPE = (string)reader["PENDING_TYPE"];
+                    item.PENDING_REASON = (string)reader["PENDING_REASON"];
+                    item.PENDING_STATUS = (string)reader["PENDING_STATUS"];
+                    item.PENDING_DATE = (string)reader["PENDING_DATE"];
+                    item.PENDING_POSITION = (string)reader["PENDING_POSITION"];
+                    StaticHRList.HRlist.Add(item);
+                }
+            }
+        }
+        public void RetrieveHrDeclined(int id)
+        {
+            using (var db = DBConnection.CreateConnection())
+            {
+                db.Open();
+
+                var sql = "dbo.GET_HR_DECLINED";
+                var cmd = new SqlCommand(sql, db);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@EMP_ID", id));
+                var reader = cmd.ExecuteReader();
+
+                if (!reader.HasRows)
+                {
+                    return;
+                }
+                while (reader.Read())
+                {
+                    var item = new PendingItem();
+                    item.PENDING_ID = (int)reader["PENDING_ID"];
+                    item.EMPID = (int)reader["EMP_ID"];
+                    item.PENDING_NAME = (string)reader["FIRST_NAME"];
+                    item.PENDING_TYPE = (string)reader["PENDING_TYPE"];
+                    item.PENDING_REASON = (string)reader["PENDING_REASON"];
+                    item.PENDING_STATUS = (string)reader["PENDING_STATUS"];
+                    item.PENDING_DATE = (string)reader["PENDING_DATE"];
+                    item.PENDING_POSITION = (string)reader["PENDING_POSITION"];
+
+                    StaticHRList.HRlist.Add(item);
+
+                }
+                db.Close();
+            }
+        }
+
+        public void RetrieveHrApprove(int id)
+        {
+            using (var db = DBConnection.CreateConnection())
+            {
+                db.Open();
+
+                var sql = "dbo.GET_HR_APPROVE";
+                var cmd = new SqlCommand(sql, db);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@EMP_ID", id));
+                var reader = cmd.ExecuteReader();
+
+                if (!reader.HasRows)
+                {
+                    return;
+                }
+                while (reader.Read())
+                {
+                    var item = new PendingItem();
+                    item.PENDING_ID = (int)reader["PENDING_ID"];
+                    item.EMPID = (int)reader["EMP_ID"];
+                    item.PENDING_NAME = (string)reader["FIRST_NAME"];
+                    item.PENDING_TYPE = (string)reader["PENDING_TYPE"];
+                    item.PENDING_REASON = (string)reader["PENDING_REASON"];
+                    item.PENDING_STATUS = (string)reader["PENDING_STATUS"];
+                    item.PENDING_DATE = (string)reader["PENDING_DATE"];
+                    item.PENDING_POSITION = (string)reader["PENDING_POSITION"];
+
+                    StaticHRList.HRlist.Add(item);
+
+                }
+                db.Close();
+            }
+        }
+
+        public void RetrievePending(int id , string sendto)
         {
             using (var db = DBConnection.CreateConnection())
             {
@@ -104,7 +202,6 @@ namespace Fasetto.Word.Core
                 var cmd = new SqlCommand(sql, db);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@EMP_ID", id));
-                cmd.Parameters.Add(new SqlParameter("@PENDING_STATUS", status));
                 cmd.Parameters.Add(new SqlParameter("@SEND_TO", sendto));
                 var reader = cmd.ExecuteReader();
 
@@ -130,7 +227,7 @@ namespace Fasetto.Word.Core
                 db.Close();
             }
         }
-        public void RetrieveDeclined(int id, string status ,string sendto)
+        public void RetrieveDeclined(int id ,string sendto)
         {
             using (var db = DBConnection.CreateConnection())
             {
@@ -140,7 +237,6 @@ namespace Fasetto.Word.Core
                 var cmd = new SqlCommand(sql, db);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@EMP_ID", id));
-                cmd.Parameters.Add(new SqlParameter("@PENDING_STATUS", status));
                 cmd.Parameters.Add(new SqlParameter("@SEND_TO", sendto));
                 var reader = cmd.ExecuteReader();
 
@@ -166,7 +262,7 @@ namespace Fasetto.Word.Core
                 db.Close();
             }
         }
-        public void RetrieveApproved(int id,string status ,string sendto)
+        public void RetrieveApproved(int id,string sendto)
         {
             using (var db = DBConnection.CreateConnection())
             {
@@ -176,7 +272,6 @@ namespace Fasetto.Word.Core
                 var cmd = new SqlCommand(sql, db);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@EMP_ID", id));
-                cmd.Parameters.Add(new SqlParameter("@PENDING_STATUS", status));
                 cmd.Parameters.Add(new SqlParameter("@SEND_TO", sendto));
                 var reader = cmd.ExecuteReader();
 

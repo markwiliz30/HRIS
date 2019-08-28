@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Fasetto.Word"
         mc:Ignorable="d"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Approval" Height="500" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
+        Title="Approval" Height="500" Width="1230" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None" Loaded="Window_Loaded">
     <Grid Background="#263238">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -26,9 +26,9 @@
                
             </StackPanel>
         </Border>
-        <Button x:Name="pending" Grid.Column="0" Grid.Row="1" Width="230" Background="#009688" BorderThickness="0" FontSize="15" Content="Pendings" Visibility="Hidden"  Click="Pendings"></Button>
-        <Button Grid.Column="1" Grid.Row="1" Width="230" Background="#009688" BorderThickness="0" FontSize="15" Content="Approved" Click="Button_Click_1"></Button>
-        <Button Grid.Column="3" Grid.Row="1" Width="230" Background="#F44336" BorderThickness="0" FontSize="15" Content="Declined" Click="Button_Click"></Button>
+        <Button x:Name="pending" Grid.Column="0" Grid.Row="1" Width="330" Background="#009688" BorderThickness="0" FontSize="15" Content="Pendings" Visibility="Hidden"  Click="Pendings"></Button>
+        <Button Grid.Column="1" Grid.Row="1" Width="330" Background="#009688" BorderThickness="0" FontSize="15" Content="Approved" Click="Button_Click_1"></Button>
+        <Button Grid.Column="3" Grid.Row="1" Width="330" Background="#F44336" BorderThickness="0" FontSize="15" Content="Declined" Click="Button_Click"></Button>
         <Border Grid.Row="2" Grid.ColumnSpan="3">
             <DataGrid Name="approval" IsReadOnly="True" IsManipulationEnabled="True" AutoGenerateColumns="False" Margin="15" MouseDoubleClick="Approval_MouseDoubleClick">
                 <DataGrid.Resources>
@@ -63,7 +63,7 @@
                                 FontFamily="Times New Roman" />
                     <DataGridTextColumn Header="Status"
                                 Binding="{Binding PENDING_STATUS}"
-                                Width="*"
+                                Width="300"
                                 FontFamily="Times New Roman" />
                     <DataGridTextColumn Header="Date"
                                 Binding="{Binding PENDING_DATE}"
