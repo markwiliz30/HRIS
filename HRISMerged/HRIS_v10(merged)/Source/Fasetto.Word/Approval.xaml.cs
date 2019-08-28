@@ -77,7 +77,7 @@ namespace Fasetto.Word
             ApprovalModal app = new ApprovalModal(mitem,idparse , type,pos);
             app.ShowDialog();
             main.Close();
-
+            StaticHRList.HRlist.Clear();
             StaticApprovalList.staticApprovalList.Clear();
         }
         private void Pendings(object sender, RoutedEventArgs e)

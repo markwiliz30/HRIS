@@ -28,7 +28,32 @@ namespace Fasetto.Word.Core
                 db.Close();
             }
         }
+        public void getclockin(int id)
+        {
+            using (var db = DBConnection.CreateConnection())
+            {
+                db.Open();
 
+                var sql = "dbo.GET_CLOCK_IN";
+                var cmd = new SqlCommand(sql, db);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("@EMP_ID", id));
+             var reader =   cmd.ExecuteReader();
+
+                if (!reader.HasRows)
+                {
+                    return;
+                }
+                while (reader.Read())
+                {
+                    var timeItem = new TimeItem();
+                    timeItem.TIME_IN = (string)reader["CLOCK_IN"];
+                    ClockInItem.Clockin = timeItem;  
+                }
+
+                db.Close();
+            }
+        }
         public TimeItem Checker(int id)
         {
             var item = new TimeItem();

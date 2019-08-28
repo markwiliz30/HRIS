@@ -79,7 +79,7 @@ namespace Fasetto.Word
 
             TimeItem itemtime = new TimeItem();
             itemtime.EMP_ID = mitem._EMPID;
-            itemtime.TIME_IN = DateTime.Now.ToString("hh:mm");
+            itemtime.TIME_IN = DateTime.Now.ToString("hh:mm:ss tt");
             itemtime.TIME_OUT = "Waiting to Timeout";
             itemtime.DATE = DateTime.Today.ToString("MM/dd/yy");
             DateTime passdate = DateTime.Parse(itemtime.DATE.ToString());
@@ -105,17 +105,22 @@ namespace Fasetto.Word
 
         private void Btn_time_out_Click(object sender, RoutedEventArgs e)
         {
+            UserTime utiem = new UserTime();
             TimeItem itemtime = new TimeItem();
+            utiem.getclockin(mitem._EMPID);
             DateTime timein;
-            DateTime.TryParse(itemtime.TIME_IN , out timein);
+            DateTime.TryParse(ClockInItem.Clockin.TIME_IN , out timein);
 
             DateTime timeout;
             DateTime.TryParse(DateTime.Now.ToString("HH:mm"), out timeout);
 
-            double totalHours = (timeout - timein).TotalHours;
+            //double totalHours = (timeout - timein).TotalHours;
+
+            TimeSpan totalHours = timeout.Subtract(timein);
+            int totalMinutes = timeout.Subtract(timein).Minutes;
 
             itemtime.EMP_ID = mitem._EMPID;
-            itemtime.TIME_OUT = DateTime.Now.ToString("hh:mm");
+            itemtime.TIME_OUT = DateTime.Now.ToString("hh:mm:ss tt");
             itemtime.HOURS = totalHours;
             itemtime.LOG_ID = LogItem.staticLogIdItem.LOG_ID;
 

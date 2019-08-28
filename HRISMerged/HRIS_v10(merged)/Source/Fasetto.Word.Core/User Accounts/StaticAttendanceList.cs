@@ -45,4 +45,8 @@ namespace Fasetto.Word.Core
     {
         public static ObservableCollection<PendingItem> HRlist = new ObservableCollection<PendingItem>();
     }
+    public class ClockInItem
+    {
+        public static TimeItem Clockin = new TimeItem();
+    }
 }

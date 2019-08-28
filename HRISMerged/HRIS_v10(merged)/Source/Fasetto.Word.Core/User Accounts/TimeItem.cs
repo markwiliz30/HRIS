@@ -13,7 +13,7 @@ namespace Fasetto.Word.Core
         public string TIME_IN { get; set; }
 
         public string DATE { get; set; }
-        public double HOURS { get; set; }
+        public TimeSpan HOURS { get; set; }
 
         public string TIME_OUT { get; set; }
     }
