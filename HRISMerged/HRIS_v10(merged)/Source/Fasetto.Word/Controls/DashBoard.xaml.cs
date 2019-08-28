@@ -10,12 +10,9 @@ namespace Fasetto.Word
     /// </summary>
     public partial class DashBoard : UserControl
     {
-        UserItem mitem = new UserItem();
         public DashBoard()  
         {
             InitializeComponent();
-
-            mitem = HRISMainWindow.mItem;
             Storyboard sb = this.FindResource("PopupButton") as Storyboard;
             sb.Begin();
         }
@@ -104,7 +101,7 @@ namespace Fasetto.Word
         {
             var pw = Window.GetWindow(this);
             pw.Hide();
-            Approval approve = new Approval(mitem);
+            Approval approve = new Approval(HRISMainWindow.mItem);
             approve.ShowDialog();
             pw.Close();
         }
