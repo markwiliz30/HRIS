@@ -129,11 +129,37 @@
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
-                            <Label x:Name="label" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">
-                                <Hyperlink x:Name="hyperlink" Click="Hyperlink_Click">
-                                    <TextBlock Text="wew" />
-                                </Hyperlink>
-                            </Label>
+                            <ScrollViewer>
+                                <StackPanel Orientation="Vertical">
+                                    <Label x:Name="label" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">
+                                        <Hyperlink x:Name="hyperlink" Click="Hyperlink_Click">
+                                            <TextBlock Text="wew" />
+                                        </Hyperlink>
+                                    </Label>
+                                    <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">
+                                        <Hyperlink Click="Hyperlink_Click">
+                                            <TextBlock Text="wew" />
+                                        </Hyperlink>
+                                    </Label>
+                                    <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">
+                                        <Hyperlink Click="Hyperlink_Click">
+                                            <TextBlock Text="wew" />
+                                        </Hyperlink>
+                                    </Label>
+                                    <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">
+                                        <Hyperlink Click="Hyperlink_Click">
+                                            <TextBlock Text="wew" />
+                                        </Hyperlink>
+                                    </Label>
+                                    <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="15">
+                                        <Hyperlink Click="Hyperlink_Click">
+                                            <TextBlock Text="wew" />
+                                        </Hyperlink>
+                                    </Label>
+                                </StackPanel>
+                            </ScrollViewer>
+                            
+                            
                             <TextBlock Grid.Column="1" HorizontalAlignment="Right" Text="1" Margin="10" FontSize="30"/>
                         </Grid>
                     </Border>

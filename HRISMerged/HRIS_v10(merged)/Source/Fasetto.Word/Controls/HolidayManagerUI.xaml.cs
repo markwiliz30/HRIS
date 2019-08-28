@@ -17,6 +17,9 @@ namespace Fasetto.Word
     {
         private DateTime currentDate = new DateTime();
         private List<Border> borderDayList = new List<Border>();
+        List<HolidayItem> holidayList;
+        int prevDay = -1;
+
         public HolidayManagerUI()
         {
             InitializeComponent();
@@ -40,14 +43,26 @@ namespace Fasetto.Word
 
             List<HolidayItem> tempHolidayList = StaticHolidayCollection.staticHolidayList.Where(t => t._HOLIDAY_DATE >= startDate && t._HOLIDAY_DATE <= endDate).ToList();
 
-            foreach (var item in tempHolidayList)
+            foreach (var item in tempHolidayList.OrderBy(o => o._HOLIDAY_DATE))
             {
                 int borderAddress = (item._HOLIDAY_DATE.Day -1);
                 BrushConverter bc = new BrushConverter();
                 Brush brush = (Brush)bc.ConvertFrom("#EF9A9A");
+                if (prevDay == borderAddress)
+                {
+                    holidayList.Add(item);
+                }
+                else
+                {
+                    holidayList = new List<HolidayItem>();
+                    holidayList.Add(item);
+                    prevDay = borderAddress;
+                }
                 borderDayList[borderAddress].Background = brush;
-                borderDayList[borderAddress].Child = generateBorderGrid(item._HOLIDAY_NAME, item._HOLIDAY_DATE.Day.ToString(), item._HOLIDAY_ID);
+                borderDayList[borderAddress].Child = generateBorderGrid(holidayList);
             }
+            holidayList.Clear();
+            prevDay = -1;
         }
         private void PrevMonth()
         {
@@ -75,26 +90,7 @@ namespace Fasetto.Word
             return (int)(firstDayOfCurrentDate.AddMonths(1).AddDays(-1).Day);
         }
 
-        //private void AddPanelToCalendar()
-        //{
-        //    var myBorder = new Border();
-        //    myBorder.Background = Brushes.AliceBlue;
-        //    myBorder.Margin = new Thickness(2.5, 2, 2.5, 2);
-        //    myBorder.CornerRadius = new CornerRadius(10);
-        //    myBorder.MouseUp += new MouseButtonEventHandler(showHolidayManager);
-        //    grDayContainer.Children.Add(myBorder);
-
-        //    var myBorder2 = new Border();
-        //    myBorder2.Background = Brushes.AliceBlue;
-        //    myBorder2.Margin = new Thickness(2.5, 2, 2.5, 2);
-        //    myBorder2.CornerRadius = new CornerRadius(10);
-        //    myBorder2.SetValue(Grid.ColumnProperty, 1);
-        //    myBorder2.SetValue(Grid.RowProperty, 1);
-        //    myBorder2.Child = generateBorderGrid("", "1", -1);
-        //    grDayContainer.Children.Add(myBorder2);
-        //}
-
-        private Grid generateBorderGrid(string holidayName, string day, int holidayId)
+        private Grid generateBorderGridNoHoliday(string holDate, int holId)
         {
             Grid grid = new Grid();
             ColumnDefinition c1 = new ColumnDefinition();
@@ -104,27 +100,65 @@ namespace Fasetto.Word
             grid.ColumnDefinitions.Add(c1);
             grid.ColumnDefinitions.Add(c2);
             grid.Cursor = Cursors.Hand;
-            grid.Tag = int.Parse(day);
+            grid.Tag = int.Parse(holDate);
             grid.MouseUp += new MouseButtonEventHandler(showHolidayManager);
 
             TextBlock mDay = new TextBlock();
-            mDay.Text = day;
+            mDay.Text = holDate;
             mDay.FontSize = 20;
             mDay.HorizontalAlignment = HorizontalAlignment.Right;
             mDay.Margin = new Thickness(10);
             mDay.SetValue(Grid.ColumnProperty, 1);
             grid.Children.Add(mDay);
 
-            Label lblHoliday = new Label();
-            Hyperlink hlnHoliday = new Hyperlink();
-            hlnHoliday.Inlines.Add(holidayName);
-            hlnHoliday.Tag = holidayId;
-            hlnHoliday.Click += new RoutedEventHandler(showHolidayManagerEdit);
-            lblHoliday.Content = hlnHoliday;
-            lblHoliday.VerticalAlignment = VerticalAlignment.Center;
-            lblHoliday.HorizontalContentAlignment = HorizontalAlignment.Center;
-            lblHoliday.FontSize = 14;
-            grid.Children.Add(lblHoliday);
+            return grid;
+        }
+
+        private Grid generateBorderGrid(List<HolidayItem> holidays)
+        {
+            Grid grid = new Grid();
+            ColumnDefinition c1 = new ColumnDefinition();
+            c1.Width = new GridLength(100, GridUnitType.Star);
+            ColumnDefinition c2 = new ColumnDefinition();
+            c2.Width = new GridLength(100, GridUnitType.Auto);
+            grid.ColumnDefinitions.Add(c1);
+            grid.ColumnDefinitions.Add(c2);
+            grid.Cursor = Cursors.Hand;
+            grid.Tag = int.Parse(holidays[0]._HOLIDAY_DATE.Day.ToString());
+            grid.MouseUp += new MouseButtonEventHandler(showHolidayManager);
+
+            TextBlock mDay = new TextBlock();
+            mDay.Text = holidays[0]._HOLIDAY_DATE.Day.ToString();
+            mDay.FontSize = 20;
+            mDay.HorizontalAlignment = HorizontalAlignment.Right;
+            mDay.Margin = new Thickness(10);
+            mDay.SetValue(Grid.ColumnProperty, 1);
+            grid.Children.Add(mDay);
+
+
+            ScrollViewer mScrollViewer = new ScrollViewer();
+
+            mScrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+            StackPanel verStackPanel = new StackPanel();
+            verStackPanel.Orientation = Orientation.Vertical;
+
+            mScrollViewer.Content = verStackPanel;
+
+            foreach (var item in holidays)
+            {
+                Label lblHoliday = new Label();
+                lblHoliday.Padding = new Thickness(0);
+                lblHoliday.Margin = new Thickness(20, 10, 10, 0);
+                Hyperlink hlnHoliday = new Hyperlink();
+                hlnHoliday.Inlines.Add(item._HOLIDAY_NAME);
+                hlnHoliday.Tag = item._HOLIDAY_ID;
+                hlnHoliday.Click += new RoutedEventHandler(showHolidayManagerEdit);
+                lblHoliday.Content = hlnHoliday;
+                lblHoliday.FontSize = 14;
+                verStackPanel.Children.Add(lblHoliday);
+            }
+            
+            grid.Children.Add(mScrollViewer);
 
             return grid;
         }
@@ -167,7 +201,7 @@ namespace Fasetto.Word
             myBorder.CornerRadius = new CornerRadius(10);
             myBorder.SetValue(Grid.ColumnProperty, col);
             myBorder.SetValue(Grid.RowProperty, row);
-            myBorder.Child = generateBorderGrid("", day.ToString(), -1);
+            myBorder.Child = generateBorderGridNoHoliday(day.ToString(), -1);
             return myBorder;
         }
 
