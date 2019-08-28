@@ -58,7 +58,7 @@
             </Button>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1" Margin="10">
-            <Button BorderThickness="0" Background="#455A64" Height="auto">
+            <Button BorderThickness="0" Background="#455A64" Height="auto" Click="Button_Click_3">
                 <Button.BitmapEffect>
                     <DropShadowBitmapEffect Color="Black" Direction="320" Softness="1" ShadowDepth="10" Opacity="0.8" />
                 </Button.BitmapEffect>

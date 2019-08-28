@@ -40,8 +40,10 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Image Width="100" Height="100" VerticalAlignment="Top" Margin="30"/>
+        <Image Source="/Images/Logo/Lago.png" Width="250" Height="130" VerticalAlignment="Top" Margin="30"/>
 
-        <Frame x:Name="LoginMainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" Background="Transparent" />
+        <Frame x:Name="LoginMainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" Background="Transparent" >
+           
+        </Frame>
     </Grid>
 </Window>

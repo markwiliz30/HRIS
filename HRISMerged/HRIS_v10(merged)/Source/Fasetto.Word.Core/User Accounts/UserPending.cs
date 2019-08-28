@@ -130,7 +130,7 @@ namespace Fasetto.Word.Core
                 db.Close();
             }
         }
-        public void RetrieveDeclined(int id, string sendto)
+        public void RetrieveDeclined(int id, string status ,string sendto)
         {
             using (var db = DBConnection.CreateConnection())
             {
@@ -140,6 +140,7 @@ namespace Fasetto.Word.Core
                 var cmd = new SqlCommand(sql, db);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@EMP_ID", id));
+                cmd.Parameters.Add(new SqlParameter("@PENDING_STATUS", status));
                 cmd.Parameters.Add(new SqlParameter("@SEND_TO", sendto));
                 var reader = cmd.ExecuteReader();
 
@@ -165,7 +166,7 @@ namespace Fasetto.Word.Core
                 db.Close();
             }
         }
-        public void RetrieveApproved(int id, string sendto)
+        public void RetrieveApproved(int id,string status ,string sendto)
         {
             using (var db = DBConnection.CreateConnection())
             {
@@ -175,6 +176,7 @@ namespace Fasetto.Word.Core
                 var cmd = new SqlCommand(sql, db);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new SqlParameter("@EMP_ID", id));
+                cmd.Parameters.Add(new SqlParameter("@PENDING_STATUS", status));
                 cmd.Parameters.Add(new SqlParameter("@SEND_TO", sendto));
                 var reader = cmd.ExecuteReader();
 

@@ -149,6 +149,9 @@
     <Compile Include="HeadContainer.xaml.cs">
       <DependentUpon>HeadContainer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="HolidayWindow.xaml.cs">
+      <DependentUpon>HolidayWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HRISContainer.xaml.cs">
       <DependentUpon>HRISContainer.xaml</DependentUpon>
     </Compile>
@@ -296,6 +299,10 @@
     <Page Include="HeadContainer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="HolidayWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="HRISContainer.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -467,6 +474,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Logo\1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo\lago.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" />

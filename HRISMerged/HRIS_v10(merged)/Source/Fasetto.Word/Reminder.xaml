@@ -9,17 +9,29 @@
         Title="Reminder" Height="437.659" Width="383.554" ResizeMode="NoResize" WindowStartupLocation="Manual" WindowStyle="None" Loaded="Window_Loaded">
     <Grid Background="#263238">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="270" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
  
-            <TextBlock Text="Upcoming Events" Foreground="#ffffff" FontSize="30" Margin="10" VerticalAlignment="Top" />
-        <TextBlock Grid.Row="1" Text="Reminders" Foreground="#ffffff" FontSize="30" Margin="10" VerticalAlignment="Top" />
+           
+        <TextBlock  Text="Upcoming Events" Foreground="#ffffff" FontSize="30" Margin="10" VerticalAlignment="Top" />
+        <Border  BorderThickness="1" BorderBrush="Red" Margin="0 0 0 0" CornerRadius="12" Height="130" Width="320" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel>
+                <TextBlock x:Name="Date" Text="None" FontSize="25" Foreground="#ffffff" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 10"/>
+                <TextBlock x:Name="Event" Text="None" FontSize="25" Foreground="#ffffff" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBlock x:Name="Type" Text="None" Margin="0 5" FontSize="25" Foreground="#ffffff" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-        <Border Grid.Row="3"  BorderBrush="Red" BorderThickness="1" CornerRadius="12" Margin="40" >
-            <Button Content="Payslip" Height="auto"   />
-        </Border>
+            </StackPanel>
+         </Border>
+
+
+        <Button  Content="Calendar" Height="30" VerticalAlignment="Bottom" Background="#009688" BorderThickness="0" Margin="80 5" Click="Button_Click"  />
+
+ 
+
+        <TextBlock Grid.Row="2" Text="Get your payslip here" FontSize="30" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="#ffffff" Margin="0 10" />
+        <materialDesign:PackIcon Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Kind="Download" Height="40" Width="40" Foreground="#ffffff"/>
+        <Button Grid.Row="2"  Content="Download" Height="30" VerticalAlignment="Bottom" Background="#009688" BorderThickness="0" Margin="80 10" />
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Height="40" HorizontalAlignment="Right" >
             <Button x:Name="ButtonMinimize" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" WindowChrome.IsHitTestVisibleInChrome="True" Click="ButtonMinimize_Click">

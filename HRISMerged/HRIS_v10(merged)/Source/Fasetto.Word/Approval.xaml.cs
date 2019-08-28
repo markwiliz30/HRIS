@@ -39,10 +39,18 @@ namespace Fasetto.Word
             this.Close();
             StaticApprovalList.staticApprovalList.Clear();
         }
-
+        string headstatus;
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string headstatus = "Approved by Head";
+            if(mitem._POSITION == "Human Resources Head")
+            {
+               headstatus = "Approved by Human Resources Head";
+            }
+            else
+            {
+                headstatus = "Approved by Head";
+            }
+          
             
             pitem.RetrievePending(mitem._EMPID,headstatus,mitem._POSITION);
 
@@ -60,7 +68,7 @@ namespace Fasetto.Word
             int idparse = Int32.Parse(id);
             type = (approval.SelectedCells[2].Column.GetCellContent(item2) as TextBlock).Text;
 
-            string pos = "Head";
+            string pos = mitem._POSITION;
 
             Window main = GetWindow(this);
             main.Hide();
@@ -73,7 +81,16 @@ namespace Fasetto.Word
         private void Pendings(object sender, RoutedEventArgs e)
         {
             StaticApprovalList.staticApprovalList.Clear();
-            string headstatus = "Approved by Head";
+
+            if (mitem._POSITION == "Human Resources Head")
+            {
+                headstatus = "Approved by Human Resources Head";
+            }
+            else
+            {
+                headstatus = "Approved by Head";
+            }
+
 
             pitem.RetrievePending(mitem._EMPID, headstatus, mitem._POSITION);
 
@@ -85,7 +102,15 @@ namespace Fasetto.Word
         {
             StaticApprovalList.staticApprovalList.Clear();
 
-            pitem.RetrieveDeclined(mitem._EMPID, mitem._POSITION);
+            if (mitem._POSITION == "Human Resources Head")
+            {
+                headstatus = "Declined by Human Resources Head";
+            }
+            else
+            {
+                headstatus = "Declined by Head";
+            }
+            pitem.RetrieveDeclined(mitem._EMPID, headstatus, mitem._POSITION);
             pending.Visibility = Visibility.Visible;
             approval.ItemsSource = StaticApprovalList.staticApprovalList;
         }
@@ -93,9 +118,16 @@ namespace Fasetto.Word
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             StaticApprovalList.staticApprovalList.Clear();
-  
 
-            pitem.RetrieveApproved(mitem._EMPID, mitem._POSITION);
+            if (mitem._POSITION == "Human Resources Head")
+            {
+                headstatus = "Approved by Human Resources Head";
+            }
+            else
+            {
+                headstatus = "Approved by Head";
+            }
+            pitem.RetrieveApproved(mitem._EMPID,headstatus ,mitem._POSITION);
             pending.Visibility = Visibility.Visible;
             approval.ItemsSource = StaticApprovalList.staticApprovalList;
         }

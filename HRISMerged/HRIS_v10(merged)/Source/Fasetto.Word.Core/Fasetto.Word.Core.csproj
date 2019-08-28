@@ -86,11 +86,13 @@
     <Compile Include="User Accounts\AttendanceItem.cs" />
     <Compile Include="User Accounts\Comboboxitem.cs" />
     <Compile Include="User Accounts\GetAttendance.cs" />
+    <Compile Include="User Accounts\UserHolidayItem.cs" />
     <Compile Include="User Accounts\PendingItem.cs" />
     <Compile Include="User Accounts\RequestItem.cs" />
     <Compile Include="User Accounts\SpecificItem.cs" />
     <Compile Include="User Accounts\StaticAttendanceList.cs" />
     <Compile Include="User Accounts\TimeItem.cs" />
+    <Compile Include="User Accounts\UserHoliday.cs" />
     <Compile Include="User Accounts\UserItem.cs" />
     <Compile Include="User Accounts\Userlogin.cs" />
     <Compile Include="User Accounts\UserPending.cs" />

@@ -45,7 +45,7 @@ namespace Fasetto.Word
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
-            if (typeholder == "Leave" && emppos == "Head")
+            if (typeholder == "Leave" && emppos == "Human Resources Head" || emppos == "Engineering Head" || emppos == "Electronics Head")
             {
                 Delete.Visibility = Visibility.Hidden;
                 Cancel.Visibility = Visibility.Hidden;
@@ -66,7 +66,7 @@ namespace Fasetto.Word
                
 
             }
-            else if (typeholder == "Overtime" && emppos == "Head")
+            else if (typeholder == "Overtime" && emppos == "Human Resources Head" || emppos == "Engineering Head" || emppos == "Electronics Head")
             {
                 Delete.Visibility = Visibility.Hidden;
                 Cancel.Visibility = Visibility.Hidden;
@@ -116,11 +116,19 @@ namespace Fasetto.Word
 
 
         }
-
+        string stat;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             UserPending upend = new UserPending();
-            string stat = "Approved by Head";
+            if (mitem._POSITION == "Human Resources Head")
+            {
+                stat = "Approved by Human Resources Head";
+            }
+            else
+            {
+                stat = "Approved by Head";
+            }
+
             string appby = ""+mitem._FNAME+" "+mitem._LNAME+"";
             int empid = StaticApprovalItem.staticApprovalModalItem.PENDING_ID;
             upend.Approve(appby, empid,stat);
@@ -131,7 +139,15 @@ namespace Fasetto.Word
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             UserPending upend = new UserPending();
-            string stat = "Declined by Head";
+            if (mitem._POSITION == "Human Resources Head")
+            {
+                stat = "Declined by Human Resources Head";
+            }
+            else
+            {
+                stat = "Declined by Head";
+            }
+
             string appby = "" + mitem._FNAME + " " + mitem._LNAME + "";
             int empid = StaticApprovalItem.staticApprovalModalItem.PENDING_ID;
             upend.Approve(appby, empid, stat);

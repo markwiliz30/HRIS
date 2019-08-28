@@ -37,5 +37,8 @@ namespace Fasetto.Word.Core
     {
         public static ObservableCollection<ComboBoxItem> ComboItem = new ObservableCollection<ComboBoxItem>();
     }
-
+    public class holidays
+    {
+        public static HolidayItem holitem = new HolidayItem();
+    }
 }
